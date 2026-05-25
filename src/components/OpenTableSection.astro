@@ -1,0 +1,107 @@
+---
+import PageImageHero from "./PageImageHero.astro";
+
+interface Props {
+  lang: "nl" | "en";
+}
+
+const { lang } = Astro.props;
+
+const t = lang === "nl"
+  ? {
+      kicker: "Open Tafel",
+      title: "Open Tafel",
+      lead: "Een eenvoudige ontmoeting rond plantaardig eten, stilte, gesprek en samen-zijn.",
+      imageAlt: "Een warme houten eetkamer met een lange tafel, open deuren naar het landschap en een inkomhal links.",
+      introTitle: "Samen eten, samen vertragen",
+      intro:
+        "Open Tafel is een kleinschalige bijeenkomst in Leuven rond een eenvoudige plantaardige maaltijd. We eten samen, laten ruimte voor stilte en gesprek, en lezen eventueel een korte filosofische of contemplatieve tekst.",
+      practicalTitle: "Praktisch",
+      practical: [
+        "Maandelijks in Leuven",
+        "Adres na inschrijving",
+        "Plantaardige maaltijd",
+        "Vrije bijdrage",
+        "Kleine groep",
+      ],
+      rhythmTitle: "Hoe verloopt het?",
+      rhythm:
+        "We beginnen met aankomen en eten. Afhankelijk van het moment kan er ruimte zijn voor een wandeling, stilte of een korte tekst. De sfeer is informeel: geen prestatie, geen verplichting, geen vaste doctrine.",
+      forWhomTitle: "Voor wie?",
+      forWhom:
+        "Voor wie graag op een rustige manier mensen ontmoet rond zingeving, stilte, filosofie, spiritualiteit of gewoon een goed gesprek. Je hoeft geen ervaring met meditatie, nondualiteit of filosofie te hebben.",
+      ctaTitle: "Wil je aansluiten?",
+      cta:
+        "Stuur gerust een bericht via de contactpagina. Vermeld dat je interesse hebt in Open Tafel en met hoeveel personen je zou willen komen.",
+      ctaLink: "/nl/contact/",
+      ctaLabel: "Neem contact op",
+    }
+  : {
+      kicker: "Open Table",
+      title: "Open Table",
+      lead: "A simple gathering around plant-based food, silence, conversation and presence.",
+      imageAlt: "A warm wooden dining room with a long table, open doors to the landscape and an entrance hall on the left.",
+      introTitle: "Eating together, slowing down together",
+      intro:
+        "Open Table is a small gathering in Leuven around a simple plant-based meal. We eat together, leave room for silence and conversation, and may read a short philosophical or contemplative text.",
+      practicalTitle: "Practical",
+      practical: [
+        "Monthly in Leuven",
+        "Address after registration",
+        "Plant-based meal",
+        "Free contribution",
+        "Small group",
+      ],
+      rhythmTitle: "How does it unfold?",
+      rhythm:
+        "We begin by arriving and eating together. Depending on the moment, there may be space for a walk, silence or a short text. The atmosphere is informal: no performance, no obligation, no fixed doctrine.",
+      forWhomTitle: "For whom?",
+      forWhom:
+        "For anyone who would like to meet others in a quiet way around meaning, silence, philosophy, spirituality or simply a good conversation. No experience with meditation, nonduality or philosophy is needed.",
+      ctaTitle: "Would you like to join?",
+      cta:
+        "Feel free to send a message through the contact page. Mention that you are interested in Open Table and how many people would like to come.",
+      ctaLink: "/en/contact/",
+      ctaLabel: "Get in touch",
+    };
+---
+
+<section class="detail-page">
+<PageImageHero
+  kicker={t.kicker}
+  title={t.title}
+  lead={t.lead}
+  imageSrc="/images/open-table/hond-dining-room-spring.png"
+  imageAlt={t.imageAlt}
+/>
+
+  <section class="detail-grid">
+    <article class="detail-panel detail-panel-large">
+      <h2>{t.introTitle}</h2>
+      <p>{t.intro}</p>
+    </article>
+
+    <article class="detail-panel">
+      <h2>{t.practicalTitle}</h2>
+      <ul class="detail-meta-list">
+        {t.practical.map((item) => <li>{item}</li>)}
+      </ul>
+    </article>
+
+    <article class="detail-panel">
+      <h2>{t.rhythmTitle}</h2>
+      <p>{t.rhythm}</p>
+    </article>
+
+    <article class="detail-panel">
+      <h2>{t.forWhomTitle}</h2>
+      <p>{t.forWhom}</p>
+    </article>
+
+    <article class="detail-panel detail-callout">
+      <h2>{t.ctaTitle}</h2>
+      <p>{t.cta}</p>
+      <a class="button primary" href={t.ctaLink}>{t.ctaLabel}</a>
+    </article>
+  </section>
+</section>
