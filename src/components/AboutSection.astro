@@ -24,6 +24,8 @@ const t = lang === "nl"
         "Een huis is een plaats van aankomst. Je hoeft er niets te bewijzen. Je komt binnen, neemt plaats, luistert, eet, leest, schrijft, zwijgt of gaat dieper de bibliotheek in. De website volgt diezelfde logica: elke kamer opent een andere ingang tot dezelfde stilte.",
       quote:
         "Niet om ergens anders te geraken, maar om helderder te zien wat hier al is.",
+      imageAlt:
+        "Het Huis van Nondualiteit als warme herberg met verschillende kamers.",
     }
   : {
       kicker: "About",
@@ -43,6 +45,8 @@ const t = lang === "nl"
         "A house is a place of arrival. You do not have to prove anything there. You enter, take a seat, listen, eat, read, write, become silent or go deeper into the library. The website follows that same logic: each room opens another entrance into the same silence.",
       quote:
         "Not to get somewhere else, but to see more clearly what is already here.",
+      imageAlt:
+        "The House of Nonduality as a warm inn with different rooms.",
     };
 ---
 
@@ -54,26 +58,35 @@ const t = lang === "nl"
     <p class="lead">{t.lead}</p>
   </section>
 
-  <section class="about-grid">
-    <article class="about-panel about-panel-large">
-      <h2>{t.introTitle}</h2>
-      <p>{t.intro}</p>
-    </article>
+  <section class="about-scene">
+    <img
+      src="/images/home/hond-home-inn-spring.png"
+      alt={t.imageAlt}
+    />
 
-    <article class="about-panel">
-      <h2>{t.nondualityTitle}</h2>
-      <p>{t.nonduality}</p>
-    </article>
+    <div class="about-scene-overlay">
+      <section class="about-grid">
+        <article class="about-panel about-panel-large">
+          <h2>{t.introTitle}</h2>
+          <p>{t.intro}</p>
+        </article>
 
-    <article class="about-panel">
-      <h2>{t.practiceTitle}</h2>
-      <p>{t.practice}</p>
-    </article>
+        <article class="about-panel">
+          <h2>{t.nondualityTitle}</h2>
+          <p>{t.nonduality}</p>
+        </article>
 
-    <article class="about-panel about-panel-large">
-      <h2>{t.houseTitle}</h2>
-      <p>{t.house}</p>
-    </article>
+        <article class="about-panel">
+          <h2>{t.practiceTitle}</h2>
+          <p>{t.practice}</p>
+        </article>
+
+        <article class="about-panel about-panel-large">
+          <h2>{t.houseTitle}</h2>
+          <p>{t.house}</p>
+        </article>
+      </section>
+    </div>
   </section>
 
   <section class="about-quote">
