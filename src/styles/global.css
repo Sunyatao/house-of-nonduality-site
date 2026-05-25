@@ -977,3 +977,33 @@ h1 {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+
+/* Mobile home-house cards refinement */
+
+@media (max-width: 760px) {
+  .home-house-links {
+    display: grid;
+    width: calc(100% - 32px);
+    margin: -28px auto 64px;
+    gap: 12px;
+  }
+
+  .home-house-links a,
+  .home-house-links span {
+    padding: 16px 18px;
+    border-radius: 20px;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 252, 245, 0.94),
+        rgba(250, 241, 224, 0.86)
+      );
+    border: 1px solid rgba(180, 122, 50, 0.22);
+    font-size: 1.08rem;
+  }
+
+  .home-house-links a::after {
+    content: " →";
+    color: var(--color-accent);
+  }
+}
