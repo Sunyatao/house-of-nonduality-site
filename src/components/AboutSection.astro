@@ -1,0 +1,82 @@
+---
+interface Props {
+  lang: "nl" | "en";
+}
+
+const { lang } = Astro.props;
+
+const t = lang === "nl"
+  ? {
+      kicker: "Over",
+      title: "Het Huis van Nondualiteit",
+      lead: "Een ruimte voor stilte, poëzie, filosofie en contemplatieve ontmoeting in Leuven.",
+      introTitle: "Een herberg voor stilte en inzicht",
+      intro:
+        "Het Huis van Nondualiteit is geen kerk, school of klassieke spirituele organisatie. Het is eerder een open huis: een plek waar mensen kunnen samenkomen rond stilte, schoonheid, gesprek en de vraag wat werkelijk is.",
+      nondualityTitle: "Wat betekent nondualiteit?",
+      nonduality:
+        "Nondualiteit verwijst naar het inzicht dat de diepste werkelijkheid niet verdeeld is in een afgescheiden ‘ik’ tegenover een wereld daarbuiten. In eenvoudige woorden: wat we ten diepste zijn, is niet los van het leven zelf.",
+      practiceTitle: "Hoe krijgt dat vorm?",
+      practice:
+        "Via poëzie, contemplatieve teksten, gedeelde maaltijden, gesprek, stilte en later ook meditatieve oefeningen. Niet als doctrine, maar als uitnodiging om rechtstreeks te onderzoeken wat aanwezig is.",
+      houseTitle: "Waarom een huis?",
+      house:
+        "Een huis is een plaats van aankomst. Je hoeft er niets te bewijzen. Je komt binnen, neemt plaats, luistert, eet, leest, schrijft, zwijgt of gaat dieper de bibliotheek in. De website volgt diezelfde logica: elke kamer opent een andere ingang tot dezelfde stilte.",
+      quote:
+        "Niet om ergens anders te geraken, maar om helderder te zien wat hier al is.",
+    }
+  : {
+      kicker: "About",
+      title: "House of Nonduality",
+      lead: "A space for silence, poetry, philosophy and contemplative encounter in Leuven.",
+      introTitle: "An inn for silence and insight",
+      intro:
+        "The House of Nonduality is not a church, school or conventional spiritual organization. It is more like an open house: a place where people can gather around silence, beauty, conversation and the question of what is real.",
+      nondualityTitle: "What does nonduality mean?",
+      nonduality:
+        "Nonduality points to the insight that the deepest reality is not split into a separate ‘me’ over here and a world over there. In simple terms: what we most deeply are is not separate from life itself.",
+      practiceTitle: "How does this take form?",
+      practice:
+        "Through poetry, contemplative texts, shared meals, conversation, silence and eventually also meditative exercises. Not as doctrine, but as an invitation to directly investigate what is present.",
+      houseTitle: "Why a house?",
+      house:
+        "A house is a place of arrival. You do not have to prove anything there. You enter, take a seat, listen, eat, read, write, become silent or go deeper into the library. The website follows that same logic: each room opens another entrance into the same silence.",
+      quote:
+        "Not to get somewhere else, but to see more clearly what is already here.",
+    };
+---
+
+<section class="about-page">
+  <section class="about-hero">
+    <p class="kicker">{t.kicker}</p>
+    <h1>{t.title}</h1>
+    <div class="ornament-line" aria-hidden="true"><span>☉</span></div>
+    <p class="lead">{t.lead}</p>
+  </section>
+
+  <section class="about-grid">
+    <article class="about-panel about-panel-large">
+      <h2>{t.introTitle}</h2>
+      <p>{t.intro}</p>
+    </article>
+
+    <article class="about-panel">
+      <h2>{t.nondualityTitle}</h2>
+      <p>{t.nonduality}</p>
+    </article>
+
+    <article class="about-panel">
+      <h2>{t.practiceTitle}</h2>
+      <p>{t.practice}</p>
+    </article>
+
+    <article class="about-panel about-panel-large">
+      <h2>{t.houseTitle}</h2>
+      <p>{t.house}</p>
+    </article>
+  </section>
+
+  <section class="about-quote">
+    <p>{t.quote}</p>
+  </section>
+</section>
