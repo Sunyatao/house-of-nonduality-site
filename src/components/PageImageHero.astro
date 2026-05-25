@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  lead?: string;
+  kicker?: string;
+  imageSrc: string;
+  imageAlt: string;
+  fade?: boolean;
+}
+
+const {
+  title,
+  lead,
+  kicker,
+  imageSrc,
+  imageAlt,
+  fade = true,
+} = Astro.props;
+---
+
+<section class:list={["page-image-hero", fade && "has-fading-title"]}>
+  <img
+    class="page-image-hero-image"
+    src={imageSrc}
+    alt={imageAlt}
+  />
+
+  <div class="page-image-hero-content">
+    {kicker && <p class="page-image-hero-kicker">{kicker}</p>}
+    <h1>{title}</h1>
+    {lead && <p class="page-image-hero-lead">{lead}</p>}
+  </div>
+</section>

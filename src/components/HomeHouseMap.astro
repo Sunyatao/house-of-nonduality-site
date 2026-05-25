@@ -7,6 +7,8 @@ const { lang } = Astro.props;
 
 const t = lang === "nl"
   ? {
+      title: "Het Huis van Nondualiteit",
+      lead: "Een ruimte voor stilte, poëzie en contemplatieve ontmoeting.",
       alt: "Een warme herberg met kamers voor ontmoeting, stilte, contact, meditatie en studie.",
       about: "Over",
       openTable: "Open Tafel",
@@ -26,6 +28,8 @@ const t = lang === "nl"
       },
     }
   : {
+      title: "House of Nonduality",
+      lead: "A space for silence, poetry and contemplative encounter.",
       alt: "A warm inn with rooms for gathering, silence, contact, meditation and study.",
       about: "About",
       openTable: "Open Table",
@@ -52,6 +56,11 @@ const t = lang === "nl"
     src="/images/home/hond-home-inn-spring.png"
     alt={t.alt}
   />
+
+  <div class="home-house-welcome" aria-hidden="true">
+  <h1>{t.title}</h1>
+  <p>{t.lead}</p>
+</div>
 
   <a class="house-hotspot hotspot-open-table" href={t.links.openTable}>
     <span>{t.openTable}</span>

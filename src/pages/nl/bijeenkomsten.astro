@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageImageHero from "../../components/PageImageHero.astro";
 ---
 
 <BaseLayout
@@ -7,14 +8,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   description="Bijeenkomsten rond stilte, poëzie, contemplatie en ontmoeting in Leuven."
   lang="nl"
 >
-  <section class="hero">
-    <p class="kicker">Leuven · stilte · ontmoeting</p>
-    <h1>Bijeenkomsten</h1>
-    <p class="lead">
-      Twee terugkerende vormen van samenkomen: een poëzie- en tekstavond rond stilte,
-      en een eenvoudige tafel rond eten, gesprek en aanwezigheid.
-    </p>
-  </section>
+  <PageImageHero
+    kicker="Leuven · stilte · ontmoeting"
+    title="Bijeenkomsten"
+    lead="Twee terugkerende vormen van samenkomen: een poëzie- en tekstavond rond stilte, en een eenvoudige tafel rond eten, gesprek en aanwezigheid."
+    imageSrc="/images/home/hond-home-inn-spring.png"
+    imageAlt="Een warme herberg met kamers voor ontmoeting, stilte, contact, meditatie en studie."
+  />
 
   <section class="section">
     <article class="card">
