@@ -1,0 +1,108 @@
+---
+interface Props {
+  lang?: "nl" | "en";
+}
+
+const { lang = "nl" } = Astro.props;
+const path = Astro.url.pathname;
+
+const nav = lang === "nl"
+  ? [
+      { href: "/nl/", label: "Home", matches: ["/nl/"] },
+      { href: "/nl/over/", label: "Over", matches: ["/nl/over/"] },
+      {
+        href: "/nl/bijeenkomsten/",
+        label: "Bijeenkomsten",
+        matches: [
+          "/nl/bijeenkomsten/",
+          "/nl/open-tafel/",
+          "/nl/woorden-uit-de-stilte/",
+        ],
+      },
+      { href: "/nl/nieuwsbrief/", label: "Nieuwsbrief", matches: ["/nl/nieuwsbrief/"] },
+      { href: "/nl/contact/", label: "Contact", matches: ["/nl/contact/"] },
+    ]
+  : [
+      { href: "/en/", label: "Home", matches: ["/en/"] },
+      { href: "/en/about/", label: "About", matches: ["/en/about/"] },
+      {
+        href: "/en/gatherings/",
+        label: "Gatherings",
+        matches: [
+          "/en/gatherings/",
+          "/en/open-table/",
+          "/en/words-from-silence/",
+        ],
+      },
+      { href: "/en/newsletter/", label: "Newsletter", matches: ["/en/newsletter/"] },
+      { href: "/en/contact/", label: "Contact", matches: ["/en/contact/"] },
+    ];
+
+const languagePairs: Record<string, string> = {
+  "/nl/": "/en/",
+  "/en/": "/nl/",
+  "/nl/over/": "/en/about/",
+  "/en/about/": "/nl/over/",
+  "/nl/bijeenkomsten/": "/en/gatherings/",
+  "/en/gatherings/": "/nl/bijeenkomsten/",
+  "/nl/open-tafel/": "/en/open-table/",
+  "/en/open-table/": "/nl/open-tafel/",
+  "/nl/woorden-uit-de-stilte/": "/en/words-from-silence/",
+  "/en/words-from-silence/": "/nl/woorden-uit-de-stilte/",
+  "/nl/nieuwsbrief/": "/en/newsletter/",
+  "/en/newsletter/": "/nl/nieuwsbrief/",
+  "/nl/contact/": "/en/contact/",
+  "/en/contact/": "/nl/contact/",
+};
+
+const switchToOtherLanguage = languagePairs[path] ?? (lang === "nl" ? "/en/" : "/nl/");
+---
+
+<header class="site-header">
+  <a class="brand" href={lang === "nl" ? "/nl/" : "/en/"}>
+    <span class="brand-mark" aria-hidden="true">
+      <span class="brand-roof"></span>
+      <span class="brand-spiral">☉</span>
+    </span>
+
+    <span class="brand-text">
+      <span class="brand-small">
+        {lang === "nl" ? "Het Huis van" : "The House of"}
+      </span>
+      <span class="brand-large">
+        {lang === "nl" ? "Nondualiteit" : "Nonduality"}
+      </span>
+    </span>
+  </a>
+
+  <nav class="main-nav" aria-label="Main navigation">
+    {nav.map((item) => {
+      const isActive = item.matches.includes(path);
+
+      return (
+        <a
+          href={item.href}
+          class:list={["nav-link", isActive && "is-active"]}
+        >
+          {item.label}
+        </a>
+      );
+    })}
+
+    <div class="language-switch" aria-label="Language switcher">
+      {lang === "nl" ? (
+        <>
+          <a class="is-active" href={path}>NL</a>
+          <span>|</span>
+          <a href={switchToOtherLanguage}>EN</a>
+        </>
+      ) : (
+        <>
+          <a href={switchToOtherLanguage}>NL</a>
+          <span>|</span>
+          <a class="is-active" href={path}>EN</a>
+        </>
+      )}
+    </div>
+  </nav>
+</header>

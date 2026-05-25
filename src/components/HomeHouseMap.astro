@@ -1,0 +1,93 @@
+---
+interface Props {
+  lang: "nl" | "en";
+}
+
+const { lang } = Astro.props;
+
+const t = lang === "nl"
+  ? {
+      alt: "Een warme herberg met kamers voor ontmoeting, stilte, contact, meditatie en studie.",
+      about: "Over",
+      openTable: "Open Tafel",
+      words: "Woorden uit de Stilte",
+      contact: "Contact",
+      newsletter: "Nieuwsbrief",
+      library: "Bibliotheek",
+      meditation: "Meditatie",
+      soon: "binnenkort",
+      links: {
+        about: "/nl/over/",
+        openTable: "/nl/open-tafel/",
+        words: "/nl/woorden-uit-de-stilte/",
+        contact: "/nl/contact/",
+        newsletter: "/nl/nieuwsbrief/",
+        library: "/nl/bibliotheek/",
+      },
+    }
+  : {
+      alt: "A warm inn with rooms for gathering, silence, contact, meditation and study.",
+      about: "About",
+      openTable: "Open Table",
+      words: "Words from Silence",
+      contact: "Contact",
+      newsletter: "Newsletter",
+      library: "Library",
+      meditation: "Meditation",
+      soon: "coming soon",
+      links: {
+        about: "/en/about/",
+        openTable: "/en/open-table/",
+        words: "/en/words-from-silence/",
+        contact: "/en/contact/",
+        newsletter: "/en/newsletter/",
+        library: "/en/library/",
+      },
+    };
+---
+
+<section class="home-house" aria-label={lang === "nl" ? "Verken het Huis van Nondualiteit" : "Explore the House of Nonduality"}>
+  <img
+    class="home-house-image"
+    src="/images/home/hond-home-inn-spring.png"
+    alt={t.alt}
+  />
+
+  <a class="house-hotspot hotspot-open-table" href={t.links.openTable}>
+    <span>{t.openTable}</span>
+  </a>
+
+  <a class="house-hotspot hotspot-words" href={t.links.words}>
+    <span>{t.words}</span>
+  </a>
+
+  <a class="house-hotspot hotspot-contact" href={t.links.contact}>
+    <span>{t.contact}</span>
+  </a>
+
+  <a class="house-hotspot hotspot-newsletter" href={t.links.newsletter}>
+    <span>{t.newsletter}</span>
+  </a>
+
+  <a class="house-hotspot hotspot-about" href={t.links.about}>
+    <span>{t.about}</span>
+  </a>
+
+  <a class="house-hotspot hotspot-library" href={t.links.library}>
+    <span>{t.library}</span>
+  </a>
+
+  <div class="house-hotspot hotspot-meditation is-disabled">
+    <span>{t.meditation} · {t.soon}</span>
+  </div>
+</section>
+
+<section class="home-house-links" aria-label={lang === "nl" ? "Kamers van het Huis" : "Rooms of the House"}>
+  <a href={t.links.openTable}>{t.openTable}</a>
+  <a href={t.links.words}>{t.words}</a>
+  <a href={t.links.contact}>{t.contact}</a>
+  <a href={t.links.newsletter}>{t.newsletter}</a>
+  <a href={t.links.about}>{t.about}</a>
+  <a href={t.links.library}>{t.library}</a>
+  <span>{t.meditation} · {t.soon}</span>
+</section>
