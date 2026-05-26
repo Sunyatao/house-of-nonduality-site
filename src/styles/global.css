@@ -495,7 +495,7 @@ html[lang="nl"] .home-house-welcome {
 }
 
 html[lang="nl"] .home-house-welcome h1 {
-  font-size: clamp(2.2rem, 4.1vw, 3.85rem);
+  font-size: clamp(2.3rem, 4.6vw, 4.45rem);
   white-space: nowrap;
 }
 
@@ -719,6 +719,8 @@ html[lang="nl"] .home-house-welcome p {
   display: block;
   object-fit: cover;
   object-position: center center;
+  filter: none;
+  opacity: 1;
 }
 
 .about-scene-heading {
@@ -791,18 +793,14 @@ html[lang="nl"] .home-house-welcome p {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
+  pointer-events: none;
   background:
     linear-gradient(
       180deg,
-      rgba(248, 241, 231, 0.10),
-      rgba(248, 241, 231, 0.30)
-    ),
-    radial-gradient(
-      circle at center,
-      rgba(255, 252, 245, 0.08),
-      rgba(255, 252, 245, 0.36)
+      rgba(5, 18, 32, 0.04),
+      rgba(5, 18, 32, 0.10)
     );
-  pointer-events: none;
 }
 
 .about-scene-overlay {
