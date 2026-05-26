@@ -6,6 +6,8 @@ interface Props {
   imageSrc: string;
   imageAlt: string;
   fade?: boolean;
+  showImageView?: boolean;
+  imageViewLabel?: string;
 }
 
 const {
@@ -15,19 +17,18 @@ const {
   imageSrc,
   imageAlt,
   fade = true,
+  showImageView = false,
+  imageViewLabel = "View image",
 } = Astro.props;
+
+const imageAvif = imageSrc.replace(/\.(png|jpg|jpeg|webp)$/i, ".avif");
+const imageWebp = imageSrc.replace(/\.(png|jpg|jpeg|avif)$/i, ".webp");
 ---
 
 <section class:list={["page-image-hero", fade && "has-fading-title"]}>
   <picture>
-    <source
-      srcset={imageSrc.replace(/\.(png|jpg|jpeg|webp)$/i, ".avif")}
-      type="image/avif"
-    />
-    <source
-      srcset={imageSrc.replace(/\.(png|jpg|jpeg|avif)$/i, ".webp")}
-      type="image/webp"
-    />
+    <source srcset={imageAvif} type="image/avif" />
+    <source srcset={imageWebp} type="image/webp" />
     <img
       class="page-image-hero-image"
       src={imageSrc}
@@ -40,6 +41,17 @@ const {
     />
   </picture>
 
+  {showImageView && (
+    <button
+      class="image-view-button"
+      type="button"
+      data-image-view-open
+      aria-label={imageViewLabel}
+    >
+      {imageViewLabel}
+    </button>
+  )}
+
   <div class="page-image-hero-content">
     {kicker && <p class="page-image-hero-kicker">{kicker}</p>}
     <h1>{title}</h1>
@@ -51,4 +63,90 @@ const {
       <slot />
     </div>
   )}
+
+  {showImageView && (
+    <div class="image-lightbox" data-image-lightbox aria-hidden="true">
+      <button
+        class="image-lightbox-close"
+        type="button"
+        data-image-view-close
+        aria-label="Close image view"
+      >
+        ×
+      </button>
+
+      <picture>
+        <source srcset={imageAvif} type="image/avif" />
+        <source srcset={imageWebp} type="image/webp" />
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          width="1600"
+          height="1000"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    </div>
+  )}
 </section>
+
+<script is:inline>
+  document.addEventListener("click", function (event) {
+    const openButton = event.target.closest("[data-image-view-open]");
+    const closeButton = event.target.closest("[data-image-view-close]");
+    const lightboxBackdrop = event.target.closest("[data-image-lightbox]");
+
+    if (openButton) {
+      const hero = openButton.closest(".page-image-hero");
+      const lightbox = hero?.querySelector("[data-image-lightbox]");
+      const close = hero?.querySelector("[data-image-view-close]");
+
+      if (!lightbox) return;
+
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("has-open-lightbox");
+
+      if (close) {
+        close.focus();
+      }
+    }
+
+    if (closeButton) {
+      const lightbox = closeButton.closest("[data-image-lightbox]");
+      const hero = closeButton.closest(".page-image-hero");
+      const open = hero?.querySelector("[data-image-view-open]");
+
+      if (!lightbox) return;
+
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("has-open-lightbox");
+
+      if (open) {
+        open.focus();
+      }
+    }
+
+    if (
+      lightboxBackdrop &&
+      lightboxBackdrop.classList.contains("image-lightbox") &&
+      event.target === lightboxBackdrop
+    ) {
+      lightboxBackdrop.classList.remove("is-open");
+      lightboxBackdrop.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("has-open-lightbox");
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") return;
+
+    document.querySelectorAll("[data-image-lightbox].is-open").forEach(function (lightbox) {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("has-open-lightbox");
+    });
+  });
+</script>

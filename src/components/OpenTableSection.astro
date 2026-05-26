@@ -11,6 +11,7 @@ const t = lang === "nl"
   ? {
       title: "Open Tafel",
       lead: "Een eenvoudige ontmoeting rond plantaardig eten, stilte, gesprek en samen-zijn.",
+      viewRoom: "Bekijk de kamer",
       imageAlt: "Een warme houten eetkamer met een lange tafel, open deuren naar het landschap en een inkomhal links.",
       introTitle: "Samen eten, samen vertragen",
       intro:
@@ -38,6 +39,7 @@ const t = lang === "nl"
   : {
       title: "Open Table",
       lead: "A simple gathering around plant-based food, silence, conversation and presence.",
+      viewRoom: "View the room",
       imageAlt: "A warm wooden dining room with a long table, open doors to the landscape and an entrance hall on the left.",
       introTitle: "Eating together, slowing down together",
       intro:
@@ -65,12 +67,14 @@ const t = lang === "nl"
 ---
 
 <section class="detail-page">
-  <PageImageHero
-    title={t.title}
-    lead={t.lead}
-    imageSrc="/images/open-table/hond-dining-room-spring.png"
-    imageAlt={t.imageAlt}
-  >
+<PageImageHero
+  title={t.title}
+  lead={t.lead}
+  imageSrc="/images/open-table/hond-dining-room-spring.png"
+  imageAlt={t.imageAlt}
+  showImageView={true}
+  imageViewLabel={t.viewRoom}
+>
     <section class="hero-card-grid open-table-hero-grid open-table-all-cards">
   <article class="hero-card open-table-hero-card hero-card-large">
     <h2>{t.introTitle}</h2>

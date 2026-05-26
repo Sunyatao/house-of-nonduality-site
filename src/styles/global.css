@@ -739,6 +739,91 @@ html[lang="nl"] .home-house-welcome p {
   transform: translateX(-50%);
 }
 
+.image-view-button {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 5;
+  border: 1px solid rgba(255, 252, 245, 0.36);
+  border-radius: 999px;
+  padding: 9px 15px;
+  background: rgba(5, 18, 32, 0.34);
+  color: rgba(255, 252, 245, 0.92);
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 14px 42px rgba(5, 18, 32, 0.18);
+}
+
+.image-view-button:hover {
+  background: rgba(5, 18, 32, 0.48);
+  border-color: rgba(255, 252, 245, 0.52);
+  transform: translateY(-1px);
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(5, 18, 32, 0.82);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 180ms ease,
+    visibility 180ms ease;
+}
+
+.image-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.image-lightbox picture {
+  display: block;
+  width: min(1220px, 96vw);
+  max-height: 90vh;
+}
+
+.image-lightbox img {
+  display: block;
+  width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 24px;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.34);
+}
+
+.image-lightbox-close {
+  position: fixed;
+  top: 22px;
+  right: 24px;
+  z-index: 1000;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 252, 245, 0.34);
+  border-radius: 999px;
+  background: rgba(255, 252, 245, 0.12);
+  color: rgba(255, 252, 245, 0.92);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.image-lightbox-close:hover {
+  background: rgba(255, 252, 245, 0.22);
+}
+
+body.has-open-lightbox {
+  overflow: hidden;
+}
+
 .hero-card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1936,6 +2021,26 @@ html[lang="nl"] .home-house-welcome p {
   top: 285px;
   bottom: auto;
   width: calc(100% - 32px);
+}
+
+.image-view-button {
+  right: 16px;
+  bottom: 16px;
+  padding: 8px 12px;
+  font-size: 0.84rem;
+}
+
+.image-lightbox {
+  padding: 16px;
+}
+
+.image-lightbox img {
+  border-radius: 18px;
+}
+
+.image-lightbox-close {
+  top: 14px;
+  right: 14px;
 }
 
   /* Contact */
