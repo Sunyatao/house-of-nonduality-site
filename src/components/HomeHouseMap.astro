@@ -62,34 +62,22 @@ const t = lang === "nl"
   <p>{t.lead}</p>
 </div>
 
-  <a class="house-hotspot hotspot-open-table" href={t.links.openTable}>
-    <span>{t.openTable}</span>
-  </a>
+  <a class="house-hotspot hotspot-open-table" href={t.links.openTable} data-tooltip={t.openTable}></a>
 
-  <a class="house-hotspot hotspot-words" href={t.links.words}>
-    <span>{t.words}</span>
-  </a>
+  <a class="house-hotspot hotspot-words" href={t.links.words} data-tooltip={t.words}></a>
 
-  <a class="house-hotspot hotspot-contact" href={t.links.contact}>
-    <span>{t.contact}</span>
-  </a>
+  <a class="house-hotspot hotspot-contact" href={t.links.contact} data-tooltip={t.contact}></a>
 
-  <a class="house-hotspot hotspot-newsletter" href={t.links.newsletter}>
-    <span>{t.newsletter}</span>
-  </a>
+  <a class="house-hotspot hotspot-newsletter" href={t.links.newsletter} data-tooltip={t.newsletter}></a>
 
-  <a class="house-hotspot hotspot-about" href={t.links.about}>
-    <span>{t.about}</span>
-  </a>
+  <a class="house-hotspot hotspot-about" href={t.links.about} data-tooltip={t.about}></a>
 
-  <a class="house-hotspot hotspot-library" href={t.links.library}>
-    <span>{t.library}</span>
-  </a>
+  <a class="house-hotspot hotspot-library" href={t.links.library} data-tooltip={t.library}></a>
 
-  <div class="house-hotspot hotspot-meditation is-disabled">
-    <span>{t.meditation} · {t.soon}</span>
-  </div>
+  <div class="house-hotspot hotspot-meditation is-disabled" data-tooltip={`${t.meditation} · ${t.soon}`}></div>
 </section>
+
+  <div class="house-cursor-tooltip" aria-hidden="true"></div>
 
 <section class="home-house-links" aria-label={lang === "nl" ? "Kamers van het Huis" : "Rooms of the House"}>
   <a href={t.links.openTable}>{t.openTable}</a>
@@ -100,3 +88,37 @@ const t = lang === "nl"
   <a href={t.links.library}>{t.library}</a>
   <span>{t.meditation} · {t.soon}</span>
 </section>
+
+<script>
+  const homeHouse = document.querySelector<HTMLElement>(".home-house");
+  const tooltip = document.querySelector<HTMLElement>(".house-cursor-tooltip");
+
+  if (homeHouse && tooltip) {
+    const hotspots = homeHouse.querySelectorAll<HTMLElement>("[data-tooltip]");
+
+    hotspots.forEach((hotspot) => {
+      hotspot.addEventListener("mouseenter", () => {
+        tooltip.textContent = hotspot.dataset.tooltip || "";
+        tooltip.classList.add("is-visible");
+      });
+
+      hotspot.addEventListener("mousemove", (event: MouseEvent) => {
+        tooltip.style.left = `${event.clientX}px`;
+        tooltip.style.top = `${event.clientY}px`;
+      });
+
+      hotspot.addEventListener("mouseleave", () => {
+        tooltip.classList.remove("is-visible");
+      });
+
+      hotspot.addEventListener("focus", () => {
+        tooltip.textContent = hotspot.dataset.tooltip || "";
+        tooltip.classList.add("is-visible");
+      });
+
+      hotspot.addEventListener("blur", () => {
+        tooltip.classList.remove("is-visible");
+      });
+    });
+  }
+</script>

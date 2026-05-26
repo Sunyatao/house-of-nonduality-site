@@ -170,20 +170,20 @@ const switchToOtherLanguage = languagePairs[path] ?? (lang === "nl" ? "/en/" : "
   );
 })}
 
-    <div class="language-switch" aria-label="Language switcher">
-      {lang === "nl" ? (
-        <>
-          <a class="is-active" href={path}>NL</a>
-          <span>|</span>
-          <a href={switchToOtherLanguage}>EN</a>
-        </>
-      ) : (
-        <>
-          <a href={switchToOtherLanguage}>NL</a>
-          <span>|</span>
-          <a class="is-active" href={path}>EN</a>
-        </>
-      )}
-    </div>
+<div class="language-switch" aria-label="Language switcher">
+  {lang === "nl" ? (
+    <>
+      <a href={switchToOtherLanguage}>EN</a>
+      <span>|</span>
+      <a class="is-active" href={path}>NL</a>
+    </>
+  ) : (
+    <>
+      <a class="is-active" href={path}>EN</a>
+      <span>|</span>
+      <a href={switchToOtherLanguage}>NL</a>
+    </>
+  )}
+</div>
   </nav>
 </header>

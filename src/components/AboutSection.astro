@@ -7,9 +7,8 @@ const { lang } = Astro.props;
 
 const t = lang === "nl"
   ? {
-      kicker: "Over",
-      title: "Het Huis van Nondualiteit",
-      lead: "Een ruimte voor stilte, poëzie, filosofie en contemplatieve ontmoeting in Leuven.",
+      title: "Over het Huis",
+      lead: "Een ruimte voor stilte, poëzie, filosofie en contemplatieve ontmoeting.",
       introTitle: "Een herberg voor stilte en inzicht",
       intro:
         "Het Huis van Nondualiteit is geen kerk, school of klassieke spirituele organisatie. Het is eerder een open huis: een plek waar mensen kunnen samenkomen rond stilte, schoonheid, gesprek en de vraag wat werkelijk is.",
@@ -28,9 +27,8 @@ const t = lang === "nl"
         "Het Huis van Nondualiteit als warme herberg met verschillende kamers.",
     }
   : {
-      kicker: "About",
-      title: "House of Nonduality",
-      lead: "A space for silence, poetry, philosophy and contemplative encounter in Leuven.",
+      title: "About the House",
+      lead: "A space for silence, poetry, philosophy and contemplative encounter.",
       introTitle: "An inn for silence and insight",
       intro:
         "The House of Nonduality is not a church, school or conventional spiritual organization. It is more like an open house: a place where people can gather around silence, beauty, conversation and the question of what is real.",
@@ -50,21 +48,18 @@ const t = lang === "nl"
     };
 ---
 
-<section class="about-page">
-  <section class="about-hero">
-    <p class="kicker">{t.kicker}</p>
-    <h1>{t.title}</h1>
-    <div class="ornament-line" aria-hidden="true"><span>☉</span></div>
-    <p class="lead">{t.lead}</p>
-  </section>
-
   <section class="about-scene">
-    <img
-      src="/images/home/hond-home-inn-spring.png"
-      alt={t.imageAlt}
-    />
+  <div class="about-scene-heading">
+    <h1>{t.title}</h1>
+    <p>{t.lead}</p>
+  </div>
 
-    <div class="about-scene-overlay">
+  <img
+    src="/images/home/hond-home-inn-spring.png"
+    alt={t.imageAlt}
+  />
+
+  <div class="about-scene-overlay">
       <section class="about-grid">
         <article class="about-panel about-panel-large">
           <h2>{t.introTitle}</h2>
