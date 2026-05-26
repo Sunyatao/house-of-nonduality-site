@@ -51,11 +51,20 @@ const t = lang === "nl"
 ---
 
 <section class="home-house" aria-label={lang === "nl" ? "Verken het Huis van Nondualiteit" : "Explore the House of Nonduality"}>
+ <picture>
+  <source srcset="/images/home/hond-home-inn-spring.avif" type="image/avif" />
+  <source srcset="/images/home/hond-home-inn-spring.webp" type="image/webp" />
   <img
     class="home-house-image"
     src="/images/home/hond-home-inn-spring.png"
     alt={t.alt}
+    width="1600"
+    height="1000"
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
   />
+</picture>
 
   <div class="home-house-welcome" aria-hidden="true">
   <h1>{t.title}</h1>
