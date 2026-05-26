@@ -72,33 +72,33 @@ const t = lang === "nl"
     imageAlt={t.imageAlt}
   >
     <section class="hero-card-grid open-table-hero-grid open-table-all-cards">
-      <article class="hero-card open-table-hero-card hero-card-large">
-        <h2>{t.introTitle}</h2>
-        <p>{t.intro}</p>
-      </article>
+  <article class="hero-card open-table-hero-card hero-card-large">
+    <h2>{t.introTitle}</h2>
+    <p>{t.intro}</p>
+  </article>
 
-      <article class="hero-card open-table-hero-card">
-        <h2>{t.practicalTitle}</h2>
-        <ul class="detail-meta-list">
-          {t.practical.map((item) => <li>{item}</li>)}
-        </ul>
-      </article>
+  <article class="hero-card open-table-hero-card">
+    <h2>{t.practicalTitle}</h2>
+    <ul class="detail-meta-list">
+      {t.practical.map((item) => <li>{item}</li>)}
+    </ul>
+  </article>
 
-      <article class="hero-card open-table-hero-card">
-        <h2>{t.rhythmTitle}</h2>
-        <p>{t.rhythm}</p>
-      </article>
+  <article class="hero-card open-table-hero-card">
+    <h2>{t.rhythmTitle}</h2>
+    <p>{t.rhythm}</p>
+  </article>
 
-      <article class="hero-card open-table-hero-card">
-        <h2>{t.forWhomTitle}</h2>
-        <p>{t.forWhom}</p>
-      </article>
+  <article class="hero-card open-table-hero-card">
+    <h2>{t.forWhomTitle}</h2>
+    <p>{t.forWhom}</p>
+  </article>
 
-      <article class="hero-card open-table-hero-card hero-card-large hero-card-callout">
-        <h2>{t.ctaTitle}</h2>
-        <p>{t.cta}</p>
-        <a class="button primary" href={t.ctaLink}>{t.ctaLabel}</a>
-      </article>
-    </section>
+  <article class="hero-card open-table-hero-card hero-card-callout">
+    <h2>{t.ctaTitle}</h2>
+    <p>{t.cta}</p>
+    <a class="button primary" href={t.ctaLink}>{t.ctaLabel}</a>
+  </article>
+</section>
   </PageImageHero>
 </section>
