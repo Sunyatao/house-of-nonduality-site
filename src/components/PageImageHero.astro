@@ -25,9 +25,15 @@ const {
     alt={imageAlt}
   />
 
-  <div class="page-image-hero-content">
+ <div class="page-image-hero-content">
     {kicker && <p class="page-image-hero-kicker">{kicker}</p>}
     <h1>{title}</h1>
     {lead && <p class="page-image-hero-lead">{lead}</p>}
   </div>
+
+  {Astro.slots.has("default") && (
+    <div class="page-image-hero-body">
+      <slot />
+    </div>
+  )}
 </section>

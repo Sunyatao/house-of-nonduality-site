@@ -13,23 +13,25 @@ import PageImageHero from "../../components/PageImageHero.astro";
     lead="Twee terugkerende vormen van samenkomen: een poëzie- en tekstavond rond stilte, en een eenvoudige tafel rond eten, gesprek en aanwezigheid."
     imageSrc="/images/home/hond-home-inn-spring.png"
     imageAlt="Een warme herberg met kamers voor ontmoeting, stilte, contact, meditatie en studie."
-  />
+  >
+    <section class="hero-card-grid">
+  <a class="hero-card hero-card-open-table" href="/nl/open-tafel/">
+    <span class="hero-card-arrow hero-card-arrow-left" aria-hidden="true">←</span>
+    <h2>Open Tafel</h2>
+    <p>
+      Een eenvoudige ontmoeting rond plantaardig eten, stilte, wandeling en gesprek.
+    </p>
+    <span class="card-link">Lees meer</p>
+  </a>
 
-  <section class="section">
-    <article class="card">
-      <h2>Woorden uit de Stilte</h2>
-      <p>
-        Een avond met mystieke poëzie en korte teksten, afgewisseld met stilte en gesprek.
-      </p>
-      <p class="card-link"><a href="/nl/woorden-uit-de-stilte/">Lees meer →</a></p>
-    </article>
-
-    <article class="card">
-      <h2>Open Tafel</h2>
-      <p>
-        Een eenvoudige ontmoeting rond plantaardig eten, stilte, wandeling en gesprek.
-      </p>
-      <p class="card-link"><a href="/nl/open-tafel/">Lees meer →</a></p>
-    </article>
-  </section>
+  <a class="hero-card hero-card-words" href="/nl/woorden-uit-de-stilte/">
+    <span class="hero-card-arrow hero-card-arrow-right" aria-hidden="true">→</span>
+    <h2>Woorden uit de Stilte</h2>
+    <p>
+      Een avond met mystieke poëzie en korte teksten, afgewisseld met stilte en gesprek.
+    </p>
+    <span class="card-link">Lees meer</span>
+  </a>
+</section>
+  </PageImageHero>
 </BaseLayout>

@@ -13,23 +13,24 @@ import PageImageHero from "../../components/PageImageHero.astro";
     lead="Two recurring forms of gathering: an evening with poetry and contemplative texts, and a simple table around food, conversation and presence."
     imageSrc="/images/home/hond-home-inn-spring.png"
     imageAlt="A warm inn with rooms for gathering, silence, contact, meditation and study."
-  />
+  >
+  <section class="hero-card-grid">
+  <a class="hero-card hero-card-open-table" href="/en/open-table/">
+    <span class="hero-card-arrow hero-card-arrow-left" aria-hidden="true">←</span>
+    <h2>Open Table</h2>
+    <p>
+      A simple gathering around plant-based food, silence, walking and conversation.
+    </p>
+    <span class="card-link">Read more</span>
+  </a>
 
-  <section class="section">
-    <article class="card">
-      <h2>Words from Silence</h2>
-      <p>
-        An evening with mystical poetry and short texts, interwoven with silence and conversation.
-      </p>
-      <p class="card-link"><a href="/en/words-from-silence/">Read more →</a></p>
-    </article>
-
-    <article class="card">
-      <h2>Open Table</h2>
-      <p>
-        A simple gathering around plant-based food, silence, walking and conversation.
-      </p>
-      <p class="card-link"><a href="/en/open-table/">Read more →</a></p>
-    </article>
-  </section>
+  <a class="hero-card hero-card-words" href="/en/words-from-silence/">
+    <span class="hero-card-arrow hero-card-arrow-right" aria-hidden="true">→</span>
+    <h2>Words from Silence</h2>
+    <p>
+      An evening with mystical poetry and short texts, interwoven with silence and conversation.
+    </p>
+    <span class="card-link">Read more</span>
+  </a>
+</section>
 </BaseLayout>
