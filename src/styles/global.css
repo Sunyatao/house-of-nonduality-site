@@ -552,16 +552,19 @@ html[lang="nl"] .home-house-welcome p {
   box-shadow: none;
 }
 
-.house-hotspot span {
+.house-hotspot.is-disabled {
+  cursor: default;
+}
+
+.house-cursor-tooltip {
   position: fixed;
-  left: 50%;
-  bottom: 32px;
-  z-index: 100;
-  transform: translateX(-50%) translateY(8px);
+  left: 0;
+  top: 0;
+  z-index: 200;
   opacity: 0;
   pointer-events: none;
   white-space: nowrap;
-  padding: 9px 16px 10px;
+  padding: 6px 11px 7px;
   border: 1px solid rgba(180, 122, 50, 0.32);
   border-radius: 999px;
   background:
@@ -575,33 +578,22 @@ html[lang="nl"] .home-house-welcome p {
     inset 0 0 0 1px rgba(255, 255, 255, 0.42);
   color: var(--color-text);
   font-family: var(--font-serif);
-  font-size: 0.98rem;
+  font-size: 0.82rem;
   letter-spacing: 0.01em;
-  transition:
-    opacity 180ms ease,
-    transform 180ms ease;
+  transform: translate(14px, 14px);
+  transition: opacity 140ms ease;
 }
 
-.house-hotspot span::before,
-.house-hotspot span::after {
+.house-cursor-tooltip::before,
+.house-cursor-tooltip::after {
   content: "—";
   color: var(--color-accent);
-  opacity: 0.52;
-  margin: 0 7px;
+  opacity: 0.42;
+  margin: 0 5px;
 }
 
-.house-hotspot:hover span,
-.house-hotspot:focus-visible span {
+.house-cursor-tooltip.is-visible {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-.house-hotspot.is-disabled {
-  cursor: default;
-}
-
-.house-hotspot.is-disabled span {
-  color: var(--color-muted);
 }
 
 /* Hotspot positions — tuned for hond-home-inn-spring.png */
@@ -1130,6 +1122,10 @@ html[lang="nl"] .home-house-welcome p {
     padding-bottom: 6px;
 }
 
+.house-cursor-tooltip {
+  display: none;
+}
+
 html[lang="nl"] .home-house-welcome {
   width: 92%;
 }
@@ -1565,5 +1561,103 @@ html[lang="nl"] .home-house-welcome p {
 
   .button:hover {
     transform: none;
+  }
+}
+
+.language-landing {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.language-landing-image,
+.language-landing-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.language-landing-image {
+  background-image: url("/images/home/hond-home-inn-spring.png");
+  background-size: cover;
+  background-position: center center;
+  filter: saturate(0.96);
+}
+
+.language-landing-overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(21, 32, 45, 0.20),
+      rgba(21, 32, 45, 0.28)
+    );
+}
+
+.language-landing-card {
+  position: relative;
+  z-index: 2;
+  width: min(560px, 92%);
+  padding: 34px 30px 30px;
+  text-align: center;
+  border-radius: 28px;
+  background: rgba(255, 252, 245, 0.84);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 60px rgba(29, 49, 73, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.language-landing-kicker {
+  margin: 0 0 10px;
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.language-landing-card h1 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.12;
+}
+
+.language-landing-card h2 {
+  margin: 8px 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgba(29, 49, 73, 0.82);
+}
+
+.language-landing-lead {
+  margin: 20px 0 0;
+  font-size: 1rem;
+  color: rgba(29, 49, 73, 0.82);
+}
+
+.language-landing-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+@media (max-width: 760px) {
+  .language-landing {
+    padding: 20px;
+  }
+
+  .language-landing-card {
+    padding: 28px 22px 24px;
+    border-radius: 22px;
+  }
+
+  .language-landing-actions {
+    gap: 10px;
   }
 }

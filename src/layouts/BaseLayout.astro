@@ -6,12 +6,14 @@ interface Props {
   title: string;
   description?: string;
   lang?: "nl" | "en";
+  hideHeader?: boolean;
 }
 
 const {
-  title,
-  description = "House of Nonduality — stilte, poëzie en contemplatieve ontmoeting.",
+  title = "The House of Nonduality",
+  description = "",
   lang = "nl",
+  hideHeader = false,
 } = Astro.props;
 ---
 
@@ -57,7 +59,7 @@ const {
 
   <body>
     <div class="site-shell">
-      <Header lang={lang} />
+      {!hideHeader && <Header lang={lang} />}
 
       <main>
         <slot />

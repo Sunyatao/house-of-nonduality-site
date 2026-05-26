@@ -3,20 +3,45 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="House of Nonduality"
-  description="House of Nonduality — stilte, poëzie en contemplatieve ontmoeting."
-  lang="nl"
+  title="The House of Nonduality"
+  description="Choose your language for The House of Nonduality."
+  hideHeader={true}
 >
-  <section class="hero">
-    <p class="kicker">Silence · Poetry · Contemplation</p>
-    <h1>House of Nonduality</h1>
-    <p class="lead">
-      Een ruimte voor stilte, poëzie en contemplatieve ontmoeting in Leuven.
-    </p>
+  <section class="language-landing">
+    <div class="language-landing-image"></div>
+    <div class="language-landing-overlay"></div>
 
-    <div class="hero-actions">
-      <a class="button primary" href="/nl/">Nederlands</a>
-      <a class="button" href="/en/">English</a>
+    <div class="language-landing-card">
+      <p class="language-landing-kicker">Welcome · Welkom</p>
+
+     <h1>The House of Nonduality</h1>
+     <h2>Het Huis van Nondualiteit</h2>
+
+<p class="language-landing-lead">
+  Choose your language · Kies je taal
+</p>
+
+<div class="language-landing-actions" data-language-actions>
+  <a href="/en/" class="button primary" data-lang-option="en">English</a>
+  <a href="/nl/" class="button" data-lang-option="nl">Nederlands</a>
+</div>
     </div>
   </section>
+
+  <script>
+  const preferredLanguage = navigator.language || navigator.languages?.[0] || "";
+  const actions = document.querySelector("[data-language-actions]");
+
+  if (actions && preferredLanguage.toLowerCase().startsWith("nl")) {
+    const nlButton = actions.querySelector('[data-lang-option="nl"]');
+    const enButton = actions.querySelector('[data-lang-option="en"]');
+
+    if (nlButton && enButton) {
+      actions.prepend(nlButton);
+      nlButton.classList.add("primary");
+      enButton.classList.remove("primary");
+    }
+  }
+</script>
+
 </BaseLayout>
