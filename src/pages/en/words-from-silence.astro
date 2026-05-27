@@ -1,17 +1,104 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageImageHero from "../../components/PageImageHero.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const withBase = (path: string) => {
+  const cleanBase = base.endsWith("/") ? base : `${base}/`;
+  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+
+  return `${cleanBase}${cleanPath}`;
+};
+
+const dates2026 = [
+  "19 May",
+  "16 June",
+  "21 July",
+  "18 August",
+  "15 September",
+  "20 October",
+  "17 November",
+  "15 December",
+];
 ---
 
 <BaseLayout
-  title="Words from Silence — House of Nonduality"
-  description="An evening with poetry and short texts around mysticism, nonduality and inner silence."
+  title="Words from Silence — The House of Nonduality"
+  description="A quiet evening in Leuven with poetry, short texts, silence and reflection around mysticism, contemplation and nonduality."
   lang="en"
 >
-  <section class="hero">
-    <p class="kicker">Every third Tuesday · Leuven</p>
-    <h1>Words from Silence</h1>
-    <p class="lead">
-      An evening with poetry and short texts around mysticism, nonduality and inner silence.
-    </p>
-  </section>
+  <PageImageHero
+    kicker="Every third Tuesday · Leuven"
+    title="Words from Silence"
+    lead="A quiet evening with poetry, short texts, silence and reflection around mysticism, contemplation and nonduality."
+    imageSrc="/images/words/hond-words-from-silence-spring.png"
+    imageAlt="A warm quiet reading room in The House of Nonduality, with an open book, an armchair, candlelight and soft afternoon sun."
+    showImageView={true}
+    imageViewLabel="View the room"
+    imageInfoLabel="Show info"
+  >
+    <section class="hero-card-grid words-hero-grid words-all-cards">
+      <article class="hero-card words-hero-card hero-card-large">
+        <h2>What is it?</h2>
+        <p>
+          <em>Words from Silence</em> is one of the local gatherings of The House
+          of Nonduality: a quiet evening in Leuven with poetry, short texts,
+          silence and reflection around mysticism, contemplation and nonduality.
+        </p>
+      </article>
+
+      <article class="hero-card words-hero-card">
+        <h2>What do we read?</h2>
+        <p>
+          We read texts from different mystical, poetic and contemplative
+          traditions: poems, short fragments and quotations that invite slowing
+          down, attention and inner silence.
+        </p>
+      </article>
+
+      <article class="hero-card words-hero-card">
+        <h2>What can you expect?</h2>
+        <p>
+          The evening consists of a simple alternation of text, silence and
+          conversation. Sometimes there is a short introduction, sometimes a
+          brief exchange, sometimes mostly silence.
+        </p>
+      </article>
+
+      <article class="hero-card words-hero-card words-compact-card">
+        <h2>Practical</h2>
+        <ul class="detail-meta-list">
+          <li>Every third Tuesday of the month</li>
+          <li>19:30–21:00</li>
+          <li>Leuven — address after registration</li>
+          <li>Dutch and English, depending on the texts and who is present</li>
+          <li>Contribution according to capacity</li>
+        </ul>
+      </article>
+
+      <article class="hero-card words-hero-card words-compact-card">
+        <h2>Dates 2026</h2>
+        <ul class="detail-meta-list words-date-list">
+          {dates2026.map((date) => <li>{date}</li>)}
+        </ul>
+      </article>
+
+      <article class="hero-card words-hero-card hero-card-callout">
+        <h2>Would you like to join?</h2>
+        <p>
+          Send a message through the contact page and mention your name, the date
+          you would like to register for, and how many people will come.
+        </p>
+        <div class="hero-card-actions">
+          <a class="button primary" href={withBase("/en/contact/")}>
+            Register through contact
+          </a>
+          <a class="button" href={withBase("/en/newsletter/")}>
+            Newsletter
+          </a>
+        </div>
+      </article>
+    </section>
+  </PageImageHero>
 </BaseLayout>

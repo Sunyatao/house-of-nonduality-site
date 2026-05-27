@@ -1101,6 +1101,120 @@ html[lang="nl"] .home-house-welcome p {
   animation: fadeInHoldCentered 1.6s ease forwards;
 }
 
+.words-all-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "intro intro"
+    "texts expectation"
+    "practical dates"
+    "callout callout";
+  gap: 16px;
+  width: min(940px, 100%);
+}
+
+.words-all-cards .hero-card:nth-child(1) {
+  grid-area: intro;
+  padding: 20px 30px;
+}
+
+.words-all-cards .hero-card:nth-child(2) {
+  grid-area: texts;
+}
+
+.words-all-cards .hero-card:nth-child(3) {
+  grid-area: expectation;
+}
+
+.words-all-cards .hero-card:nth-child(4) {
+  grid-area: practical;
+}
+
+.words-all-cards .hero-card:nth-child(5) {
+  grid-area: dates;
+}
+
+.words-all-cards .hero-card:nth-child(6) {
+  grid-area: callout;
+}
+
+.words-all-cards .hero-card h2 {
+  padding-inline: 0;
+  font-size: clamp(1.18rem, 1.45vw, 1.5rem);
+}
+
+.words-all-cards .hero-card:nth-child(1) h2 {
+  font-size: clamp(1.55rem, 2.1vw, 2rem);
+}
+
+.words-all-cards .hero-card p,
+.words-all-cards .detail-meta-list {
+  font-size: clamp(0.88rem, 0.96vw, 0.96rem);
+  line-height: 1.5;
+}
+
+.words-all-cards .detail-meta-list {
+  margin: 0;
+  padding: 0;
+}
+
+.words-all-cards .detail-meta-list li + li {
+  margin-top: 6px;
+}
+
+.words-all-cards .hero-card-callout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.words-all-cards .words-compact-card {
+  padding: 18px 22px;
+}
+
+.words-all-cards .words-compact-card h2 {
+  margin-bottom: 8px;
+  font-size: clamp(1.08rem, 1.25vw, 1.34rem);
+}
+
+.words-all-cards .words-compact-card .detail-meta-list {
+  gap: 5px;
+}
+
+.words-all-cards .words-compact-card .detail-meta-list li {
+  line-height: 1.35;
+}
+
+.words-date-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 18px;
+  row-gap: 5px;
+}
+
+.hero-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.page-image-hero:has(.words-all-cards) {
+  min-height: 1040px;
+}
+
+.page-image-hero:has(.words-all-cards) .page-image-hero-image {
+  height: 100%;
+  min-height: 1040px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.page-image-hero-body:has(.words-all-cards) {
+  top: 300px;
+  bottom: auto;
+  width: min(980px, 86%);
+}
+
 /* Detail pages */
 
 .detail-page {
@@ -1997,6 +2111,30 @@ html[lang="nl"] .home-house-welcome p {
 
 .image-lightbox img {
   border-radius: 18px;
+}
+
+ /* Words from Silence */
+
+.words-all-cards {
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "intro"
+    "texts"
+    "expectation"
+    "practical"
+    "dates"
+    "callout";
+  gap: 14px;
+}
+
+.page-image-hero:has(.words-all-cards) .page-image-hero-image {
+  min-height: 1540px;
+}
+
+.page-image-hero-body:has(.words-all-cards) {
+  top: 285px;
+  bottom: auto;
+  width: calc(100% - 32px);
 }
 
   /* Contact */
