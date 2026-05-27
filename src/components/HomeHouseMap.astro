@@ -48,15 +48,24 @@ const t = lang === "nl"
         library: "/en/library/",
       },
     };
+
+    const base = import.meta.env.BASE_URL;
+
+    const withBase = (path: string) => {
+  const cleanBase = base.endsWith("/") ? base : `${base}/`;
+  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+
+  return `${cleanBase}${cleanPath}`;
+  };
 ---
 
 <section class="home-house" aria-label={lang === "nl" ? "Verken het Huis van Nondualiteit" : "Explore the House of Nonduality"}>
- <picture>
-  <source srcset="/images/home/hond-home-inn-spring.avif" type="image/avif" />
-  <source srcset="/images/home/hond-home-inn-spring.webp" type="image/webp" />
+<picture>
+  <source srcset={withBase("/images/home/hond-home-inn-spring.avif")} type="image/avif" />
+  <source srcset={withBase("/images/home/hond-home-inn-spring.webp")} type="image/webp" />
   <img
     class="home-house-image"
-    src="/images/home/hond-home-inn-spring.png"
+    src={withBase("/images/home/hond-home-inn-spring.png")}
     alt={t.alt}
     width="1600"
     height="1000"

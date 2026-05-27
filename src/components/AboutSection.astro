@@ -46,6 +46,8 @@ const t = lang === "nl"
       imageAlt:
         "The House of Nonduality as a warm inn with different rooms.",
     };
+
+    const base = import.meta.env.BASE_URL;
 ---
 
   <section class="about-scene">
@@ -55,7 +57,7 @@ const t = lang === "nl"
   </div>
 
   <img
-    src="/images/home/hond-home-inn-spring.png"
+    src={`${base}images/home/hond-home-inn-spring.png`}
     alt={t.imageAlt}
   />
 

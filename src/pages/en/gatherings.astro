@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageImageHero from "../../components/PageImageHero.astro";
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout
@@ -15,7 +17,7 @@ import PageImageHero from "../../components/PageImageHero.astro";
     imageAlt="A warm inn with rooms for gathering, silence, contact, meditation and study."
   >
   <section class="hero-card-grid">
-  <a class="hero-card hero-card-open-table" href="/en/open-table/">
+  <a class="hero-card hero-card-open-table" href="${base}en/open-table/">
     <span class="hero-card-arrow hero-card-arrow-left" aria-hidden="true">←</span>
     <h2>Open Table</h2>
     <p>
@@ -24,7 +26,7 @@ import PageImageHero from "../../components/PageImageHero.astro";
     <span class="card-link">Read more</span>
   </a>
 
-  <a class="hero-card hero-card-words" href="/en/words-from-silence/">
+  <a class="hero-card hero-card-words" href="${base}en/words-from-silence/">
     <span class="hero-card-arrow hero-card-arrow-right" aria-hidden="true">→</span>
     <h2>Words from Silence</h2>
     <p>

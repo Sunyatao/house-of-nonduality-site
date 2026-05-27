@@ -1549,16 +1549,17 @@ html[lang="nl"] .home-house-welcome p {
   padding: 32px;
 }
 
-.language-landing-image,
+.language-landing-picture,
 .language-landing-overlay {
   position: absolute;
   inset: 0;
 }
 
-.language-landing-image {
-  background-image: url("/images/home/hond-home-inn-spring.png");
-  background-size: cover;
-  background-position: center center;
+.language-landing-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
   filter: saturate(0.96);
 }
 
