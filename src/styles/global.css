@@ -144,46 +144,6 @@ main {
   }
 }
 
-@keyframes heroTitleFadeOut {
-  0% {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  99% {
-    opacity: 0;
-    visibility: visible;
-    transform: translateX(-50%) translateY(-8px);
-  }
-
-  100% {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(-50%) translateY(-8px);
-  }
-}
-
-@keyframes heroBodyFadeOut {
-  0% {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  99% {
-    opacity: 0;
-    visibility: visible;
-    transform: translateX(-50%) translateY(10px);
-  }
-
-  100% {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(-50%) translateY(10px);
-  }
-}
-
 
 /* Header */
 
@@ -779,7 +739,7 @@ html[lang="nl"] .home-house-welcome p {
   border: 1px solid rgba(180, 122, 50, 0.18);
   border-radius: 30px;
   overflow: hidden;
-  background: rgba(248, 241, 231, 0.92);
+  background: rgba(5, 18, 32, 0.88);
   box-shadow: var(--shadow-medium);
   transition:
     background 620ms ease,
@@ -800,8 +760,7 @@ html[lang="nl"] .home-house-welcome p {
   height: 100%;
   transition:
     opacity 1200ms ease,
-    filter 1200ms ease,
-    transform 1200ms ease;
+    filter 1200ms ease;
 }
 
 .page-image-hero-picture-cover {
@@ -810,7 +769,7 @@ html[lang="nl"] .home-house-welcome p {
 
 .page-image-hero-picture-contain {
   opacity: 0;
-  background: transparent;
+  background: rgba(5, 18, 32, 0.88);
 }
 
 .page-image-hero-image {
@@ -827,13 +786,11 @@ html[lang="nl"] .home-house-welcome p {
 
 .page-image-hero-picture-contain .page-image-hero-image {
   object-fit: contain;
-  padding: 14px;
 }
 
 .page-image-hero.is-viewing-image .page-image-hero-picture-cover {
-  opacity: 0.52;
-  filter: blur(5px) brightness(1.02) saturate(1.05);
-  transform: scale(1.06);
+  opacity: 0;
+  filter: brightness(0.94);
 }
 
 .page-image-hero.is-viewing-image .page-image-hero-picture-contain {
@@ -1031,17 +988,18 @@ html[lang="nl"] .home-house-welcome p {
   transition:
     opacity 1000ms ease,
     transform 1000ms ease;
-  will-change: opacity, transform;
 }
 
 .page-image-hero.is-viewing-image .page-image-hero-content {
+  opacity: 0;
   pointer-events: none;
-  animation: heroTitleFadeOut 1200ms ease both;
+  transform: translateX(-50%) translateY(-8px);
 }
 
 .page-image-hero.is-viewing-image .page-image-hero-body {
+  opacity: 0;
   pointer-events: none;
-  animation: heroBodyFadeOut 1200ms ease both;
+  transform: translateX(-50%) translateY(10px);
 }
 
 .page-image-hero.is-viewing-image::after {
@@ -1164,12 +1122,18 @@ html[lang="nl"] .home-house-welcome p {
 }
 
 .page-image-hero.has-fading-title .page-image-hero-content {
-  opacity: 1;
-  animation: heroTitleIntro 1.6s ease both;
+  animation: heroTitleIntro 1.6s ease backwards;
 }
 
 .page-image-hero.has-fading-title.is-viewing-image .page-image-hero-content {
-  animation: heroTitleFadeOut 1200ms ease both;
+  animation: none;
+}
+
+.page-image-hero.has-fading-title.is-viewing-image .page-image-hero-content,
+.page-image-hero.is-viewing-image .page-image-hero-content {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-8px);
 }
 
 /* Words from Silence cards */
@@ -2132,15 +2096,27 @@ html[lang="nl"] .home-house-welcome p {
 
   /* Open Table hero cards */
 
-.open-table-all-cards {
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "intro"
-    "practical"
-    "rhythm"
-    "forwhom"
-    "callout";
-  gap: 14px;
+@media (max-width: 760px) {
+  .open-table-all-cards {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "practical"
+      "rhythm"
+      "forwhom"
+      "callout";
+    gap: 14px;
+  }
+
+  .page-image-hero:has(.open-table-all-cards) .page-image-hero-picture-cover .page-image-hero-image {
+    min-height: 1360px;
+  }
+
+  .page-image-hero-body:has(.open-table-all-cards) {
+    top: 285px;
+    bottom: auto;
+    width: calc(100% - 32px);
+  }
 }
 
 .page-image-hero:has(.open-table-all-cards) {
@@ -2164,7 +2140,11 @@ html[lang="nl"] .home-house-welcome p {
   font-size: 0.84rem;
 }
 
-/* Words from Silence */
+.image-lightbox img {
+  border-radius: 18px;
+}
+
+ /* Words from Silence */
 
 .words-all-cards {
   grid-template-columns: 1fr;
@@ -2226,21 +2206,13 @@ html[lang="nl"] .home-house-welcome p {
 /* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
-  .page-image-hero-picture,
-  .page-image-hero-content,
-  .page-image-hero-body,
-  .page-image-hero::after {
-    transition: none;
-  }
-
   .page-image-hero.has-fading-title .page-image-hero-content {
     animation: none;
     opacity: 1;
   }
 
-  .page-image-hero.is-viewing-image .page-image-hero-content,
-  .page-image-hero.is-viewing-image .page-image-hero-body {
-    animation: none;
+  .page-image-hero.has-fading-title.is-viewing-image .page-image-hero-content,
+  .page-image-hero.is-viewing-image .page-image-hero-content {
     opacity: 0;
     visibility: hidden;
   }
@@ -2264,4 +2236,151 @@ html[lang="nl"] .home-house-welcome p {
     animation: none;
     opacity: 1;
   }
+}
+
+/* Minimal patch from working image-toggle version — cards untouched */
+
+@keyframes heroTitleFadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  99% {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-8px);
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-8px);
+  }
+}
+
+@keyframes heroBodyFadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  99% {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+.page-image-hero-picture {
+  transition:
+    opacity 1200ms ease,
+    filter 1200ms ease,
+    transform 1200ms ease;
+}
+
+.page-image-hero-picture-contain {
+  background: transparent;
+}
+
+.page-image-hero-picture-contain .page-image-hero-image {
+  object-fit: contain;
+  padding: 14px;
+}
+
+.page-image-hero.is-viewing-image .page-image-hero-picture-cover {
+  opacity: 0.38;
+  filter: blur(5px) brightness(1.5) saturate(1);
+  transform: scale(1.04);
+}
+
+.page-image-hero.is-viewing-image .page-image-hero-picture-contain {
+  opacity: 1;
+}
+
+.page-image-hero.is-viewing-image .page-image-hero-content,
+.page-image-hero.has-fading-title.is-viewing-image .page-image-hero-content {
+  pointer-events: none;
+  animation: heroTitleFadeOut 1200ms ease both;
+}
+
+.page-image-hero.is-viewing-image .page-image-hero-body {
+  pointer-events: none;
+  animation: heroBodyFadeOut 1200ms ease both;
+}
+
+.page-image-hero.is-viewing-image::after {
+  opacity: 0;
+}
+
+/* Safe full card fade-in without changing frosted blur */
+
+@keyframes heroCardSurfaceFadeInSafe {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroCardContentFadeInSafe {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Keep the actual blur fixed on the card itself */
+.page-image-hero-body .hero-card {
+  isolation: isolate;
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+
+  backdrop-filter: var(--surface-blur);
+  -webkit-backdrop-filter: var(--surface-blur);
+}
+
+/* Fade only the visible surface — no backdrop-filter here */
+.page-image-hero-body .hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+
+  border: var(--surface-border);
+  background: var(--surface-bg);
+  box-shadow: var(--surface-shadow);
+
+  opacity: 0;
+  animation: heroCardSurfaceFadeInSafe 1200ms ease 300ms forwards;
+}
+
+/* Fade the content separately */
+.page-image-hero-body .hero-card > * {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  animation: heroCardContentFadeInSafe 1200ms ease 450ms forwards;
+}
+
+/* When viewing image, don't fight the fade-out of the full body */
+.page-image-hero.is-viewing-image .page-image-hero-body .hero-card::before,
+.page-image-hero.is-viewing-image .page-image-hero-body .hero-card > * {
+  animation: none;
+  opacity: 1;
 }

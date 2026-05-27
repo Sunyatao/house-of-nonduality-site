@@ -87,11 +87,11 @@ const imageWebp = imageSrc.replace(/\.(png|jpg|jpeg|avif)$/i, ".webp");
     {lead && <p class="page-image-hero-lead">{lead}</p>}
   </div>
 
-  {Astro.slots.has("default") && (
-    <div class="page-image-hero-body">
-      <slot />
-    </div>
-  )}
+{Astro.slots.has("default") && (
+  <div class="page-image-hero-body">
+    <slot />
+  </div>
+)}
 
 </section>
 
