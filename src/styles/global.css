@@ -742,7 +742,7 @@ html[lang="nl"] .home-house-welcome p {
 .image-view-button {
   position: absolute;
   right: 24px;
-  bottom: 24px;
+  top: 24px;
   z-index: 5;
   border: 1px solid rgba(255, 252, 245, 0.36);
   border-radius: 999px;
@@ -760,68 +760,6 @@ html[lang="nl"] .home-house-welcome p {
   background: rgba(5, 18, 32, 0.48);
   border-color: rgba(255, 252, 245, 0.52);
   transform: translateY(-1px);
-}
-
-.image-lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: grid;
-  place-items: center;
-  padding: 28px;
-  background: rgba(5, 18, 32, 0.82);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition:
-    opacity 180ms ease,
-    visibility 180ms ease;
-}
-
-.image-lightbox.is-open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.image-lightbox picture {
-  display: block;
-  width: min(1220px, 96vw);
-  max-height: 90vh;
-}
-
-.image-lightbox img {
-  display: block;
-  width: 100%;
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 24px;
-  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.34);
-}
-
-.image-lightbox-close {
-  position: fixed;
-  top: 22px;
-  right: 24px;
-  z-index: 1000;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(255, 252, 245, 0.34);
-  border-radius: 999px;
-  background: rgba(255, 252, 245, 0.12);
-  color: rgba(255, 252, 245, 0.92);
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-}
-
-.image-lightbox-close:hover {
-  background: rgba(255, 252, 245, 0.22);
-}
-
-body.has-open-lightbox {
-  overflow: hidden;
 }
 
 .hero-card-grid {
@@ -1004,6 +942,31 @@ body.has-open-lightbox {
   gap: 12px;
 }
 
+.page-image-hero-content,
+.page-image-hero-body {
+  transition:
+    opacity 420ms ease,
+    visibility 420ms ease,
+    transform 420ms ease;
+}
+
+.page-image-hero.is-viewing-image .page-image-hero-content {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+.page-image-hero.is-viewing-image .page-image-hero-body {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(10px);
+}
+
+.page-image-hero.is-viewing-image::after {
+  opacity: 0;
+}
+
 .page-image-hero-image {
   display: block;
   width: 100%;
@@ -1067,6 +1030,7 @@ body.has-open-lightbox {
       transparent 44%
     );
   pointer-events: none;
+  transition: opacity 420ms ease;
 }
 
 .page-image-hero-content {
@@ -2025,22 +1989,13 @@ body.has-open-lightbox {
 
 .image-view-button {
   right: 16px;
-  bottom: 16px;
+  top: 16px;
   padding: 8px 12px;
   font-size: 0.84rem;
 }
 
-.image-lightbox {
-  padding: 16px;
-}
-
 .image-lightbox img {
   border-radius: 18px;
-}
-
-.image-lightbox-close {
-  top: 14px;
-  right: 14px;
 }
 
   /* Contact */
