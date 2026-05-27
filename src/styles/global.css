@@ -132,6 +132,59 @@ main {
 }
 
 
+@keyframes heroTitleIntro {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes heroTitleFadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  99% {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-8px);
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-8px);
+  }
+}
+
+@keyframes heroBodyFadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  99% {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+
 /* Header */
 
 .site-header {
@@ -726,8 +779,65 @@ html[lang="nl"] .home-house-welcome p {
   border: 1px solid rgba(180, 122, 50, 0.18);
   border-radius: 30px;
   overflow: hidden;
-  background: rgba(255, 252, 245, 0.72);
+  background: rgba(248, 241, 231, 0.92);
   box-shadow: var(--shadow-medium);
+  transition:
+    background 620ms ease,
+    box-shadow 620ms ease;
+}
+
+.page-image-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.page-image-hero-picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition:
+    opacity 1200ms ease,
+    filter 1200ms ease,
+    transform 1200ms ease;
+}
+
+.page-image-hero-picture-cover {
+  opacity: 1;
+}
+
+.page-image-hero-picture-contain {
+  opacity: 0;
+  background: transparent;
+}
+
+.page-image-hero-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-position: center center;
+}
+
+.page-image-hero-picture-cover .page-image-hero-image {
+  object-fit: cover;
+}
+
+.page-image-hero-picture-contain .page-image-hero-image {
+  object-fit: contain;
+  padding: 14px;
+}
+
+.page-image-hero.is-viewing-image .page-image-hero-picture-cover {
+  opacity: 0.52;
+  filter: blur(5px) brightness(1.02) saturate(1.05);
+  transform: scale(1.06);
+}
+
+.page-image-hero.is-viewing-image .page-image-hero-picture-contain {
+  opacity: 1;
 }
 
 .page-image-hero-body {
@@ -844,6 +954,8 @@ html[lang="nl"] .home-house-welcome p {
   transform: translateX(4px);
 }
 
+/* Open Table cards */
+
 .open-table-all-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -883,41 +995,11 @@ html[lang="nl"] .home-house-welcome p {
 
 .open-table-all-cards .hero-card h2 {
   padding-inline: 0;
-  font-size: clamp(1.18rem, 1.45vw, 1.5rem);
+  font-size: clamp(1.25rem, 1.7vw, 1.65rem);
 }
 
 .open-table-all-cards .hero-card:nth-child(1) h2 {
   font-size: clamp(1.55rem, 2.1vw, 2rem);
-}
-
-.open-table-all-cards .hero-card p,
-.open-table-all-cards .detail-meta-list {
-  font-size: clamp(0.9rem, 1vw, 0.98rem);
-  line-height: 1.52;
-}
-
-.open-table-all-cards .detail-meta-list {
-  margin: 0;
-  padding-left: 0;
-}
-
-.open-table-all-cards .detail-meta-list li + li {
-  margin-top: 6px;
-}
-
-.open-table-all-cards .hero-card-callout {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.open-table-all-cards .hero-card-large:first-child {
-  grid-column: span 2;
-}
-
-.open-table-all-cards .hero-card h2 {
-  font-size: clamp(1.25rem, 1.7vw, 1.65rem);
 }
 
 .open-table-all-cards .hero-card p,
@@ -942,46 +1024,34 @@ html[lang="nl"] .home-house-welcome p {
   gap: 12px;
 }
 
+/* Hero content visibility */
+
 .page-image-hero-content,
 .page-image-hero-body {
   transition:
-    opacity 420ms ease,
-    visibility 420ms ease,
-    transform 420ms ease;
+    opacity 1000ms ease,
+    transform 1000ms ease;
+  will-change: opacity, transform;
 }
 
 .page-image-hero.is-viewing-image .page-image-hero-content {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-50%) translateY(-8px);
+  pointer-events: none;
+  animation: heroTitleFadeOut 1200ms ease both;
 }
 
 .page-image-hero.is-viewing-image .page-image-hero-body {
-  opacity: 0;
-  visibility: hidden;
   pointer-events: none;
-  transform: translateX(-50%) translateY(10px);
+  animation: heroBodyFadeOut 1200ms ease both;
 }
 
 .page-image-hero.is-viewing-image::after {
   opacity: 0;
 }
 
-.page-image-hero-image {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+/* Hero heights */
 
 .page-image-hero:has(.page-image-hero-body) {
   min-height: 760px;
-}
-
-.page-image-hero:has(.page-image-hero-body) .page-image-hero-image {
-  height: 100%;
-  min-height: 760px;
-  object-fit: cover;
-  object-position: center center;
 }
 
 .page-image-hero:has(.open-table-all-cards) {
@@ -1000,23 +1070,19 @@ html[lang="nl"] .home-house-welcome p {
   max-width: 620px;
 }
 
-.page-image-hero:has(.open-table-all-cards) .page-image-hero-image {
-  height: 100%;
-  min-height: 980px;
-  object-fit: cover;
-  object-position: center center;
-}
-
 .page-image-hero-body:has(.open-table-all-cards) {
   top: 250px;
   bottom: auto;
   width: min(900px, 82%);
 }
 
+/* Hero overlay and title */
+
 .page-image-hero::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(
       180deg,
@@ -1030,7 +1096,7 @@ html[lang="nl"] .home-house-welcome p {
       transparent 44%
     );
   pointer-events: none;
-  transition: opacity 420ms ease;
+  transition: opacity 1000ms ease;
 }
 
 .page-image-hero-content {
@@ -1044,7 +1110,7 @@ html[lang="nl"] .home-house-welcome p {
   text-align: center;
   pointer-events: none;
   isolation: isolate;
-  opacity: 0;
+  opacity: 1;
 }
 
 .page-image-hero-content::before {
@@ -1098,8 +1164,15 @@ html[lang="nl"] .home-house-welcome p {
 }
 
 .page-image-hero.has-fading-title .page-image-hero-content {
-  animation: fadeInHoldCentered 1.6s ease forwards;
+  opacity: 1;
+  animation: heroTitleIntro 1.6s ease both;
 }
+
+.page-image-hero.has-fading-title.is-viewing-image .page-image-hero-content {
+  animation: heroTitleFadeOut 1200ms ease both;
+}
+
+/* Words from Silence cards */
 
 .words-all-cards {
   display: grid;
@@ -1202,18 +1275,12 @@ html[lang="nl"] .home-house-welcome p {
   min-height: 1040px;
 }
 
-.page-image-hero:has(.words-all-cards) .page-image-hero-image {
-  height: 100%;
-  min-height: 1040px;
-  object-fit: cover;
-  object-position: center center;
-}
-
 .page-image-hero-body:has(.words-all-cards) {
   top: 300px;
   bottom: auto;
   width: min(980px, 86%);
 }
+
 
 /* Detail pages */
 
@@ -2027,7 +2094,7 @@ html[lang="nl"] .home-house-welcome p {
     min-height: auto;
   }
 
-  .page-image-hero:has(.page-image-hero-body) .page-image-hero-image {
+  .page-image-hero:has(.page-image-hero-body) .page-image-hero-picture-cover .page-image-hero-image {
     min-height: 820px;
   }
 
@@ -2065,34 +2132,22 @@ html[lang="nl"] .home-house-welcome p {
 
   /* Open Table hero cards */
 
-@media (max-width: 760px) {
-  .open-table-all-cards {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "intro"
-      "practical"
-      "rhythm"
-      "forwhom"
-      "callout";
-    gap: 14px;
-  }
-
-  .page-image-hero:has(.open-table-all-cards) .page-image-hero-image {
-    min-height: 1360px;
-  }
-
-  .page-image-hero-body:has(.open-table-all-cards) {
-    top: 285px;
-    bottom: auto;
-    width: calc(100% - 32px);
-  }
+.open-table-all-cards {
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "intro"
+    "practical"
+    "rhythm"
+    "forwhom"
+    "callout";
+  gap: 14px;
 }
 
 .page-image-hero:has(.open-table-all-cards) {
   min-height: auto;
 }
 
-.page-image-hero:has(.open-table-all-cards) .page-image-hero-image {
+.page-image-hero:has(.open-table-all-cards) .page-image-hero-picture-cover .page-image-hero-image {
   min-height: 1360px;
 }
 
@@ -2109,11 +2164,7 @@ html[lang="nl"] .home-house-welcome p {
   font-size: 0.84rem;
 }
 
-.image-lightbox img {
-  border-radius: 18px;
-}
-
- /* Words from Silence */
+/* Words from Silence */
 
 .words-all-cards {
   grid-template-columns: 1fr;
@@ -2127,7 +2178,7 @@ html[lang="nl"] .home-house-welcome p {
   gap: 14px;
 }
 
-.page-image-hero:has(.words-all-cards) .page-image-hero-image {
+.page-image-hero:has(.words-all-cards) .page-image-hero-picture-cover .page-image-hero-image {
   min-height: 1540px;
 }
 
@@ -2175,8 +2226,23 @@ html[lang="nl"] .home-house-welcome p {
 /* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
+  .page-image-hero-picture,
+  .page-image-hero-content,
+  .page-image-hero-body,
+  .page-image-hero::after {
+    transition: none;
+  }
+
   .page-image-hero.has-fading-title .page-image-hero-content {
     animation: none;
+    opacity: 1;
+  }
+
+  .page-image-hero.is-viewing-image .page-image-hero-content,
+  .page-image-hero.is-viewing-image .page-image-hero-body {
+    animation: none;
+    opacity: 0;
+    visibility: hidden;
   }
 }
 

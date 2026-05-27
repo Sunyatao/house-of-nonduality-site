@@ -37,7 +37,8 @@ const imageWebp = imageSrc.replace(/\.(png|jpg|jpeg|avif)$/i, ".webp");
 ---
 
 <section class:list={["page-image-hero", fade && "has-fading-title"]}>
-  <picture>
+  <div class="page-image-hero-media">
+  <picture class="page-image-hero-picture page-image-hero-picture-cover">
     <source srcset={withBase(imageAvif)} type="image/avif" />
     <source srcset={withBase(imageWebp)} type="image/webp" />
     <img
@@ -51,6 +52,21 @@ const imageWebp = imageSrc.replace(/\.(png|jpg|jpeg|avif)$/i, ".webp");
       fetchpriority="high"
     />
   </picture>
+
+  <picture class="page-image-hero-picture page-image-hero-picture-contain" aria-hidden="true">
+    <source srcset={withBase(imageAvif)} type="image/avif" />
+    <source srcset={withBase(imageWebp)} type="image/webp" />
+    <img
+      class="page-image-hero-image"
+      src={withBase(imageSrc)}
+      alt=""
+      width="1600"
+      height="1000"
+      loading="eager"
+      decoding="async"
+    />
+  </picture>
+</div>
 
 {showImageView && (
   <button
