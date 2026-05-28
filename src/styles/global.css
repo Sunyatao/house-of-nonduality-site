@@ -2549,3 +2549,113 @@ html[lang="nl"] .home-house-welcome p {
     margin: 4px auto 0;
   }
 }
+
+/* Contact page paper form */
+
+.page-image-hero:has(.contact-paper-form-wrap) {
+  min-height: 900px;
+}
+
+.page-image-hero-body:has(.contact-paper-form-wrap) {
+  top: 290px;
+  bottom: auto;
+  width: min(420px, 34vw);
+}
+
+.contact-paper-form-wrap {
+  width: 100%;
+}
+
+.contact-paper-form {
+  display: grid;
+  gap: 12px;
+  color: rgba(54, 36, 20, 0.86);
+  font-family: var(--font-serif);
+}
+
+.contact-paper-form label {
+  display: grid;
+  gap: 5px;
+  font-size: 0.9rem;
+}
+
+.contact-paper-form input,
+.contact-paper-form textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(88, 57, 31, 0.32);
+  border-radius: 0;
+  padding: 6px 2px;
+  background: transparent;
+  color: rgba(42, 28, 17, 0.92);
+  font: inherit;
+}
+
+.contact-paper-form textarea {
+  resize: vertical;
+  min-height: 210px;
+}
+
+.contact-paper-form input:focus,
+.contact-paper-form textarea:focus {
+  outline: none;
+  border-bottom-color: rgba(88, 57, 31, 0.62);
+}
+
+.contact-submit-button {
+  justify-self: center;
+  margin-top: 8px;
+}
+
+.contact-direct-note {
+  margin: 4px 0 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(54, 36, 20, 0.68);
+}
+
+.contact-direct-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .page-image-hero:has(.contact-paper-form-wrap) {
+    min-height: auto;
+  }
+
+  .page-image-hero:has(.contact-paper-form-wrap) .page-image-hero-picture-cover .page-image-hero-image {
+    min-height: 1080px;
+  }
+
+  .page-image-hero-body:has(.contact-paper-form-wrap) {
+    top: 300px;
+    width: min(390px, calc(100% - 64px));
+  }
+}
+
+/* Contact page handwriting feel */
+
+.contact-paper-form input,
+.contact-paper-form textarea {
+  font-family: "Segoe Print", "Bradley Hand", "Apple Chancery", cursive;
+  font-size: 1.08rem;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+.contact-paper-form label span {
+  font-family: var(--font-serif);
+}
+
+.contact-paper-form textarea {
+  line-height: 1.65;
+}
+
+.contact-paper-form input::placeholder,
+.contact-paper-form textarea::placeholder {
+  color: rgba(54, 36, 20, 0.38);
+  font-family: "Segoe Print", "Bradley Hand", "Apple Chancery", cursive;
+}

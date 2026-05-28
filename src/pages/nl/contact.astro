@@ -1,12 +1,65 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import ContactSection from "../../components/ContactSection.astro";
+import PageImageHero from "../../components/PageImageHero.astro";
 ---
 
 <BaseLayout
-  title="Contact — House of Nonduality"
-  description="Neem contact op met het Huis van Nondualiteit."
+  title="Contact — Het Huis van Nondualiteit"
+  description="Neem contact op met Het Huis van Nondualiteit voor vragen, deelname aan bijeenkomsten of samenwerkingen rond stilte, ontmoeting en nondualiteit."
   lang="nl"
 >
-  <ContactSection lang="nl" />
+  <PageImageHero
+    kicker="Schrijf me"
+    title="Contact"
+    lead="Heb je een vraag, wil je deelnemen aan een bijeenkomst, of wil je iets delen? Je mag altijd schrijven."
+    imageSrc="/images/contact/hond-contact-writing-desk.png"
+    imageAlt="Een schrijftafel met een lege brief, pen, kopje en duif in het Huis van Nondualiteit."
+    showImageView={true}
+    imageViewLabel="Bekijk de tafel"
+    imageInfoLabel="Toon tekst"
+  >
+    <section class="contact-paper-form-wrap">
+  <form class="contact-paper-form" action="https://formspree.io/f/xzdwoede" method="post">
+    <label>
+      <span>Naam</span>
+      <input type="text" name="name" autocomplete="name" />
+    </label>
+
+    <label>
+      <span>E-mailadres</span>
+      <input type="email" name="email" autocomplete="email" required />
+    </label>
+
+    <label>
+      <span>Bericht</span>
+      <textarea name="message" rows="5" required></textarea>
+    </label>
+
+    <input
+      type="hidden"
+      name="subject"
+      value="Nieuw bericht via Het Huis van Nondualiteit"
+    />
+
+    <input
+      type="text"
+      name="_gotcha"
+      tabindex="-1"
+      autocomplete="off"
+      style="position: absolute; left: -5000px;"
+    />
+
+    <button class="button primary contact-submit-button" type="submit">
+      Versturen
+    </button>
+
+    <p class="contact-direct-note">
+      Of schrijf rechtstreeks naar
+      <a href="mailto:contact@houseofnonduality.com">
+        contact@houseofnonduality.com
+      </a>
+    </p>
+  </form>
+</section>
+  </PageImageHero>
 </BaseLayout>
