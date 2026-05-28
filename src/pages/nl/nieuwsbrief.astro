@@ -1,17 +1,106 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageImageHero from "../../components/PageImageHero.astro";
 ---
 
 <BaseLayout
-  title="Nieuwsbrief — House of Nonduality"
-  description="Schrijf je in op de nieuwsbrief van House of Nonduality."
+  title="Nieuwsbrief — Het Huis van Nondualiteit"
+  description="Schrijf je in op de nieuwsbrief van Het Huis van Nondualiteit: af en toe een gedicht, een tekst uit de stilte en uitnodigingen voor komende bijeenkomsten."
   lang="nl"
 >
-  <section class="hero">
-    <p class="kicker">Nieuwsbrief</p>
-    <h1>Blijf op de hoogte</h1>
-    <p class="lead">
-      Ontvang updates over bijeenkomsten, teksten en nieuwe initiatieven.
+  <PageImageHero
+    kicker="Brieven uit het Huis"
+    title="Nieuwsbrief"
+    lead="Af en toe een gedicht, een tekst uit de stilte, en uitnodigingen voor komende bijeenkomsten."
+    imageSrc="/images/newsletter/hond-newsletter-writing-nook.png"
+    imageAlt="Een warme schrijftafel met brieven, een wandkastje en een duif in het Huis van Nondualiteit."
+    showImageView={true}
+    imageViewLabel="Bekijk de kamer"
+    imageInfoLabel="Toon tekst"
+  >
+    <section class="hero-card-grid newsletter-card-grid">
+  <article class="hero-card">
+    <h2>Blijf op de hoogte</h2>
+    <p>
+      Via de nieuwsbrief ontvang je af en toe een korte tekst, een gedicht
+      of een uitnodiging voor een bijeenkomst rond stilte, ontmoeting en
+      nondualiteit.
     </p>
-  </section>
+  </article>
+
+  <article class="hero-card">
+    <h2>Geen overvolle inbox</h2>
+    <p>
+      Alleen berichten wanneer er werkelijk iets te delen valt:
+      komende avonden, nieuwe teksten en kleine brieven uit de stilte.
+    </p>
+  </article>
+
+  <article class="hero-card newsletter-signup-card">
+  <h2>Schrijf je in</h2>
+
+  <form
+    class="newsletter-form"
+    action="https://gmail.us2.list-manage.com/subscribe/post?u=c41c3b77d5559a09a348d05f0&amp;id=6ecb88e329&amp;f_id=002dc6e1f0"
+    method="post"
+    target="_blank"
+    id="mc-embedded-subscribe-form"
+    name="mc-embedded-subscribe-form"
+  >
+    <label for="mce-EMAIL">
+      <span>E-mailadres *</span>
+      <input
+        type="email"
+        name="EMAIL"
+        id="mce-EMAIL"
+        autocomplete="email"
+        required
+      />
+    </label>
+
+    <label for="mce-FNAME">
+      <span>Naam</span>
+      <input
+        type="text"
+        name="FNAME"
+        id="mce-FNAME"
+        autocomplete="name"
+      />
+    </label>
+
+    <label for="mce-MMERGE7">
+      <span>Taal *</span>
+      <select name="MMERGE7" id="mce-MMERGE7" required>
+        <option value="">Maak een keuze</option>
+        <option value="Nederlands">Nederlands</option>
+        <option value="English">English</option>
+      </select>
+    </label>
+
+    <div aria-hidden="true" style="position: absolute; left: -5000px;">
+      <input
+        type="text"
+        name="b_c41c3b77d5559a09a348d05f0_6ecb88e329"
+        tabindex="-1"
+        value=""
+      />
+    </div>
+
+    <button
+      class="button primary newsletter-submit-button"
+      type="submit"
+      name="subscribe"
+      id="mc-embedded-subscribe"
+    >
+      Inschrijven
+    </button>
+
+    <p class="newsletter-privacy-note">
+      Je kunt je op elk moment weer uitschrijven. Je gegevens worden enkel
+      gebruikt om je de nieuwsbrief van Het Huis van Nondualiteit te sturen.
+    </p>
+  </form>
+</article>
+</section>
+  </PageImageHero>
 </BaseLayout>

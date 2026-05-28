@@ -1,17 +1,106 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageImageHero from "../../components/PageImageHero.astro";
 ---
 
 <BaseLayout
-  title="Newsletter — House of Nonduality"
-  description="Subscribe to the House of Nonduality newsletter."
+  title="Newsletter — The House of Nonduality"
+  description="Subscribe to the newsletter of The House of Nonduality: occasional poems, texts from silence, and invitations to upcoming gatherings."
   lang="en"
 >
-  <section class="hero">
-    <p class="kicker">Newsletter</p>
-    <h1>Stay in touch</h1>
-    <p class="lead">
-      Receive updates about gatherings, texts and new initiatives.
-    </p>
-  </section>
+  <PageImageHero
+    kicker="Letters from the House"
+    title="Newsletter"
+    lead="Occasional poems, texts from silence, and invitations to upcoming gatherings."
+    imageSrc="/images/newsletter/hond-newsletter-writing-nook.png"
+    imageAlt="A warm writing desk with letters, a wall cabinet and a dove in The House of Nonduality."
+    showImageView={true}
+    imageViewLabel="View room"
+    imageInfoLabel="Show text"
+  >
+    <section class="hero-card-grid newsletter-card-grid">
+      <article class="hero-card">
+        <h2>Stay in touch</h2>
+        <p>
+          Through the newsletter, you will occasionally receive a short text,
+          a poem, or an invitation to a gathering around silence, encounter,
+          and nonduality.
+        </p>
+      </article>
+
+      <article class="hero-card">
+        <h2>No crowded inbox</h2>
+        <p>
+          Only when there is something worth sharing:
+          upcoming evenings, new texts, and small letters from silence.
+        </p>
+      </article>
+
+      <article class="hero-card newsletter-signup-card">
+        <h2>Subscribe</h2>
+
+        <form
+          class="newsletter-form"
+          action="https://gmail.us2.list-manage.com/subscribe/post?u=c41c3b77d5559a09a348d05f0&amp;id=6ecb88e329&amp;f_id=002dc6e1f0"
+          method="post"
+          target="_blank"
+          id="mc-embedded-subscribe-form-en"
+          name="mc-embedded-subscribe-form"
+        >
+          <label for="mce-EMAIL-en">
+            <span>Email address *</span>
+            <input
+              type="email"
+              name="EMAIL"
+              id="mce-EMAIL-en"
+              autocomplete="email"
+              required
+            />
+          </label>
+
+          <label for="mce-FNAME-en">
+            <span>Name</span>
+            <input
+              type="text"
+              name="FNAME"
+              id="mce-FNAME-en"
+              autocomplete="name"
+            />
+          </label>
+
+          <label for="mce-MMERGE7-en">
+            <span>Language *</span>
+            <select name="MMERGE7" id="mce-MMERGE7-en" required>
+              <option value="">Choose a language</option>
+              <option value="English">English</option>
+              <option value="Nederlands">Nederlands</option>
+            </select>
+          </label>
+
+          <div aria-hidden="true" style="position: absolute; left: -5000px;">
+            <input
+              type="text"
+              name="b_c41c3b77d5559a09a348d05f0_6ecb88e329"
+              tabindex="-1"
+              value=""
+            />
+          </div>
+
+          <button
+            class="button primary newsletter-submit-button"
+            type="submit"
+            name="subscribe"
+            id="mc-embedded-subscribe-en"
+          >
+            Subscribe
+          </button>
+
+          <p class="newsletter-privacy-note">
+            You can unsubscribe at any time. Your details will only be used
+            to send you the newsletter of The House of Nonduality.
+          </p>
+        </form>
+      </article>
+    </section>
+  </PageImageHero>
 </BaseLayout>
