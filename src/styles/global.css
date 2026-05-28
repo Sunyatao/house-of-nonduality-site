@@ -2317,3 +2317,15 @@ html[lang="nl"] .home-house-welcome p {
   color: rgba(54, 36, 20, 0.38);
   font-family: "Segoe Print", "Bradley Hand", "Apple Chancery", cursive;
 }
+
+/* Mobile homepage: hide top nav, keep styled room links */
+
+@media (max-width: 760px) {
+  .site-shell:has(.home-house) .site-header {
+    display: none;
+  }
+
+  .site-shell:has(.home-house) .home-house-links {
+    display: grid;
+  }
+}
