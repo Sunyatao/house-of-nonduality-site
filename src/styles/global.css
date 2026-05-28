@@ -2318,14 +2318,93 @@ html[lang="nl"] .home-house-welcome p {
   font-family: "Segoe Print", "Bradley Hand", "Apple Chancery", cursive;
 }
 
-/* Mobile homepage: hide top nav, keep styled room links */
+/* Mobile navigation polish */
 
 @media (max-width: 760px) {
-  .site-shell:has(.home-house) .site-header {
+  .site-header {
+    width: calc(100% - 28px);
+    margin: 0 auto;
+    padding: 14px 0 8px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .brand-mark,
+  .brand-logo {
+    width: 54px;
+  }
+
+  .brand-text {
+    text-align: center;
+  }
+
+  .brand-small {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+  }
+
+  .brand-large {
+    font-size: 1.05rem;
+    letter-spacing: 0.10em;
+  }
+
+  .main-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+
+  .nav-link,
+  .submenu-link,
+  .language-switch a {
+    padding: 7px 11px;
+    border: 1px solid rgba(180, 122, 50, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 252, 245, 0.58);
+    box-shadow: 0 8px 24px rgba(29, 49, 73, 0.05);
+    line-height: 1;
+  }
+
+  .nav-link::after {
     display: none;
   }
 
-  .site-shell:has(.home-house) .home-house-links {
-    display: grid;
+  .nav-link:hover,
+  .submenu-link:hover,
+  .nav-link.is-active,
+  .submenu-link.is-active,
+  .language-switch a.is-active {
+    color: var(--color-accent);
+    background: rgba(255, 252, 245, 0.82);
+    border-color: rgba(180, 122, 50, 0.28);
+  }
+
+  .has-submenu {
+    display: contents;
+  }
+
+  .has-submenu > .nav-link {
+    display: none;
+  }
+
+  .submenu {
+    display: contents;
+  }
+
+  .submenu-link {
+    white-space: nowrap;
+  }
+
+  .language-switch {
+    margin-left: 0;
+    gap: 6px;
   }
 }
