@@ -2408,3 +2408,27 @@ html[lang="nl"] .home-house-welcome p {
     gap: 6px;
   }
 }
+
+/* Mobile fix: prevent PageImageHero collapse */
+
+@media (max-width: 760px) {
+  .page-image-hero:has(.page-image-hero-body) {
+    min-height: 820px;
+  }
+
+  .page-image-hero:has(.open-table-all-cards) {
+    min-height: 1360px;
+  }
+
+  .page-image-hero:has(.words-all-cards) {
+    min-height: 1540px;
+  }
+
+  .page-image-hero:has(.newsletter-card-grid) {
+    min-height: 1180px;
+  }
+
+  .page-image-hero:has(.contact-paper-form-wrap) {
+    min-height: 1080px;
+  }
+}
