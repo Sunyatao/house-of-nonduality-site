@@ -2531,3 +2531,29 @@ html[lang="nl"] .home-house-welcome p {
     gap: 14px;
   }
 }
+
+/* Mobile: centered title fade-in without translateX */
+
+@keyframes heroTitleIntroMobile {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .page-image-hero.has-fading-title .page-image-hero-content {
+    animation: heroTitleIntroMobile 1.6s ease both;
+    transform: none;
+  }
+
+  .about-scene-heading {
+    animation: heroTitleIntroMobile 1.6s ease both;
+    transform: none;
+  }
+}
