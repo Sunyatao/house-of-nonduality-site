@@ -95,8 +95,8 @@ main {
     transform: translateX(-50%) translateY(8px);
   }
 
-  18%,
-  58% {
+  30%,
+  62% {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
@@ -877,7 +877,7 @@ html[lang="nl"] .home-house-welcome p {
 }
 
 .hero-card-arrow-right {
-  left: 290px;
+  left: 305px;
 }
 
 .hero-card h2,
@@ -2662,4 +2662,19 @@ html[lang="nl"] .home-house-welcome p {
 
 .home-house.is-loaded .home-house-welcome {
   animation: fadeWelcome 6.4s ease 250ms both;
+}
+
+/* Prevent grey flash before PageImageHero images load */
+
+.page-image-hero {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(251, 247, 239, 1),
+      rgba(248, 241, 231, 1)
+    );
+}
+
+.page-image-hero-picture-contain {
+  background: transparent;
 }

@@ -9,7 +9,8 @@ const { lang } = Astro.props;
 
 const t = lang === "nl"
   ? {
-      title: "Open Tafel",
+    kicker: "Elke eerste zondag . Leuven",  
+    title: "Open Tafel",
       lead: "Een eenvoudige ontmoeting rond plantaardig eten, stilte, gesprek en samen-zijn.",
       viewRoom: "Bekijk de kamer",
       showInfo: "Toon info",
@@ -38,6 +39,7 @@ const t = lang === "nl"
       ctaLabel: "Neem contact op",
     }
   : {
+      kicker: "Every first Sunday . Leuven",
       title: "Open Table",
       lead: "A simple gathering around plant-based food, silence, conversation and presence.",
       viewRoom: "View the room",
@@ -70,7 +72,8 @@ const t = lang === "nl"
 
 <section class="detail-page">
 <PageImageHero
-  title={t.title}
+kicker={t.kicker}  
+title={t.title}
   lead={t.lead}
   imageSrc="/images/open-table/hond-dining-room-spring.png"
   imageAlt={t.imageAlt}
