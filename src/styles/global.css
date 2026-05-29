@@ -2569,3 +2569,56 @@ html[lang="nl"] .home-house-welcome p {
     margin-bottom: 26px;
   }
 }
+
+/* Mobile: centered title fade-out without translateX */
+
+@keyframes heroTitleFadeOutMobile {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  99% {
+    opacity: 0;
+    visibility: visible;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes heroBodyFadeOutMobile {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  99% {
+    opacity: 0;
+    visibility: visible;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+  }
+}
+
+@media (max-width: 760px) {
+  .page-image-hero.is-viewing-image .page-image-hero-content,
+  .page-image-hero.has-fading-title.is-viewing-image .page-image-hero-content {
+    animation: heroTitleFadeOutMobile 1200ms ease both;
+  }
+
+  .page-image-hero.is-viewing-image .page-image-hero-body {
+    animation: heroBodyFadeOutMobile 1200ms ease both;
+  }
+}
