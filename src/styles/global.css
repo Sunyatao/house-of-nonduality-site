@@ -2557,3 +2557,15 @@ html[lang="nl"] .home-house-welcome p {
     transform: none;
   }
 }
+
+/* Mobile: lift About page title */
+
+@media (max-width: 760px) {
+  .about-scene {
+    padding-top: 125px;
+  }
+
+  .about-scene-heading {
+    margin-bottom: 26px;
+  }
+}
