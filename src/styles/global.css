@@ -2622,3 +2622,33 @@ html[lang="nl"] .home-house-welcome p {
     animation: heroBodyFadeOutMobile 1200ms ease both;
   }
 }
+
+/* Mobile: compact image-view mode */
+
+@media (max-width: 760px) {
+  .page-image-hero.is-viewing-image {
+    padding: 0 !important;
+    min-height: min(72vh, 620px) !important;
+  }
+
+  .page-image-hero.is-viewing-image .page-image-hero-content,
+  .page-image-hero.is-viewing-image .page-image-hero-body {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .page-image-hero.is-viewing-image .page-image-hero-picture-contain {
+    opacity: 1;
+  }
+
+  .page-image-hero.is-viewing-image .page-image-hero-picture-contain .page-image-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    padding: 10px;
+  }
+}
