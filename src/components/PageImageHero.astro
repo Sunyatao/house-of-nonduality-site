@@ -108,6 +108,15 @@ const imageWebp = imageSrc.replace(/\.(png|jpg|jpeg|avif)$/i, ".webp");
 
     const isViewingImage = hero.classList.toggle("is-viewing-image");
 
+    hero.classList.remove("is-image-view-ready");
+
+    if (isViewingImage) {
+      window.setTimeout(function () {
+    if (hero.classList.contains("is-viewing-image")) {
+      hero.classList.add("is-image-view-ready");
+        }
+          }, 1200);
+    }
     button.setAttribute("aria-pressed", isViewingImage ? "true" : "false");
 
     const viewLabel = button.getAttribute("data-view-label") || "View image";
