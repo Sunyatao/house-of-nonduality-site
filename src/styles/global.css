@@ -2652,3 +2652,14 @@ html[lang="nl"] .home-house-welcome p {
     padding: 10px;
   }
 }
+
+/* Homepage: start welcome fade only after image is loaded */
+
+.home-house-welcome {
+  opacity: 0;
+  animation: none;
+}
+
+.home-house.is-loaded .home-house-welcome {
+  animation: fadeWelcome 6.4s ease 250ms both;
+}

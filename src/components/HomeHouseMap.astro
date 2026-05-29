@@ -140,3 +140,25 @@ const t = lang === "nl"
     });
   }
 </script>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const homeHouse = document.querySelector(".home-house");
+    if (!homeHouse) return;
+
+    const image = homeHouse.querySelector("img");
+    if (!image) {
+      homeHouse.classList.add("is-loaded");
+      return;
+    }
+
+    if (image.complete) {
+      homeHouse.classList.add("is-loaded");
+      return;
+    }
+
+    image.addEventListener("load", function () {
+      homeHouse.classList.add("is-loaded");
+    });
+  });
+</script>
