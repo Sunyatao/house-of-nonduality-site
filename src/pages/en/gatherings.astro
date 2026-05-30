@@ -6,34 +6,55 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout
-  title="Gatherings — House of Nonduality"
-  description="Gatherings around silence, poetry, contemplation and encounter in Leuven."
+  title="Gatherings — The House of Nonduality"
+  description="Small gatherings around silence, contemplation, encounter, and the question of what is real."
   lang="en"
 >
   <PageImageHero
     title="Gatherings"
-    lead="Two recurring forms of gathering: an evening with poetry and contemplative texts, and a simple table around food, conversation and presence."
+    lead="Small ways of coming together around silence, contemplation, encounter, and the question of what is real."
     imageSrc="/images/home/hond-home-inn-spring.png"
-    imageAlt="A warm inn with rooms for gathering, silence, contact, meditation and study."
+    imageAlt="A warm house with rooms for encounter, silence, contact, meditation and study."
+    showImageView={true}
+    imageViewLabel="View house"
+    imageInfoLabel="Show text"
   >
-  <section class="hero-card-grid">
-  <a class="hero-card hero-card-open-table" href="${base}en/open-table/">
-    <span class="hero-card-arrow hero-card-arrow-left" aria-hidden="true">←</span>
-    <h2>Open Table</h2>
-    <p>
-      A simple gathering around plant-based food, silence, walking and conversation.
-    </p>
-    <span class="card-link">Read more</span>
-  </a>
+    <section class="hero-card-grid gatherings-card-grid">
+      <article class="hero-card gatherings-intro-card">
+        <h2>Living encounter</h2>
+        <p>
+          The House of Nonduality takes shape not only through texts and digital
+          rooms, but also through living encounter: eating together, listening,
+          reading, speaking, being silent, and exploring what is real.
+        </p>
+        <p>
+          The gatherings are simple and small-scale. They require no prior
+          knowledge, belief, or spiritual identity. They are intended as open
+          spaces for slowing down, contemplation, and encounter.
+        </p>
+      </article>
 
-  <a class="hero-card hero-card-words" href="${base}en/words-from-silence/">
-    <span class="hero-card-arrow hero-card-arrow-right" aria-hidden="true">→</span>
-    <h2>Words from Silence</h2>
-    <p>
-      An evening with mystical poetry and short texts, interwoven with silence and conversation.
-    </p>
-    <span class="card-link">Read more</span>
-  </a>
-</section>
- </PageImageHero>
+      <a class="hero-card hero-card-open-table" href={`${base}en/open-table/`}>
+        <span class="hero-card-arrow hero-card-arrow-left" aria-hidden="true">←</span>
+        <h2>Open Table</h2>
+        <p>
+          A simple gathering around food, silence, walking, and conversation.
+          We gather around the table, share a meal, and leave space for what
+          naturally arises.
+        </p>
+        <span class="card-link">Read more</span>
+      </a>
+
+      <a class="hero-card hero-card-words" href={`${base}en/words-from-silence/`}>
+        <span class="hero-card-arrow hero-card-arrow-right" aria-hidden="true">→</span>
+        <h2>Words from Silence</h2>
+        <p>
+          A quiet evening with poetry, short texts, silence, and reflection
+          around mysticism, contemplation, and nonduality. Not as a lecture,
+          but as a shared listening space.
+        </p>
+        <span class="card-link">Read more</span>
+      </a>
+    </section>
+  </PageImageHero>
 </BaseLayout>

@@ -6,34 +6,55 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout
-  title="Bijeenkomsten — House of Nonduality"
-  description="Bijeenkomsten rond stilte, poëzie, contemplatie en ontmoeting in Leuven."
+  title="Bijeenkomsten — Het Huis van Nondualiteit"
+  description="Kleinschalige bijeenkomsten rond stilte, contemplatie, ontmoeting en de vraag wat werkelijk is."
   lang="nl"
 >
   <PageImageHero
     title="Bijeenkomsten"
-    lead="Twee terugkerende vormen van samenkomen: een poëzie- en tekstavond rond stilte, en een eenvoudige tafel rond eten, gesprek en aanwezigheid."
+    lead="Kleinschalige vormen van samenkomen rond stilte, contemplatie, ontmoeting en de vraag wat werkelijk is."
     imageSrc="/images/home/hond-home-inn-spring.png"
-    imageAlt="Een warme herberg met kamers voor ontmoeting, stilte, contact, meditatie en studie."
+    imageAlt="Een warm huis met kamers voor ontmoeting, stilte, contact, meditatie en studie."
+    showImageView={true}
+    imageViewLabel="Bekijk het huis"
+    imageInfoLabel="Toon tekst"
   >
-    <section class="hero-card-grid">
-  <a class="hero-card hero-card-open-table" href="${base}nl/open-tafel/">
-    <span class="hero-card-arrow hero-card-arrow-left" aria-hidden="true">←</span>
-    <h2>Open Tafel</h2>
-    <p>
-      Een eenvoudige ontmoeting rond plantaardig eten, stilte, wandeling en gesprek.
-    </p>
-    <span class="card-link">Lees meer</span>
-  </a>
+    <section class="hero-card-grid gatherings-card-grid">
+      <article class="hero-card gatherings-intro-card">
+        <h2>Levende ontmoeting</h2>
+        <p>
+          Het Huis van Nondualiteit krijgt niet alleen vorm in teksten en digitale
+          kamers, maar ook in levende ontmoeting: samen eten, luisteren, lezen,
+          spreken, stil zijn en onderzoeken wat werkelijk is.
+        </p>
+        <p>
+          De bijeenkomsten zijn eenvoudig en kleinschalig. Ze vragen geen voorkennis,
+          overtuiging of spirituele identiteit. Ze zijn bedoeld als open ruimtes voor
+          vertraging, contemplatie en ontmoeting.
+        </p>
+      </article>
 
-  <a class="hero-card hero-card-words" href="${base}nl/woorden-uit-de-stilte/">
-    <span class="hero-card-arrow hero-card-arrow-right" aria-hidden="true">→</span>
-    <h2>Woorden uit de Stilte</h2>
-    <p>
-      Een avond met mystieke poëzie en korte teksten, afgewisseld met stilte en gesprek.
-    </p>
-    <span class="card-link">Lees meer</span>
-  </a>
-</section>
+      <a class="hero-card hero-card-open-table" href={`${base}nl/open-tafel/`}>
+        <span class="hero-card-arrow hero-card-arrow-left" aria-hidden="true">←</span>
+        <h2>Open Tafel</h2>
+        <p>
+          Een eenvoudige ontmoeting rond eten, stilte, wandeling en gesprek.
+          We komen samen rond de tafel, delen een maaltijd en laten ruimte voor
+          wat zich spontaan aandient.
+        </p>
+        <span class="card-link">Lees meer</span>
+      </a>
+
+      <a class="hero-card hero-card-words" href={`${base}nl/woorden-uit-de-stilte/`}>
+        <span class="hero-card-arrow hero-card-arrow-right" aria-hidden="true">→</span>
+        <h2>Woorden uit de Stilte</h2>
+        <p>
+          Een rustige avond met poëzie, korte teksten, stilte en reflectie rond
+          mystiek, contemplatie en nondualiteit. Niet als lezing, maar als
+          gezamenlijke luisterruimte.
+        </p>
+        <span class="card-link">Lees meer</span>
+      </a>
+    </section>
   </PageImageHero>
 </BaseLayout>

@@ -1285,7 +1285,7 @@ html[lang="nl"] .home-house-welcome p {
   position: relative;
   max-width: var(--page-width);
   width: calc(100% - 48px);
-  min-height: 780px;
+  min-height: 960px;
   margin: 12px auto 72px;
   border-radius: 30px;
   overflow: hidden;
@@ -1295,7 +1295,7 @@ html[lang="nl"] .home-house-welcome p {
 .about-scene img {
   width: 100%;
   height: 100%;
-  min-height: 780px;
+  min-height: 960px;
   display: block;
   object-fit: cover;
   object-position: center center;
@@ -2677,4 +2677,88 @@ html[lang="nl"] .home-house-welcome p {
 
 .page-image-hero-picture-contain {
   background: transparent;
+}
+
+/* About page elegant typography */
+
+.about-scene .about-panel h2 {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: clamp(1.65rem, 2.4vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.about-scene .about-panel p {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: 1.24rem;
+  line-height: 1.58;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: rgba(29, 49, 73, 0.88);
+}
+
+/* About page alignment */
+
+.about-scene .about-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-scene .about-panel h2 {
+  text-align: center;
+}
+
+.about-scene .about-panel p {
+  text-align: justify;
+  text-align-last: left;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+/* Gatherings overview page */
+
+.gatherings-card-grid {
+  grid-template-areas:
+    "intro intro"
+    "open words";
+}
+
+.gatherings-intro-card {
+  grid-area: intro;
+}
+
+.gatherings-card-grid .hero-card-open-table {
+  grid-area: open;
+}
+
+.gatherings-card-grid .hero-card-words {
+  grid-area: words;
+}
+
+.gatherings-intro-card p + p {
+  margin-top: 12px;
+}
+
+.page-image-hero:has(.gatherings-card-grid) {
+  min-height: 860px;
+}
+
+.page-image-hero-body:has(.gatherings-card-grid) {
+  top: 285px;
+  bottom: auto;
+  width: min(940px, 86%);
+}
+
+@media (max-width: 760px) {
+  .gatherings-card-grid {
+    grid-template-areas:
+      "intro"
+      "open"
+      "words";
+  }
+
+  .page-image-hero-body:has(.gatherings-card-grid) {
+    width: 100% !important;
+  }
 }
