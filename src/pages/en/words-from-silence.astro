@@ -11,16 +11,44 @@ const withBase = (path: string) => {
   return `${cleanBase}${cleanPath}`;
 };
 
-const dates2026 = [
-  "19 May",
-  "16 June",
-  "21 July",
-  "18 August",
-  "15 September",
-  "20 October",
-  "17 November",
-  "15 December",
+const monthNamesEn = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
+
+const getThirdTuesday = (year: number, month: number) => {
+  const firstDay = new Date(year, month, 1);
+  const firstTuesdayOffset = (2 - firstDay.getDay() + 7) % 7;
+
+  return new Date(year, month, 1 + firstTuesdayOffset + 14);
+};
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const upcomingDates = Array.from({ length: 18 }, (_, index) => {
+  const month = today.getMonth() + index;
+  const year = today.getFullYear() + Math.floor(month / 12);
+  const normalizedMonth = month % 12;
+
+  return getThirdTuesday(year, normalizedMonth);
+})
+  .filter((date) => date >= today)
+  .slice(0, 8);
+
+const dates = upcomingDates.map((date) => {
+  return `${monthNamesEn[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+});
 ---
 
 <BaseLayout
@@ -42,9 +70,10 @@ const dates2026 = [
       <article class="hero-card words-hero-card hero-card-large">
         <h2>What is it?</h2>
         <p>
-          <em>Words from Silence</em> is one of the local gatherings of The House
-          of Nonduality: a quiet evening in Leuven with poetry, short texts,
-          silence and reflection around mysticism, contemplation and nonduality.
+          <em>Words from Silence</em> is a quiet evening in Leuven with
+          poetry, short texts, silence and reflection around mysticism,
+          contemplation and nonduality. Not a classical poetry evening,
+          but a shared listening space in which words can point toward silence.
         </p>
       </article>
 
@@ -61,8 +90,8 @@ const dates2026 = [
         <h2>What can you expect?</h2>
         <p>
           The evening consists of a simple alternation of text, silence and
-          conversation. Sometimes there is a short introduction, sometimes a
-          brief exchange, sometimes mostly silence.
+          conversation. We listen, let the words settle, and share where
+          something resonates — without needing to debate or reach a conclusion.
         </p>
       </article>
 
@@ -73,14 +102,14 @@ const dates2026 = [
           <li>19:30–21:00</li>
           <li>Leuven — address after registration</li>
           <li>Dutch and English, depending on the texts and who is present</li>
-          <li>Contribution according to capacity</li>
+          <li>Contribution according to means</li>
         </ul>
       </article>
 
       <article class="hero-card words-hero-card words-compact-card">
-        <h2>Dates 2026</h2>
+        <h2>Upcoming dates</h2>
         <ul class="detail-meta-list words-date-list">
-          {dates2026.map((date) => <li>{date}</li>)}
+          {dates.map((date) => <li>{date}</li>)}
         </ul>
       </article>
 

@@ -11,16 +11,42 @@ const withBase = (path: string) => {
   return `${cleanBase}${cleanPath}`;
 };
 
-const dates2026 = [
-  "19 mei",
-  "16 juni",
-  "21 juli",
-  "18 augustus",
-  "15 september",
-  "20 oktober",
-  "17 november",
-  "15 december",
+const monthNamesNl = [
+  "januari",
+  "februari",
+  "maart",
+  "april",
+  "mei",
+  "juni",
+  "juli",
+  "augustus",
+  "september",
+  "oktober",
+  "november",
+  "december",
 ];
+
+const getThirdTuesday = (year: number, month: number) => {
+  const firstDay = new Date(year, month, 1);
+  const firstTuesdayOffset = (2 - firstDay.getDay() + 7) % 7;
+  return new Date(year, month, 1 + firstTuesdayOffset + 14);
+};
+
+const today = new Date();
+
+const upcomingDates = Array.from({ length: 18 }, (_, index) => {
+  const month = today.getMonth() + index;
+  const year = today.getFullYear() + Math.floor(month / 12);
+  const normalizedMonth = month % 12;
+
+  return getThirdTuesday(year, normalizedMonth);
+})
+  .filter((date) => date >= today)
+  .slice(0, 8);
+
+const dates = upcomingDates.map((date) => {
+  return `${date.getDate()} ${monthNamesNl[date.getMonth()]} ${date.getFullYear()}`;
+});
 ---
 
 <BaseLayout
@@ -42,10 +68,10 @@ const dates2026 = [
       <article class="hero-card words-hero-card hero-card-large">
         <h2>Wat is het?</h2>
         <p>
-          <em>Woorden uit de Stilte</em> is een van de lokale bijeenkomsten van
-          Het Huis van Nondualiteit: een rustige avond in Leuven met poëzie,
-          korte teksten, stilte en reflectie rond mystiek, contemplatie en
-          nondualiteit.
+          <em>Woorden uit de Stilte</em> is een rustige avond in Leuven met
+          poëzie, korte teksten, stilte en reflectie rond mystiek, contemplatie
+          en nondualiteit. Geen klassieke poëzieavond, maar een gezamenlijke
+          luisterruimte waarin woorden kunnen wijzen naar stilte.
         </p>
       </article>
 
@@ -62,8 +88,9 @@ const dates2026 = [
         <h2>Wat mag je verwachten?</h2>
         <p>
           De avond bestaat uit een eenvoudige afwisseling van tekst, stilte en
-          gesprek. Soms is er een korte toelichting, soms een korte uitwisseling,
-          soms vooral stilte.
+          gesprek. We luisteren, laten de woorden bezinken, en delen waar iets
+          resoneert — zonder discussie te moeten voeren of tot een conclusie te
+          komen.
         </p>
       </article>
 
@@ -79,9 +106,9 @@ const dates2026 = [
       </article>
 
       <article class="hero-card words-hero-card words-compact-card">
-        <h2>Data 2026</h2>
+        <h2>Komende data</h2>
         <ul class="detail-meta-list words-date-list">
-          {dates2026.map((date) => <li>{date}</li>)}
+          {dates.map((date) => <li>{date}</li>)}
         </ul>
       </article>
 
