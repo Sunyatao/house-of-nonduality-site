@@ -916,7 +916,8 @@ html[lang="nl"] .home-house-welcome p {
   grid-template-areas:
     "intro intro"
     "practical rhythm"
-    "forwhom callout";
+    "forwhom dates"
+    "callout callout";
   gap: 16px;
   width: min(900px, 100%);
   align-items: stretch;
@@ -944,6 +945,10 @@ html[lang="nl"] .home-house-welcome p {
 }
 
 .open-table-all-cards .hero-card:nth-child(5) {
+  grid-area: dates;
+}
+
+.open-table-all-cards .hero-card:nth-child(6) {
   grid-area: callout;
 }
 
@@ -971,11 +976,38 @@ html[lang="nl"] .home-house-welcome p {
   margin-top: 6px;
 }
 
+.open-table-date-list {
+  columns: 2;
+  column-gap: 18px;
+}
+
 .open-table-all-cards .hero-card-callout {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
+}
+
+.page-image-hero:has(.open-table-all-cards) {
+  min-height: 1080px;
+}
+
+.page-image-hero:has(.open-table-all-cards) .page-image-hero-content {
+  top: 6%;
+}
+
+.page-image-hero:has(.open-table-all-cards) .page-image-hero-content h1 {
+  font-size: clamp(2.1rem, 4.4vw, 4rem);
+}
+
+.page-image-hero:has(.open-table-all-cards) .page-image-hero-lead {
+  max-width: 620px;
+}
+
+.page-image-hero-body:has(.open-table-all-cards) {
+  top: 250px;
+  bottom: auto;
+  width: min(900px, 82%);
 }
 
 /* Hero content visibility */
@@ -1233,7 +1265,7 @@ html[lang="nl"] .home-house-welcome p {
 }
 
 .page-image-hero:has(.words-all-cards) {
-  min-height: 1040px;
+  min-height: 1080px;
 }
 
 .page-image-hero-body:has(.words-all-cards) {
@@ -1837,10 +1869,15 @@ html[lang="nl"] .home-house-welcome p {
       "practical"
       "rhythm"
       "forwhom"
+      "dates"
       "callout";
     gap: 14px;
   }
 
+  .open-table-date-list {
+    columns: 1;
+  }
+}
   .page-image-hero:has(.open-table-all-cards) .page-image-hero-picture-cover .page-image-hero-image {
     min-height: 1360px;
   }
@@ -1852,20 +1889,6 @@ html[lang="nl"] .home-house-welcome p {
   }
 }
 
-.page-image-hero:has(.open-table-all-cards) {
-  min-height: auto;
-}
-
-.page-image-hero:has(.open-table-all-cards) .page-image-hero-picture-cover .page-image-hero-image {
-  min-height: 1360px;
-}
-
-.page-image-hero-body:has(.open-table-all-cards) {
-  top: 285px;
-  bottom: auto;
-  width: calc(100% - 32px);
-}
-
 .image-view-button {
   right: 16px;
   top: 16px;
@@ -1873,28 +1896,24 @@ html[lang="nl"] .home-house-welcome p {
   font-size: 0.84rem;
 }
 
- /* Words from Silence */
+/* Words from Silence — mobile only */
 
-.words-all-cards {
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "intro"
-    "texts"
-    "expectation"
-    "practical"
-    "dates"
-    "callout";
-  gap: 14px;
-}
+@media (max-width: 760px) {
+  .words-all-cards {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "texts"
+      "expectation"
+      "practical"
+      "dates"
+      "callout";
+    gap: 14px;
+  }
 
-.page-image-hero:has(.words-all-cards) .page-image-hero-picture-cover .page-image-hero-image {
-  min-height: 1540px;
-}
-
-.page-image-hero-body:has(.words-all-cards) {
-  top: 285px;
-  bottom: auto;
-  width: calc(100% - 32px);
+  .page-image-hero-body:has(.words-all-cards) {
+    width: 100% !important;
+  }
 }
 
   /* Language landing */
@@ -1911,7 +1930,6 @@ html[lang="nl"] .home-house-welcome p {
   .language-landing-actions {
     gap: 10px;
   }
-}
 
 /* Reduced motion */
 
@@ -2760,5 +2778,114 @@ html[lang="nl"] .home-house-welcome p {
 
   .page-image-hero-body:has(.gatherings-card-grid) {
     width: 100% !important;
+  }
+}
+
+/* Open Table final grid order */
+
+.open-table-all-cards {
+  grid-template-areas:
+    "intro intro"
+    "rhythm forwhom"
+    "practical dates"
+    "callout callout";
+}
+
+.open-table-all-cards .hero-card:nth-child(1) {
+  grid-area: intro;
+}
+
+.open-table-all-cards .hero-card:nth-child(2) {
+  grid-area: rhythm;
+}
+
+.open-table-all-cards .hero-card:nth-child(3) {
+  grid-area: forwhom;
+}
+
+.open-table-all-cards .hero-card:nth-child(4) {
+  grid-area: practical;
+}
+
+.open-table-all-cards .hero-card:nth-child(5) {
+  grid-area: dates;
+}
+
+.open-table-all-cards .hero-card:nth-child(6) {
+  grid-area: callout;
+}
+
+@media (max-width: 760px) {
+  .open-table-all-cards {
+    grid-template-areas:
+      "intro"
+      "rhythm"
+      "forwhom"
+      "practical"
+      "dates"
+      "callout";
+  }
+
+  .open-table-date-list {
+    columns: 1;
+  }
+
+  .page-image-hero:has(.open-table-all-cards) {
+    min-height: 0 !important;
+    padding: 26px 16px 42px;
+  }
+
+  .page-image-hero-body:has(.open-table-all-cards) {
+    position: relative;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto;
+    width: 100% !important;
+    margin: 0 auto;
+    transform: none;
+  }
+}
+
+/* Open Table desktop/mobile repair */
+
+.page-image-hero:has(.open-table-all-cards) {
+  min-height: 1180px;
+}
+
+.page-image-hero-body:has(.open-table-all-cards) {
+  top: 250px;
+  bottom: auto;
+  width: min(900px, 82%);
+}
+
+@media (max-width: 760px) {
+  .page-image-hero:has(.open-table-all-cards) {
+    min-height: 0 !important;
+    padding: 26px 16px 42px;
+  }
+
+  .page-image-hero-body:has(.open-table-all-cards) {
+    position: relative;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto;
+    width: 100% !important;
+    margin: 0 auto;
+    transform: none;
+  }
+
+  .open-table-all-cards {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "rhythm"
+      "forwhom"
+      "practical"
+      "dates"
+      "callout";
+  }
+
+  .open-table-date-list {
+    columns: 1;
   }
 }
