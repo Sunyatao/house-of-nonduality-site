@@ -1,0 +1,33 @@
+/* Gatherings */
+
+.gatherings-card-grid {
+  grid-template-areas:
+    "intro intro"
+    "open words";
+}
+
+.gatherings-intro-card {
+  grid-area: intro;
+}
+
+.gatherings-card-grid .hero-card-open-table {
+  grid-area: open;
+}
+
+.gatherings-card-grid .hero-card-words {
+  grid-area: words;
+}
+
+.gatherings-intro-card p + p {
+  margin-top: 12px;
+}
+
+.page-image-hero:has(.gatherings-card-grid) {
+  min-height: 860px;
+}
+
+.page-image-hero-body:has(.gatherings-card-grid) {
+  top: 285px;
+  bottom: auto;
+  width: min(940px, 86%);
+}

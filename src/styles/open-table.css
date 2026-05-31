@@ -1,0 +1,101 @@
+/* Open Table */
+
+.open-table-all-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "intro intro"
+    "rhythm forwhom"
+    "practical dates"
+    "callout callout";
+  gap: 16px;
+  width: min(900px, 100%);
+  align-items: stretch;
+}
+
+.open-table-all-cards .hero-card {
+  padding: 22px 24px;
+}
+
+.open-table-all-cards .hero-card:nth-child(1) {
+  grid-area: intro;
+  padding: 28px 30px;
+}
+
+.open-table-all-cards .hero-card:nth-child(2) {
+  grid-area: rhythm;
+}
+
+.open-table-all-cards .hero-card:nth-child(3) {
+  grid-area: forwhom;
+}
+
+.open-table-all-cards .hero-card:nth-child(4) {
+  grid-area: practical;
+}
+
+.open-table-all-cards .hero-card:nth-child(5) {
+  grid-area: dates;
+}
+
+.open-table-all-cards .hero-card:nth-child(6) {
+  grid-area: callout;
+}
+
+.open-table-all-cards .hero-card h2 {
+  padding-inline: 0;
+  font-size: clamp(1.25rem, 1.7vw, 1.65rem);
+}
+
+.open-table-all-cards .hero-card:nth-child(1) h2 {
+  font-size: clamp(1.55rem, 2.1vw, 2rem);
+}
+
+.open-table-all-cards .hero-card p,
+.open-table-all-cards .detail-meta-list {
+  font-size: clamp(0.9rem, 1vw, 0.98rem);
+  line-height: 1.52;
+}
+
+.open-table-all-cards .detail-meta-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.open-table-all-cards .detail-meta-list li + li {
+  margin-top: 6px;
+}
+
+.open-table-date-list {
+  columns: 2;
+  column-gap: 18px;
+}
+
+.open-table-all-cards .hero-card-callout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.page-image-hero:has(.open-table-all-cards) {
+  min-height: 1180px;
+}
+
+.page-image-hero:has(.open-table-all-cards) .page-image-hero-content {
+  top: 6%;
+}
+
+.page-image-hero:has(.open-table-all-cards) .page-image-hero-content h1 {
+  font-size: clamp(2.1rem, 4.4vw, 4rem);
+}
+
+.page-image-hero:has(.open-table-all-cards) .page-image-hero-lead {
+  max-width: 620px;
+}
+
+.page-image-hero-body:has(.open-table-all-cards) {
+  top: 250px;
+  bottom: auto;
+  width: min(900px, 82%);
+}

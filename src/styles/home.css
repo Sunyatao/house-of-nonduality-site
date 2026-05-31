@@ -1,0 +1,233 @@
+/* Homepage */
+
+.home-house {
+  position: relative;
+  max-width: var(--page-width);
+  width: calc(100% - 48px);
+  margin: 12px auto 80px;
+  border: 1px solid rgba(180, 122, 50, 0.18);
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  background: rgba(255, 252, 245, 0.72);
+}
+
+.home-house-image,
+.home-house img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.home-house-welcome {
+  position: absolute;
+  z-index: 5;
+  top: 7%;
+  left: 50%;
+  width: min(720px, 82%);
+  padding: 24px 28px;
+  text-align: center;
+  pointer-events: none;
+  isolation: isolate;
+  opacity: 0;
+  transform: translateX(-50%);
+  animation: none;
+}
+
+.home-house.is-loaded .home-house-welcome {
+  animation: fadeWelcome 6.4s ease 250ms both;
+}
+
+.home-house-welcome::before {
+  content: "";
+  position: absolute;
+  inset: -4px -42px -6px;
+  z-index: -1;
+  border-radius: 999px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(12, 31, 52, 0.58) 0%,
+    rgba(12, 31, 52, 0.38) 42%,
+    rgba(12, 31, 52, 0.12) 66%,
+    rgba(12, 31, 52, 0) 82%
+  );
+  filter: blur(12px);
+  opacity: 0.95;
+}
+
+.home-house-welcome h1 {
+  margin: 0;
+  color: rgba(255, 252, 245, 0.94);
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  line-height: 0.96;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  text-shadow: var(--hero-title-shadow);
+}
+
+.home-house-welcome p {
+  max-width: 520px;
+  margin: 14px auto 0;
+  color: rgba(255, 252, 245, 0.88);
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.6vw, 1.22rem);
+  line-height: 1.45;
+  text-shadow: var(--hero-lead-shadow);
+}
+
+html[lang="nl"] .home-house-welcome {
+  width: min(980px, 94%);
+}
+
+html[lang="nl"] .home-house-welcome h1 {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(2.3rem, 4.6vw, 4.45rem);
+  text-align: center;
+  white-space: nowrap;
+}
+
+html[lang="nl"] .home-house-welcome p {
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.house-hotspot {
+  position: absolute;
+  display: block;
+  border-radius: 22px;
+  outline: 0;
+}
+
+.house-hotspot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+.house-hotspot.is-disabled {
+  cursor: default;
+}
+
+.house-cursor-tooltip {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  padding: 6px 11px 7px;
+  border: 1px solid rgba(180, 122, 50, 0.32);
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 252, 245, 0.98),
+      rgba(250, 241, 224, 0.94)
+    );
+  box-shadow:
+    0 14px 40px rgba(29, 49, 73, 0.13),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.42);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  transform: translate(14px, 14px);
+  transition: opacity 140ms ease;
+}
+
+.house-cursor-tooltip::before,
+.house-cursor-tooltip::after {
+  content: "—";
+  color: var(--color-accent);
+  opacity: 0.42;
+  margin: 0 5px;
+}
+
+.house-cursor-tooltip.is-visible {
+  opacity: 1;
+}
+
+.hotspot-open-table {
+  left: 0%;
+  top: 21%;
+  width: 20%;
+  height: 58%;
+}
+
+.hotspot-contact {
+  left: 24%;
+  top: 50%;
+  width: 15.5%;
+  height: 37%;
+}
+
+.hotspot-newsletter {
+  left: 25%;
+  top: 28%;
+  width: 10%;
+  height: 20%;
+}
+
+.hotspot-about {
+  left: 39.5%;
+  top: 70%;
+  width: 22%;
+  height: 38%;
+}
+
+.hotspot-library {
+  left: 39.5%;
+  top: 13%;
+  width: 20%;
+  height: 45%;
+}
+
+.hotspot-words {
+  left: 71%;
+  top: 27%;
+  width: 12%;
+  height: 42%;
+}
+
+.hotspot-meditation {
+  left: 74%;
+  top: 70%;
+  width: 25%;
+  height: 35%;
+}
+
+.home-house-links {
+  display: none;
+  max-width: 760px;
+  width: calc(100% - 48px);
+  margin: -42px auto 72px;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.home-house-links a,
+.home-house-links span {
+  display: block;
+  padding: 15px 18px;
+  border: 1px solid rgba(180, 122, 50, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 252, 245, 0.72);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  box-shadow: 0 16px 44px rgba(29, 49, 73, 0.06);
+}
+
+.home-house-links span {
+  color: var(--color-muted);
+}
