@@ -82,3 +82,5 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* Contact — mobile adjustments are handled by PageImageHero because the form is positioned inside the shared hero component. */

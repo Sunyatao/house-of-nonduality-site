@@ -31,3 +31,14 @@
   bottom: auto;
   width: min(940px, 86%);
 }
+
+/* Gatherings — mobile */
+
+@media (max-width: 760px) {
+  .gatherings-card-grid {
+    grid-template-areas:
+      "intro"
+      "open"
+      "words";
+  }
+}

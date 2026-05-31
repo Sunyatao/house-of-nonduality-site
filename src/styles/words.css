@@ -106,3 +106,23 @@
   bottom: auto;
   width: min(980px, 86%);
 }
+
+/* Words from Silence — mobile */
+
+@media (max-width: 760px) {
+  .words-all-cards {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "texts"
+      "expectation"
+      "practical"
+      "dates"
+      "callout";
+    gap: 14px;
+  }
+
+  .words-all-cards .hero-card h2 {
+    padding-inline: 0;
+  }
+}

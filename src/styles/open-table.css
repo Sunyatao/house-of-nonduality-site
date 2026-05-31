@@ -99,3 +99,27 @@
   bottom: auto;
   width: min(900px, 82%);
 }
+
+/* Open Table — mobile */
+
+@media (max-width: 760px) {
+  .open-table-all-cards {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "rhythm"
+      "forwhom"
+      "practical"
+      "dates"
+      "callout";
+    gap: 14px;
+  }
+
+  .open-table-date-list {
+    columns: 1;
+  }
+
+  .open-table-all-cards .hero-card h2 {
+    padding-inline: 0;
+  }
+}

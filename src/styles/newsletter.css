@@ -77,3 +77,23 @@
   line-height: 1.35;
   text-align: center;
 }
+
+/* Newsletter — mobile */
+
+@media (max-width: 760px) {
+  .newsletter-card-grid {
+    grid-template-areas:
+      "intro"
+      "rhythm"
+      "signup";
+  }
+
+  .newsletter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-submit-button {
+    width: fit-content;
+    margin: 4px auto 0;
+  }
+}
