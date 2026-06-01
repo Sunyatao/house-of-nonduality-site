@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageImageHero from "../../components/PageImageHero.astro";
 ---
 
 <BaseLayout
@@ -7,51 +8,52 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   description="A growing digital garden of texts, sources, quotations and connections around nonduality, mysticism, philosophy and contemplation."
   lang="en"
 >
-  <section class="hero">
-    <p class="kicker">In progress</p>
-    <h1>Traces of Insight</h1>
-    <p class="lead">
-      From books, texts and sources, traces of insight slowly grow here:
-      notes, quotations and connections around nonduality, mysticism,
-      philosophy, contemplation and the question of what is real.
-    </p>
-  </section>
+  <PageImageHero
+    kicker="In progress"
+    title="Traces of Insight"
+    lead="From books, texts and sources, traces of insight slowly grow here: notes, quotations and connections around nonduality, mysticism, philosophy and contemplation."
+    imageSrc="/images/traces/hond-traces-of-insight-spring.png"
+    imageAlt="A warm library in The House of Nonduality, with books, a writing desk, subtle growth from open books and a view of the mountains."
+    showImageView={true}
+    imageViewLabel="View the library"
+    imageInfoLabel="Show text"
+  >
+    <section class="hero-card-grid traces-card-grid">
+      <article class="hero-card traces-hero-card hero-card-large">
+        <h2>A living library</h2>
+        <p>
+          This space begins as a library: a gathering of books, texts and
+          sources. But what grows here are mostly insights — living traces that
+          branch, deepen and become connected with one another.
+        </p>
+      </article>
 
-  <section class="section">
-    <article class="card">
-      <h2>A living library</h2>
-      <p>
-        This space begins as a library: a gathering of books, texts and sources.
-        But what grows here are mostly insights — living traces that branch,
-        deepen and become connected with one another.
-      </p>
-    </article>
+      <article class="hero-card traces-hero-card">
+        <h2>A digital garden</h2>
+        <p>
+          The page will slowly grow into a digital garden of quotations, notes,
+          concepts, examples and references. Not as a finished system, but as an
+          organic network of inquiry and contemplation.
+        </p>
+      </article>
 
-    <article class="card">
-      <h2>A digital garden</h2>
-      <p>
-        The page will slowly grow into a digital garden of quotations, notes,
-        concepts, examples and references. Not as a finished system, but as an
-        organic network of inquiry and contemplation.
-      </p>
-    </article>
+      <article class="hero-card traces-hero-card">
+        <h2>Paths through the whole</h2>
+        <p>
+          Later, some insights will be gathered into paths: clear routes through
+          the material, as if looking out from the library and seeing different
+          ways leading toward the mountain.
+        </p>
+      </article>
 
-    <article class="card">
-      <h2>Paths through the whole</h2>
-      <p>
-        Later, some insights will be gathered into paths: clear routes through
-        the material, as if looking out from the library and seeing different
-        ways leading toward the mountain.
-      </p>
-    </article>
-
-    <article class="card">
-      <h2>For now</h2>
-      <p>
-        This space is still in progress. Until it opens further, you can join a
-        gathering, subscribe to the newsletter or get in touch if there is a
-        text, source or trace you would like to share.
-      </p>
-    </article>
-  </section>
+      <article class="hero-card traces-hero-card hero-card-callout">
+        <h2>For now</h2>
+        <p>
+          This space is still in progress. Until it opens further, you can join
+          a gathering, subscribe to the newsletter or get in touch if there is a
+          text, source or trace you would like to share.
+        </p>
+      </article>
+    </section>
+  </PageImageHero>
 </BaseLayout>
