@@ -5,105 +5,109 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const t = lang === "nl"
-  ? {
-      title: "Het Huis van Nondualiteit",
-      lead: "Een plek voor stilte, contemplatie, openheid en ontmoeting.",
-      alt: "Een plek voor stilte, contemplatie, openheid en ontmoeting.",
-      about: "Over",
-      openTable: "Open Tafel",
-      words: "Woorden uit de Stilte",
-      contact: "Contact",
-      newsletter: "Nieuwsbrief",
-      library: "Bibliotheek",
-      meditation: "Meditatie",
-      soon: "binnenkort",
-      links: {
-        about: "/house-of-nonduality-site/nl/over/",
-        openTable: "/house-of-nonduality-site/nl/open-tafel/",
-        words: "/house-of-nonduality-site/nl/woorden-uit-de-stilte/",
-        contact: "/house-of-nonduality-site/nl/contact/",
-        newsletter: "/house-of-nonduality-site/nl/nieuwsbrief/",
-        library: "/house-of-nonduality-site/nl/bibliotheek/",
-      },
-    }
-  : {
-      title: "The House of Nonduality",
-      lead: "A place for silence, contemplation, openness and encounter.",
-      alt: "A place for silence, contemplation, openness and encounter.",
-      about: "About",
-      openTable: "Open Table",
-      words: "Words from Silence",
-      contact: "Contact",
-      newsletter: "Newsletter",
-      library: "Library",
-      meditation: "Meditation",
-      soon: "coming soon",
-      links: {
-        about: "/house-of-nonduality-site/en/about/",
-        openTable: "/house-of-nonduality-site/en/open-table/",
-        words: "/house-of-nonduality-site/en/words-from-silence/",
-        contact: "/house-of-nonduality-site/en/contact/",
-        newsletter: "/house-of-nonduality-site/en/newsletter/",
-        library: "/house-of-nonduality-site/en/library/",
-      },
-    };
+const base = import.meta.env.BASE_URL;
 
-    const base = import.meta.env.BASE_URL;
-
-    const withBase = (path: string) => {
+const withBase = (path: string) => {
   const cleanBase = base.endsWith("/") ? base : `${base}/`;
   const cleanPath = path.startsWith("/") ? path.slice(1) : path;
 
   return `${cleanBase}${cleanPath}`;
-  };
+};
+
+const t =
+  lang === "nl"
+    ? {
+        title: "Het Huis van Nondualiteit",
+        lead: "Een plek voor stilte, contemplatie, openheid en ontmoeting.",
+        alt: "Een plek voor stilte, contemplatie, openheid en ontmoeting.",
+        about: "Over",
+        openTable: "Open Tafel",
+        words: "Woorden uit de Stilte",
+        contact: "Contact",
+        newsletter: "Nieuwsbrief",
+        traces: "Sporen van Inzicht",
+        meditation: "Meditatie",
+        soon: "binnenkort",
+        links: {
+          about: "/nl/over/",
+          openTable: "/nl/open-tafel/",
+          words: "/nl/woorden-uit-de-stilte/",
+          contact: "/nl/contact/",
+          newsletter: "/nl/nieuwsbrief/",
+          traces: "/nl/sporen-van-inzicht/",
+        },
+      }
+    : {
+        title: "The House of Nonduality",
+        lead: "A place for silence, contemplation, openness and encounter.",
+        alt: "A place for silence, contemplation, openness and encounter.",
+        about: "About",
+        openTable: "Open Table",
+        words: "Words from Silence",
+        contact: "Contact",
+        newsletter: "Newsletter",
+        traces: "Traces of Insight",
+        meditation: "Meditation",
+        soon: "coming soon",
+        links: {
+          about: "/en/about/",
+          openTable: "/en/open-table/",
+          words: "/en/words-from-silence/",
+          contact: "/en/contact/",
+          newsletter: "/en/newsletter/",
+          traces: "/en/traces-of-insight/",
+        },
+      };
 ---
 
-<section class="home-house" aria-label={lang === "nl" ? "Verken het Huis van Nondualiteit" : "Explore the House of Nonduality"}>
-<picture>
-  <source srcset={withBase("/images/home/hond-home-inn-spring.avif")} type="image/avif" />
-  <source srcset={withBase("/images/home/hond-home-inn-spring.webp")} type="image/webp" />
-  <img
-    class="home-house-image"
-    src={withBase("/images/home/hond-home-inn-spring.png")}
-    alt={t.alt}
-    width="1600"
-    height="1000"
-    loading="eager"
-    decoding="async"
-    fetchpriority="high"
-  />
-</picture>
+<section
+  class="home-house"
+  aria-label={lang === "nl" ? "Verken het Huis van Nondualiteit" : "Explore the House of Nonduality"}
+>
+  <picture>
+    <source srcset={withBase("/images/home/hond-home-inn-spring.avif")} type="image/avif" />
+    <source srcset={withBase("/images/home/hond-home-inn-spring.webp")} type="image/webp" />
+    <img
+      class="home-house-image"
+      src={withBase("/images/home/hond-home-inn-spring.png")}
+      alt={t.alt}
+      width="1600"
+      height="1000"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  </picture>
 
   <div class="home-house-welcome" aria-hidden="true">
-  <h1>{t.title}</h1>
-  <p>{t.lead}</p>
-</div>
+    <h1>{t.title}</h1>
+    <p>{t.lead}</p>
+  </div>
 
-  <a class="house-hotspot hotspot-open-table" href={t.links.openTable} data-tooltip={t.openTable}></a>
+  <a class="house-hotspot hotspot-open-table" href={withBase(t.links.openTable)} data-tooltip={t.openTable}></a>
 
-  <a class="house-hotspot hotspot-words" href={t.links.words} data-tooltip={t.words}></a>
+  <a class="house-hotspot hotspot-words" href={withBase(t.links.words)} data-tooltip={t.words}></a>
 
-  <a class="house-hotspot hotspot-contact" href={t.links.contact} data-tooltip={t.contact}></a>
+  <a class="house-hotspot hotspot-contact" href={withBase(t.links.contact)} data-tooltip={t.contact}></a>
 
-  <a class="house-hotspot hotspot-newsletter" href={t.links.newsletter} data-tooltip={t.newsletter}></a>
+  <a class="house-hotspot hotspot-newsletter" href={withBase(t.links.newsletter)} data-tooltip={t.newsletter}></a>
 
-  <a class="house-hotspot hotspot-about" href={t.links.about} data-tooltip={t.about}></a>
+  <a class="house-hotspot hotspot-about" href={withBase(t.links.about)} data-tooltip={t.about}></a>
 
-  <a class="house-hotspot hotspot-library" href={t.links.library} data-tooltip={t.library}></a>
+  <a class="house-hotspot hotspot-traces" href={withBase(t.links.traces)} data-tooltip={t.traces}></a>
 
   <div class="house-hotspot hotspot-meditation is-disabled" data-tooltip={`${t.meditation} · ${t.soon}`}></div>
 </section>
 
-  <div class="house-cursor-tooltip" aria-hidden="true"></div>
+<div class="house-cursor-tooltip" aria-hidden="true"></div>
 
 <section class="home-house-links" aria-label={lang === "nl" ? "Kamers van het Huis" : "Rooms of the House"}>
-  <a href={t.links.openTable}>{t.openTable}</a>
-  <a href={t.links.words}>{t.words}</a>
-  <a href={t.links.contact}>{t.contact}</a>
-  <a href={t.links.newsletter}>{t.newsletter}</a>
-  <a href={t.links.about}>{t.about}</a>
-  <a href={t.links.library}>{t.library}</a>
+  <a href={withBase(t.links.openTable)}>{t.openTable}</a>
+  <a href={withBase(t.links.words)}>{t.words}</a>
+  <a href={withBase(t.links.contact)}>{t.contact}</a>
+  <a href={withBase(t.links.newsletter)}>{t.newsletter}</a>
+  <a href={withBase(t.links.about)}>{t.about}</a>
+  <a href={withBase(t.links.traces)}>{t.traces}</a>
   <span>{t.meditation} · {t.soon}</span>
 </section>
 
