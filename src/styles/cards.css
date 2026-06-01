@@ -217,7 +217,7 @@ main {
 
 
 /* =========================================================
-   Shared typography / buttons / cards
+   Shared typography / buttons / simple cards
    ========================================================= */
 
 .kicker {
@@ -534,8 +534,6 @@ h1 {
 }
 
 
-
-
 /* =========================================================
    Language landing
    ========================================================= */
@@ -657,7 +655,10 @@ h1 {
   font-size: 0.9rem;
 }
 
-/* Shared typography / cards — tablet */
+
+/* =========================================================
+   Tablet
+   ========================================================= */
 
 @media (max-width: 860px) {
   .section,
@@ -666,7 +667,10 @@ h1 {
   }
 }
 
-/* Shared typography / cards — mobile */
+
+/* =========================================================
+   Mobile
+   ========================================================= */
 
 @media (max-width: 760px) {
   .hero {
@@ -723,4 +727,51 @@ h1 {
   .language-landing-actions {
     gap: 10px;
   }
+}
+
+
+/* =========================================================
+   Elegant content-card typography
+   ========================================================= */
+
+.hero-card h2,
+.card h2,
+.language-landing-card h2,
+.open-table-all-cards .hero-card h2,
+.words-all-cards .hero-card h2,
+.traces-card-grid .hero-card h2,
+.newsletter-card-grid .hero-card h2,
+.gatherings-card-grid .hero-card h2 {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif !important;
+  font-size: clamp(1.65rem, 2.4vw, 2.25rem) !important;
+  line-height: 1.08;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.hero-card p,
+.card p,
+.hero-card .detail-meta-list,
+.card .detail-meta-list,
+.open-table-all-cards .hero-card p,
+.open-table-all-cards .detail-meta-list,
+.words-all-cards .hero-card p,
+.words-all-cards .detail-meta-list,
+.traces-card-grid .hero-card p,
+.newsletter-card-grid .hero-card p,
+.gatherings-card-grid .hero-card p {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif !important;
+  font-size: 1.24rem !important;
+  line-height: 1.4 !important;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: rgba(29, 49, 73, 0.88);
+}
+
+.hero-card .detail-meta-list li,
+.card .detail-meta-list li,
+.open-table-all-cards .detail-meta-list li,
+.words-all-cards .detail-meta-list li {
+  color: rgba(29, 49, 73, 0.88);
 }
