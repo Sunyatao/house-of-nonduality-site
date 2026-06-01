@@ -1,0 +1,104 @@
+/* Traces of Insight page */
+
+.traces-card-grid {
+  grid-template-areas:
+    "intro intro"
+    "garden paths"
+    "callout callout";
+  gap: 16px;
+  width: min(940px, 100%);
+}
+
+.traces-card-grid .hero-card:nth-child(1) {
+  grid-area: intro;
+}
+
+.traces-card-grid .hero-card:nth-child(2) {
+  grid-area: garden;
+}
+
+.traces-card-grid .hero-card:nth-child(3) {
+  grid-area: paths;
+}
+
+.traces-card-grid .hero-card:nth-child(4) {
+  grid-area: callout;
+}
+
+.traces-card-grid .hero-card h2 {
+  padding-inline: 0;
+  font-size: clamp(1.25rem, 1.6vw, 1.6rem);
+}
+
+.traces-card-grid .hero-card:nth-child(1) h2 {
+  font-size: clamp(1.55rem, 2.1vw, 2rem);
+}
+
+.traces-card-grid .hero-card p {
+  font-size: clamp(0.9rem, 1vw, 0.98rem);
+  line-height: 1.52;
+}
+
+.traces-card-grid .hero-card-callout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.page-image-hero:has(.traces-card-grid) {
+  min-height: 980px;
+}
+
+.page-image-hero-body:has(.traces-card-grid) {
+  top: 300px;
+  bottom: auto;
+  width: min(980px, 86%);
+}
+
+@media (max-width: 760px) {
+  .traces-card-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "garden"
+      "paths"
+      "callout";
+    gap: 14px;
+  }
+
+  .page-image-hero:has(.traces-card-grid) {
+    min-height: 0 !important;
+    padding: 26px 16px 42px;
+  }
+
+  .page-image-hero-body:has(.traces-card-grid) {
+    position: relative;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto;
+    width: 100% !important;
+    margin: 0 auto;
+    transform: none;
+  }
+
+  .page-image-hero.is-image-view-ready:has(.traces-card-grid) {
+    padding: 0 !important;
+    min-height: min(72vh, 620px) !important;
+  }
+
+  .page-image-hero.is-image-view-ready:has(.traces-card-grid)
+    .page-image-hero-picture-contain {
+    opacity: 1;
+  }
+
+  .page-image-hero.is-image-view-ready:has(.traces-card-grid)
+    .page-image-hero-picture-contain
+    .page-image-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    padding: 10px;
+  }
+}
