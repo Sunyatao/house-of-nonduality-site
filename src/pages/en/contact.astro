@@ -5,17 +5,17 @@ import PageImageHero from "../../components/PageImageHero.astro";
 
 <BaseLayout
   title="Contact — The House of Nonduality"
-  description="Contact The House of Nonduality for questions, gatherings, collaborations, or anything related to silence, encounter and nonduality."
+  description="Contact The House of Nonduality for questions, participation in gatherings, or collaborations around silence, encounter and nonduality."
   lang="en"
 >
   <PageImageHero
     kicker="Write to me"
     title="Contact"
-    lead="Have a question, want to join a gathering, or feel moved to share something? You are always welcome to write."
+    lead="Do you have a question, would you like to join a gathering, or is there something you would like to share? You are always welcome to write."
     imageSrc="/images/contact/hond-contact-writing-desk.png"
-    imageAlt="A writing desk with a blank letter, pen, cup and stationery in The House of Nonduality."
+    imageAlt="A writing desk with an empty letter, pen, cup and dove in The House of Nonduality."
     showImageView={true}
-    imageViewLabel="View table"
+    imageViewLabel="View the desk"
     imageInfoLabel="Show text"
   >
     <section class="contact-paper-form-wrap">
@@ -25,24 +25,24 @@ import PageImageHero from "../../components/PageImageHero.astro";
         method="post"
       >
         <label>
-          <span>Name</span>
-          <input type="text" name="name" autocomplete="name" />
+          <span>Name *</span>
+          <input type="text" name="name" autocomplete="name" required />
         </label>
 
         <label>
-          <span>Email address</span>
+          <span>Email address *</span>
           <input type="email" name="email" autocomplete="email" required />
         </label>
 
         <label>
-          <span>Message</span>
+          <span>Message *</span>
           <textarea name="message" rows="5" required></textarea>
         </label>
 
         <input
           type="hidden"
           name="subject"
-          value="New message via The House of Nonduality"
+          value="New message through The House of Nonduality"
         />
 
         <input

@@ -19,47 +19,51 @@ import PageImageHero from "../../components/PageImageHero.astro";
     imageInfoLabel="Toon tekst"
   >
     <section class="contact-paper-form-wrap">
-  <form class="contact-paper-form" action="https://formspree.io/f/xzdwoede" method="post">
-    <label>
-      <span>Naam</span>
-      <input type="text" name="name" autocomplete="name" />
-    </label>
+      <form
+        class="contact-paper-form"
+        action="https://formspree.io/f/xzdwoede"
+        method="post"
+      >
+        <label>
+          <span>Naam *</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
 
-    <label>
-      <span>E-mailadres</span>
-      <input type="email" name="email" autocomplete="email" required />
-    </label>
+        <label>
+          <span>E-mailadres *</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
 
-    <label>
-      <span>Bericht</span>
-      <textarea name="message" rows="5" required></textarea>
-    </label>
+        <label>
+          <span>Bericht *</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
 
-    <input
-      type="hidden"
-      name="subject"
-      value="Nieuw bericht via Het Huis van Nondualiteit"
-    />
+        <input
+          type="hidden"
+          name="subject"
+          value="Nieuw bericht via Het Huis van Nondualiteit"
+        />
 
-    <input
-      type="text"
-      name="_gotcha"
-      tabindex="-1"
-      autocomplete="off"
-      style="position: absolute; left: -5000px;"
-    />
+        <input
+          type="text"
+          name="_gotcha"
+          tabindex="-1"
+          autocomplete="off"
+          style="position: absolute; left: -5000px;"
+        />
 
-    <button class="button primary contact-submit-button" type="submit">
-      Versturen
-    </button>
+        <button class="button primary contact-submit-button" type="submit">
+          Versturen
+        </button>
 
-    <p class="contact-direct-note">
-      Of schrijf rechtstreeks naar
-      <a href="mailto:contact@houseofnonduality.com">
-        contact@houseofnonduality.com
-      </a>
-    </p>
-  </form>
-</section>
+        <p class="contact-direct-note">
+          Of schrijf rechtstreeks naar
+          <a href="mailto:contact@houseofnonduality.com">
+            contact@houseofnonduality.com
+          </a>
+        </p>
+      </form>
+    </section>
   </PageImageHero>
 </BaseLayout>
