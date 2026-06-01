@@ -5,34 +5,35 @@ import PageImageHero from "../../components/PageImageHero.astro";
 
 <BaseLayout
   title="Newsletter — The House of Nonduality"
-  description="Subscribe to the newsletter of The House of Nonduality: occasional poems, texts from silence, and invitations to upcoming gatherings."
+  description="Subscribe to the newsletter of The House of Nonduality: an occasional letter, text, poem, or invitation to an upcoming gathering."
   lang="en"
 >
   <PageImageHero
     kicker="Letters from the House"
     title="Newsletter"
-    lead="Occasional poems, texts from silence, and invitations to upcoming gatherings."
+    lead="An occasional letter from The House of Nonduality: a text, a poem, or an invitation to an upcoming gathering."
     imageSrc="/images/newsletter/hond-newsletter-writing-nook.png"
-    imageAlt="A warm writing desk with letters, a wall cabinet and a dove in The House of Nonduality."
+    imageAlt="A warm writing desk with letters, a small wall cabinet and a dove in The House of Nonduality."
     showImageView={true}
-    imageViewLabel="View room"
+    imageViewLabel="View the room"
     imageInfoLabel="Show text"
   >
     <section class="hero-card-grid newsletter-card-grid">
       <article class="hero-card">
-        <h2>Stay in touch</h2>
+        <h2>Stay connected</h2>
         <p>
           Through the newsletter, you will occasionally receive a short text,
           a poem, or an invitation to a gathering around silence, encounter,
-          and nonduality.
+          contemplation and nonduality.
         </p>
       </article>
 
       <article class="hero-card">
-        <h2>No crowded inbox</h2>
+        <h2>A quiet rhythm</h2>
         <p>
-          Only when there is something worth sharing:
-          upcoming evenings, new texts, and small letters from silence.
+          No crowded inbox and no constant stream of messages. Only when there
+          is something truly worth sharing: an upcoming evening, a new text,
+          or a small letter from silence.
         </p>
       </article>
 
@@ -44,36 +45,36 @@ import PageImageHero from "../../components/PageImageHero.astro";
           action="https://gmail.us2.list-manage.com/subscribe/post?u=c41c3b77d5559a09a348d05f0&amp;id=6ecb88e329&amp;f_id=002dc6e1f0"
           method="post"
           target="_blank"
-          id="mc-embedded-subscribe-form-en"
+          id="mc-embedded-subscribe-form"
           name="mc-embedded-subscribe-form"
         >
-          <label for="mce-EMAIL-en">
+          <label for="mce-EMAIL">
             <span>Email address *</span>
             <input
               type="email"
               name="EMAIL"
-              id="mce-EMAIL-en"
+              id="mce-EMAIL"
               autocomplete="email"
               required
             />
           </label>
 
-          <label for="mce-FNAME-en">
+          <label for="mce-FNAME">
             <span>Name</span>
             <input
               type="text"
               name="FNAME"
-              id="mce-FNAME-en"
+              id="mce-FNAME"
               autocomplete="name"
             />
           </label>
 
-          <label for="mce-MMERGE7-en">
+          <label for="mce-MMERGE7">
             <span>Language *</span>
-            <select name="MMERGE7" id="mce-MMERGE7-en" required>
+            <select name="MMERGE7" id="mce-MMERGE7" required>
               <option value="">Choose a language</option>
-              <option value="English">English</option>
               <option value="Nederlands">Nederlands</option>
+              <option value="English">English</option>
             </select>
           </label>
 
@@ -90,13 +91,13 @@ import PageImageHero from "../../components/PageImageHero.astro";
             class="button primary newsletter-submit-button"
             type="submit"
             name="subscribe"
-            id="mc-embedded-subscribe-en"
+            id="mc-embedded-subscribe"
           >
             Subscribe
           </button>
 
           <p class="newsletter-privacy-note">
-            You can unsubscribe at any time. Your details will only be used
+            You can unsubscribe at any time. Your information will only be used
             to send you the newsletter of The House of Nonduality.
           </p>
         </form>
