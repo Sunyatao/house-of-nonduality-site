@@ -19,7 +19,9 @@ const t =
     ? {
         title: "Het Huis van Nondualiteit",
         lead: "Een plek voor stilte, contemplatie, openheid en ontmoeting.",
-        alt: "Een plek voor stilte, contemplatie, openheid en ontmoeting.",
+        alt: "Een warme herberg met verschillende kamers voor ontmoeting, stilte, schrijven, studie en contemplatie.",
+        exploreLabel: "Verken het Huis van Nondualiteit",
+        mobileLinksLabel: "Ingangen van het Huis",
         about: "Over",
         openTable: "Open Tafel",
         words: "Woorden uit de Stilte",
@@ -40,7 +42,9 @@ const t =
     : {
         title: "The House of Nonduality",
         lead: "A place for silence, contemplation, openness and encounter.",
-        alt: "A place for silence, contemplation, openness and encounter.",
+        alt: "A warm inn with different rooms for encounter, silence, writing, study and contemplation.",
+        exploreLabel: "Explore The House of Nonduality",
+        mobileLinksLabel: "Entrances of the House",
         about: "About",
         openTable: "Open Table",
         words: "Words from Silence",
@@ -60,10 +64,7 @@ const t =
       };
 ---
 
-<section
-  class="home-house"
-  aria-label={lang === "nl" ? "Verken het Huis van Nondualiteit" : "Explore the House of Nonduality"}
->
+<section class="home-house" aria-label={t.exploreLabel}>
   <picture>
     <source srcset={withBase("/images/home/hond-home-inn-spring.avif")} type="image/avif" />
     <source srcset={withBase("/images/home/hond-home-inn-spring.webp")} type="image/webp" />
@@ -84,30 +85,65 @@ const t =
     <p>{t.lead}</p>
   </div>
 
-  <a class="house-hotspot hotspot-open-table" href={withBase(t.links.openTable)} data-tooltip={t.openTable}></a>
+  <a
+    class="house-hotspot hotspot-open-table"
+    href={withBase(t.links.openTable)}
+    data-tooltip={t.openTable}
+    aria-label={t.openTable}
+  ></a>
 
-  <a class="house-hotspot hotspot-words" href={withBase(t.links.words)} data-tooltip={t.words}></a>
+  <a
+    class="house-hotspot hotspot-words"
+    href={withBase(t.links.words)}
+    data-tooltip={t.words}
+    aria-label={t.words}
+  ></a>
 
-  <a class="house-hotspot hotspot-contact" href={withBase(t.links.contact)} data-tooltip={t.contact}></a>
+  <a
+    class="house-hotspot hotspot-contact"
+    href={withBase(t.links.contact)}
+    data-tooltip={t.contact}
+    aria-label={t.contact}
+  ></a>
 
-  <a class="house-hotspot hotspot-newsletter" href={withBase(t.links.newsletter)} data-tooltip={t.newsletter}></a>
+  <a
+    class="house-hotspot hotspot-newsletter"
+    href={withBase(t.links.newsletter)}
+    data-tooltip={t.newsletter}
+    aria-label={t.newsletter}
+  ></a>
 
-  <a class="house-hotspot hotspot-about" href={withBase(t.links.about)} data-tooltip={t.about}></a>
+  <a
+    class="house-hotspot hotspot-about"
+    href={withBase(t.links.about)}
+    data-tooltip={t.about}
+    aria-label={t.about}
+  ></a>
 
-  <a class="house-hotspot hotspot-traces" href={withBase(t.links.traces)} data-tooltip={t.traces}></a>
+  <a
+    class="house-hotspot hotspot-library hotspot-traces"
+    href={withBase(t.links.traces)}
+    data-tooltip={t.traces}
+    aria-label={t.traces}
+  ></a>
 
-  <div class="house-hotspot hotspot-meditation is-disabled" data-tooltip={`${t.meditation} · ${t.soon}`}></div>
+  <div
+    class="house-hotspot hotspot-meditation is-disabled"
+    data-tooltip={`${t.meditation} · ${t.soon}`}
+    aria-label={`${t.meditation} · ${t.soon}`}
+    aria-disabled="true"
+  ></div>
 </section>
 
 <div class="house-cursor-tooltip" aria-hidden="true"></div>
 
-<section class="home-house-links" aria-label={lang === "nl" ? "Kamers van het Huis" : "Rooms of the House"}>
+<section class="home-house-links" aria-label={t.mobileLinksLabel}>
+  <a href={withBase(t.links.about)}>{t.about}</a>
   <a href={withBase(t.links.openTable)}>{t.openTable}</a>
   <a href={withBase(t.links.words)}>{t.words}</a>
-  <a href={withBase(t.links.contact)}>{t.contact}</a>
-  <a href={withBase(t.links.newsletter)}>{t.newsletter}</a>
-  <a href={withBase(t.links.about)}>{t.about}</a>
   <a href={withBase(t.links.traces)}>{t.traces}</a>
+  <a href={withBase(t.links.newsletter)}>{t.newsletter}</a>
+  <a href={withBase(t.links.contact)}>{t.contact}</a>
   <span>{t.meditation} · {t.soon}</span>
 </section>
 
@@ -151,6 +187,7 @@ const t =
     if (!homeHouse) return;
 
     const image = homeHouse.querySelector("img");
+
     if (!image) {
       homeHouse.classList.add("is-loaded");
       return;
