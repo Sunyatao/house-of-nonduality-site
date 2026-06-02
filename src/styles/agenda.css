@@ -280,17 +280,23 @@
   }
 }
 
-/* Agenda — mobile: pin the scroll image to the bottom */
+/* Agenda — mobile: geef de rol meer hoogte */
 
 @media (max-width: 760px) {
-  .page-image-hero:has(.agenda-scroll-wrap) .page-image-hero-picture-cover .page-image-hero-image {
-    object-position: center bottom;
+  .page-image-hero:has(.agenda-scroll-wrap) {
+    min-height: 1500px !important;
+    padding-bottom: 80px;
   }
-}
 
-@media (max-width: 760px) {
-  .page-image-hero:has(.agenda-scroll-wrap) .page-image-hero-picture-cover .page-image-hero-image,
-  .page-image-hero:has(.agenda-scroll-wrap) .page-image-hero-picture-contain .page-image-hero-image {
-    object-position: center bottom;
+  .page-image-hero-body:has(.agenda-scroll-wrap) {
+    position: relative;
+    top: auto !important;
+    bottom: auto !important;
+    margin-top: 0;
+  }
+
+  .page-image-hero:has(.agenda-scroll-wrap) .page-image-hero-picture-cover .page-image-hero-image {
+    object-fit: cover;
+    object-position: center center;
   }
 }
