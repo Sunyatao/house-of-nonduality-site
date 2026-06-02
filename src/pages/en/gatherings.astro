@@ -7,30 +7,22 @@ const base = import.meta.env.BASE_URL;
 
 <BaseLayout
   title="Gatherings — The House of Nonduality"
-  description="Small gatherings around silence, contemplation, encounter, and the question of what is real."
+  description="Gatherings around silence, contemplation, text, food and encounter in Leuven."
   lang="en"
 >
   <PageImageHero
     title="Gatherings"
-    lead="Small ways of coming together around silence, contemplation, encounter, and the question of what is real."
+    lead="Recurring ways of gathering around silence, contemplation, text, food and encounter in Leuven."
     imageSrc="/images/home/hond-home-inn-spring.png"
-    imageAlt="A warm house with rooms for encounter, silence, contact, meditation and study."
-    showImageView={true}
-    imageViewLabel="View house"
-    imageInfoLabel="Show text"
+    imageAlt="A warm inn with rooms for encounter, silence, contact, meditation and study."
   >
     <section class="hero-card-grid gatherings-card-grid">
       <article class="hero-card gatherings-intro-card">
-        <h2>Living encounter</h2>
+        <h2>Ways of gathering</h2>
         <p>
-          The House of Nonduality takes shape not only through texts and digital
-          rooms, but also through living encounter: eating together, listening,
-          reading, speaking, being silent, and exploring what is real.
-        </p>
-        <p>
-          The gatherings are simple and small-scale. They require no prior
-          knowledge, belief, or spiritual identity. They are intended as open
-          spaces for slowing down, contemplation, and encounter.
+          The House of Nonduality takes shape through simple gatherings:
+          a table, a text, a silence, a conversation. Not as a fixed doctrine,
+          but as an invitation to slow down together and look more attentively.
         </p>
       </article>
 
@@ -38,23 +30,31 @@ const base = import.meta.env.BASE_URL;
         <span class="hero-card-arrow hero-card-arrow-left" aria-hidden="true">←</span>
         <h2>Open Table</h2>
         <p>
-          A simple gathering around food, silence, walking, and conversation.
-          We gather around the table, share a meal, and leave space for what
-          naturally arises.
+          A simple gathering around plant-based food, silence, a walk and
+          conversation.
         </p>
         <span class="card-link">Read more</span>
+      </a>
+
+     <a class="hero-card hero-card-agenda" href={`${base}en/calendar/`}>
+        <h2>Calendar</h2>
+        <p>
+          All upcoming gatherings in one overview, with the option to add them
+          directly to your own digital calendar.
+        </p>
+        <span class="card-link">View calendar</span>
       </a>
 
       <a class="hero-card hero-card-words" href={`${base}en/words-from-silence/`}>
         <span class="hero-card-arrow hero-card-arrow-right" aria-hidden="true">→</span>
         <h2>Words from Silence</h2>
         <p>
-          A quiet evening with poetry, short texts, silence, and reflection
-          around mysticism, contemplation, and nonduality. Not as a lecture,
-          but as a shared listening space.
+          An evening with mystical poetry and short texts, alternated with
+          silence and conversation.
         </p>
         <span class="card-link">Read more</span>
       </a>
+      
     </section>
   </PageImageHero>
 </BaseLayout>
