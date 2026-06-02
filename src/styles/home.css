@@ -167,9 +167,16 @@ html[lang="nl"] .home-house-welcome p {
 
 .hotspot-contact {
   left: 24%;
-  top: 50%;
+  top: 49%;
   width: 15.5%;
-  height: 37%;
+  height: 22%;
+}
+
+.hotspot-agenda {
+  left: 24.5%;
+  top: 72%;
+  width: 11.5%;
+  height: 18%;
 }
 
 .hotspot-newsletter {

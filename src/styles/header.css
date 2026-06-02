@@ -279,3 +279,21 @@
     gap: 6px;
   }
 }
+
+@media (max-width: 760px) {
+  .has-submenu > .nav-link {
+    display: none;
+  }
+
+  .has-submenu {
+    display: contents;
+  }
+
+  .submenu {
+    display: contents;
+  }
+
+  .submenu-link {
+    display: inline-flex;
+  }
+}

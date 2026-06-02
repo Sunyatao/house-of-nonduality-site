@@ -25,6 +25,7 @@ const t =
         about: "Over",
         openTable: "Open Tafel",
         words: "Woorden uit de Stilte",
+        agenda: "Agenda",
         contact: "Contact",
         newsletter: "Nieuwsbrief",
         traces: "Sporen van Inzicht",
@@ -34,6 +35,7 @@ const t =
           about: "/nl/over/",
           openTable: "/nl/open-tafel/",
           words: "/nl/woorden-uit-de-stilte/",
+          agenda: "/nl/agenda/",
           contact: "/nl/contact/",
           newsletter: "/nl/nieuwsbrief/",
           traces: "/nl/sporen-van-inzicht/",
@@ -48,6 +50,7 @@ const t =
         about: "About",
         openTable: "Open Table",
         words: "Words from Silence",
+        agenda: "Calendar",
         contact: "Contact",
         newsletter: "Newsletter",
         traces: "Traces of Insight",
@@ -57,6 +60,7 @@ const t =
           about: "/en/about/",
           openTable: "/en/open-table/",
           words: "/en/words-from-silence/",
+          agenda: "/en/calendar/",
           contact: "/en/contact/",
           newsletter: "/en/newsletter/",
           traces: "/en/traces-of-insight/",
@@ -97,6 +101,13 @@ const t =
     href={withBase(t.links.words)}
     data-tooltip={t.words}
     aria-label={t.words}
+  ></a>
+
+  <a
+    class="house-hotspot hotspot-agenda"
+    href={withBase(t.links.agenda)}
+    data-tooltip={t.agenda}
+    aria-label={t.agenda}
   ></a>
 
   <a
@@ -141,6 +152,7 @@ const t =
   <a href={withBase(t.links.about)}>{t.about}</a>
   <a href={withBase(t.links.openTable)}>{t.openTable}</a>
   <a href={withBase(t.links.words)}>{t.words}</a>
+  <a href={withBase(t.links.agenda)}>{t.agenda}</a>
   <a href={withBase(t.links.traces)}>{t.traces}</a>
   <a href={withBase(t.links.newsletter)}>{t.newsletter}</a>
   <a href={withBase(t.links.contact)}>{t.contact}</a>

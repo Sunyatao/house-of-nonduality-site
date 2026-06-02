@@ -1,9 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageImageHero from "../../components/PageImageHero.astro";
 import AddToCalendar from "../../components/AddToCalendar.astro";
-import { allEvents } from "../../data/events";
+import { allEvents, type CalendarEvent } from "../../data/events";
 
 const base = import.meta.env.BASE_URL;
+const targetYear = 2026;
 
 const withBase = (path: string) => {
   const cleanBase = base.endsWith("/") ? base : `${base}/`;
@@ -12,22 +14,46 @@ const withBase = (path: string) => {
   return `${cleanBase}${cleanPath}`;
 };
 
-const upcomingEvents = allEvents.slice(0, 12);
+const calendarEvents = allEvents.filter((event) =>
+  event.date.startsWith(`${targetYear}-`),
+);
 
-const formatDate = (date: string) => {
+const formatMonth = (date: string) => {
   return new Intl.DateTimeFormat("en-GB", {
-    weekday: "long",
-    day: "numeric",
     month: "long",
-    year: "numeric",
   }).format(new Date(`${date}T12:00:00`));
 };
 
-const getEventLabel = (kind: string) => {
-  if (kind === "open-table") return "Open Table";
-  if (kind === "words-from-silence") return "Words from Silence";
-  return "Gathering";
+const formatEventDate = (date: string) => {
+  return new Intl.DateTimeFormat("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "long",
+  }).format(new Date(`${date}T12:00:00`));
 };
+
+type MonthGroup = {
+  key: string;
+  label: string;
+  events: CalendarEvent[];
+};
+
+const groupedEvents: MonthGroup[] = [];
+
+for (const event of calendarEvents) {
+  const key = event.date.slice(0, 7);
+  const existingGroup = groupedEvents.find((group) => group.key === key);
+
+  if (existingGroup) {
+    existingGroup.events.push(event);
+  } else {
+    groupedEvents.push({
+      key,
+      label: formatMonth(event.date),
+      events: [event],
+    });
+  }
+}
 ---
 
 <BaseLayout
@@ -35,65 +61,51 @@ const getEventLabel = (kind: string) => {
   description="All upcoming gatherings of The House of Nonduality in one overview."
   lang="en"
 >
-  <section class="hero agenda-hero">
-    <p class="kicker">Upcoming gatherings</p>
-    <h1>Calendar</h1>
-    <p class="lead">
-      An overview of the upcoming gatherings of The House of Nonduality:
-      Open Table and Words from Silence.
-    </p>
-  </section>
+  <PageImageHero
+    kicker="Upcoming gatherings"
+    title="Calendar"
+    lead="An overview of the upcoming editions of Open Table and Words from Silence."
+    imageSrc="/images/calendar/hond_agenda_scroll.png"
+    imageAlt="A warm agenda scroll in The House of Nonduality, ready to show the upcoming gatherings."
+    showImageView={true}
+    imageViewLabel="View the scroll"
+    imageInfoLabel="Show calendar"
+  >
+    <section class="agenda-scroll-wrap">
+      <div class="agenda-scroll">
+        <header class="agenda-scroll-header">
+          <h2>
+            Calendar <span>{targetYear}</span>
+          </h2>
+        </header>
 
-  <section class="agenda-intro-section">
-    <div class="agenda-intro-grid">
-      <article class="card agenda-intro-card">
-        <h2>Everything together</h2>
-        <p>
-          Here you can find the upcoming editions of Open Table and Words from
-          Silence together in one overview.
-        </p>
-      </article>
+        <div class="agenda-months">
+          {groupedEvents.map((group) => (
+            <section class="agenda-month-block">
+              <h3>{group.label}</h3>
 
-      <article class="card agenda-intro-card">
-        <h2>In your calendar</h2>
-        <p>
-          For each gathering, you can immediately add the date to Google
-          Calendar, Apple Calendar, Outlook or another digital calendar.
-        </p>
-      </article>
+              <ul class="agenda-month-list">
+                {group.events.map((event) => (
+                  <li class="agenda-scroll-event">
+                    <a
+                      class="agenda-scroll-event-title"
+                      href={withBase(event.pagePath.en)}
+                    >
+                      {event.title.en}
+                    </a>
 
-      <article class="card agenda-intro-card">
-        <h2>Joining</h2>
-        <p>
-          Would you like to join? Click through to the gathering itself or write
-          through the contact page.
-        </p>
-      </article>
-    </div>
-  </section>
+                    <p class="agenda-scroll-event-meta">
+                      {formatEventDate(event.date)} · {event.startTime}–{event.endTime}
+                    </p>
 
-  <section class="agenda-list-section">
-    <div class="agenda-list">
-      {upcomingEvents.map((event) => (
-        <article class="card agenda-event-card">
-          <div class="agenda-event-meta">
-            <span>{formatDate(event.date)}</span>
-            <span>{event.startTime}–{event.endTime}</span>
-          </div>
-
-          <h2>{event.title.en}</h2>
-
-          <p>{event.description.en}</p>
-
-          <div class="agenda-event-actions">
-            <a class="button" href={withBase(event.pagePath.en)}>
-              More about {getEventLabel(event.kind)}
-            </a>
-
-            <AddToCalendar event={event} lang="en" />
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
+                    <AddToCalendar event={event} lang="en" />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </div>
+    </section>
+  </PageImageHero>
 </BaseLayout>
