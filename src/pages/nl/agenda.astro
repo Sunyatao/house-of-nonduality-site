@@ -1,9 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageImageHero from "../../components/PageImageHero.astro";
 import AddToCalendar from "../../components/AddToCalendar.astro";
-import { allEvents } from "../../data/events";
+import { allEvents, type CalendarEvent } from "../../data/events";
 
 const base = import.meta.env.BASE_URL;
+const targetYear = 2026;
 
 const withBase = (path: string) => {
   const cleanBase = base.endsWith("/") ? base : `${base}/`;
@@ -12,22 +14,46 @@ const withBase = (path: string) => {
   return `${cleanBase}${cleanPath}`;
 };
 
-const upcomingEvents = allEvents.slice(0, 12);
+const agendaEvents = allEvents.filter((event) =>
+  event.date.startsWith(`${targetYear}-`),
+);
 
-const formatDate = (date: string) => {
+const formatMonth = (date: string) => {
   return new Intl.DateTimeFormat("nl-BE", {
-    weekday: "long",
-    day: "numeric",
     month: "long",
-    year: "numeric",
   }).format(new Date(`${date}T12:00:00`));
 };
 
-const getEventLabel = (kind: string) => {
-  if (kind === "open-table") return "Open Tafel";
-  if (kind === "words-from-silence") return "Woorden uit de Stilte";
-  return "Bijeenkomst";
+const formatEventDate = (date: string) => {
+  return new Intl.DateTimeFormat("nl-BE", {
+    weekday: "short",
+    day: "numeric",
+    month: "long",
+  }).format(new Date(`${date}T12:00:00`));
 };
+
+type MonthGroup = {
+  key: string;
+  label: string;
+  events: CalendarEvent[];
+};
+
+const groupedEvents: MonthGroup[] = [];
+
+for (const event of agendaEvents) {
+  const key = event.date.slice(0, 7);
+  const existingGroup = groupedEvents.find((group) => group.key === key);
+
+  if (existingGroup) {
+    existingGroup.events.push(event);
+  } else {
+    groupedEvents.push({
+      key,
+      label: formatMonth(event.date),
+      events: [event],
+    });
+  }
+}
 ---
 
 <BaseLayout
@@ -35,65 +61,51 @@ const getEventLabel = (kind: string) => {
   description="Alle komende bijeenkomsten van Het Huis van Nondualiteit in één overzicht."
   lang="nl"
 >
-  <section class="hero agenda-hero">
-    <p class="kicker">Komende bijeenkomsten</p>
-    <h1>Agenda</h1>
-    <p class="lead">
-      Een overzicht van de komende bijeenkomsten van Het Huis van Nondualiteit:
-      Open Tafel en Woorden uit de Stilte.
-    </p>
-  </section>
+  <PageImageHero
+    kicker="Komende bijeenkomsten"
+    title="Agenda"
+    lead="Een overzicht van de komende edities van Open Tafel en Woorden uit de Stilte."
+    imageSrc="/images/calendar/hond_agenda_scroll.png"
+    imageAlt="Een warme agenda-rol in het Huis van Nondualiteit, klaar om de komende bijeenkomsten te tonen."
+    showImageView={true}
+    imageViewLabel="Bekijk de rol"
+    imageInfoLabel="Toon agenda"
+  >
+    <section class="agenda-scroll-wrap">
+      <div class="agenda-scroll">
+        <header class="agenda-scroll-header">
+          <h2>
+            Agenda <span>{targetYear}</span>
+          </h2>
+        </header>
 
-  <section class="agenda-intro-section">
-    <div class="agenda-intro-grid">
-      <article class="card agenda-intro-card">
-        <h2>Alles samen</h2>
-        <p>
-          Hier vind je de komende edities van Open Tafel en Woorden uit de
-          Stilte samen in één overzicht.
-        </p>
-      </article>
+        <div class="agenda-months">
+          {groupedEvents.map((group) => (
+            <section class="agenda-month-block">
+              <h3>{group.label}</h3>
 
-      <article class="card agenda-intro-card">
-        <h2>In je agenda</h2>
-        <p>
-          Bij elke bijeenkomst kan je de datum meteen toevoegen aan Google
-          Calendar, Apple Calendar, Outlook of een andere digitale agenda.
-        </p>
-      </article>
+              <ul class="agenda-month-list">
+                {group.events.map((event) => (
+                  <li class="agenda-scroll-event">
+                    <a
+                      class="agenda-scroll-event-title"
+                      href={withBase(event.pagePath.nl)}
+                    >
+                      {event.title.nl}
+                    </a>
 
-      <article class="card agenda-intro-card">
-        <h2>Meedoen</h2>
-        <p>
-          Wil je deelnemen? Klik door naar de bijeenkomst zelf of schrijf via de
-          contactpagina.
-        </p>
-      </article>
-    </div>
-  </section>
+                    <p class="agenda-scroll-event-meta">
+                      {formatEventDate(event.date)} · {event.startTime}–{event.endTime}
+                    </p>
 
-  <section class="agenda-list-section">
-    <div class="agenda-list">
-      {upcomingEvents.map((event) => (
-        <article class="card agenda-event-card">
-          <div class="agenda-event-meta">
-            <span>{formatDate(event.date)}</span>
-            <span>{event.startTime}–{event.endTime}</span>
-          </div>
-
-          <h2>{event.title.nl}</h2>
-
-          <p>{event.description.nl}</p>
-
-          <div class="agenda-event-actions">
-            <a class="button" href={withBase(event.pagePath.nl)}>
-              Meer info over {getEventLabel(event.kind)}
-            </a>
-
-            <AddToCalendar event={event} lang="nl" />
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
+                    <AddToCalendar event={event} lang="nl" />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </div>
+    </section>
+  </PageImageHero>
 </BaseLayout>

@@ -1,95 +1,291 @@
-/* Agenda page */
+/* Agenda */
 
-.agenda-hero {
-  padding-bottom: 58px;
+.page-image-hero:has(.agenda-scroll-wrap) {
+  min-height: 1640px;
 }
 
-.agenda-intro-section {
-  max-width: 980px;
-  width: calc(100% - 48px);
-  margin: 48px auto 0;
+/* Hero-title hoger zetten en laten verdwijnen */
+.page-image-hero:has(.agenda-scroll-wrap) .page-image-hero-content {
+  top: 2.2%;
+  animation: agendaHeroTitleFade 4.8s ease 0.8s forwards !important;
 }
 
-.agenda-intro-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+.page-image-hero:has(.agenda-scroll-wrap) .page-image-hero-lead {
+  max-width: 500px;
 }
 
-.agenda-intro-card {
-  text-align: center;
+/* Overlay op de rol */
+.page-image-hero-body:has(.agenda-scroll-wrap) {
+  top: 292px;
+  bottom: auto;
+  width: min(520px, 39vw);
 }
 
-.agenda-intro-card h2 {
-  text-align: center;
-  font-size: clamp(1.35rem, 1.65vw, 1.65rem) !important;
+.agenda-scroll-wrap {
+  width: 100%;
 }
 
-.agenda-intro-card p {
-  text-align: center;
-  font-size: 1.14rem !important;
-  line-height: 1.34 !important;
-}
-
-.agenda-list-section {
-  max-width: 880px;
-  width: calc(100% - 48px);
-  margin: 48px auto 90px;
-}
-
-.agenda-list {
-  display: grid;
-  gap: 18px;
-}
-
-.agenda-event-card {
-  display: grid;
-  gap: 12px;
-}
-
-.agenda-event-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 14px;
-  color: var(--color-accent);
+.agenda-scroll {
+  color: rgba(58, 38, 21, 0.9);
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+}
+
+.agenda-scroll-header {
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.agenda-scroll-header h2 {
+  margin: 0;
+  color: rgba(72, 45, 22, 0.94);
+  font-family: var(--font-serif);
+  font-size: clamp(2.05rem, 3vw, 3rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+.agenda-scroll-header h2 span {
+  display: inline-block;
+  margin-left: 0.22em;
+  color: rgba(126, 83, 42, 0.76);
+  font-size: 0.72em;
   letter-spacing: 0.02em;
 }
 
-.agenda-event-card h2 {
-  margin-bottom: 0;
+/* Maanden duidelijk gescheiden, maar compact */
+.agenda-months {
+  display: grid;
+  gap: 20px;
 }
 
-.agenda-event-actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 6px;
+.agenda-month-block {
+  position: relative;
+  padding-top: 17px;
 }
 
-@media (max-width: 900px) {
-  .agenda-intro-grid {
-    grid-template-columns: 1fr;
+.agenda-month-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 13%;
+  right: 13%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(104, 68, 36, 0.3),
+    transparent
+  );
+}
+
+.agenda-month-block:first-child {
+  padding-top: 0;
+}
+
+.agenda-month-block:first-child::before {
+  display: none;
+}
+
+.agenda-month-block h3 {
+  margin: 0 0 10px;
+  color: rgba(92, 60, 29, 0.88);
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-weight: 500;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Twee rustige kolommen op de rol */
+.agenda-month-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.agenda-scroll-event {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  z-index: 1;
+}
+
+.agenda-scroll-event-title {
+  display: inline-block;
+  color: rgba(58, 38, 21, 0.94);
+  font-family: var(--font-serif);
+  font-size: 1.03rem;
+  line-height: 1.16;
+  text-align: center;
+  text-decoration: none;
+}
+
+.agenda-scroll-event-title:hover {
+  color: var(--color-accent);
+}
+
+.agenda-scroll-event-meta {
+  margin: 0;
+  color: rgba(88, 58, 31, 0.76);
+  font-size: 0.84rem;
+  line-height: 1.22;
+  text-align: center;
+}
+
+.agenda-scroll-event .add-to-calendar {
+  justify-self: center;
+  margin-top: 2px;
+}
+
+.agenda-scroll-event .add-to-calendar-summary {
+  padding: 0;
+  color: rgba(101, 68, 36, 0.82);
+  font-size: 0.76rem;
+  line-height: 1.12;
+  text-align: center;
+  box-shadow: none;
+}
+
+.agenda-scroll-event .add-to-calendar-summary:hover {
+  color: var(--color-accent);
+}
+
+.agenda-scroll-event .add-to-calendar-menu {
+  min-width: 176px;
+}
+
+.agenda-scroll-event:has(.add-to-calendar-details[open]) {
+  z-index: 50;
+}
+
+/* Rechterkolom-menu iets meer naar rechts uitlijnen */
+.agenda-scroll-event:nth-child(2n) .add-to-calendar-menu {
+  left: auto;
+  right: 0;
+}
+
+/* Onderste maand-menu omhoog laten openen */
+.agenda-month-block:last-child .agenda-scroll-event .add-to-calendar-menu {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+
+@keyframes agendaHeroTitleFade {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  36% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-12px);
   }
 }
 
 @media (max-width: 760px) {
-  .agenda-intro-section,
-  .agenda-list-section {
-    width: calc(100% - 32px);
+  .page-image-hero:has(.agenda-scroll-wrap) {
+    min-height: 0 !important;
   }
 
-  .agenda-intro-section {
-    margin-top: 36px;
+  .page-image-hero:has(.agenda-scroll-wrap) .page-image-hero-content {
+    top: auto;
+    animation: agendaHeroTitleFadeMobile 4.8s ease 0.8s forwards !important;
   }
 
-  .agenda-list-section {
-    margin-top: 36px;
+  .page-image-hero-body:has(.agenda-scroll-wrap) {
+    width: min(430px, calc(100% - 30px)) !important;
   }
 
-  .agenda-event-actions {
-    align-items: flex-start;
+  .agenda-scroll-header {
+    margin-bottom: 20px;
+  }
+
+  .agenda-scroll-header h2 {
+    font-size: clamp(1.95rem, 9vw, 2.6rem);
+  }
+
+  .agenda-months {
+    gap: 17px;
+  }
+
+  .agenda-month-block {
+    padding-top: 15px;
+  }
+
+  .agenda-month-block h3 {
+    margin-bottom: 9px;
+    font-size: 0.98rem;
+  }
+
+  .agenda-month-list {
+    gap: 14px;
+  }
+
+  .agenda-scroll-event {
+    min-height: 0;
+    padding: 0;
+  }
+
+  .agenda-scroll-event-title {
+    font-size: 0.9rem;
+  }
+
+  .agenda-scroll-event-meta {
+    font-size: 0.76rem;
+  }
+
+  .agenda-scroll-event .add-to-calendar-summary {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .agenda-month-list {
+    grid-template-columns: 1fr;
+  }
+
+  .agenda-scroll-event {
+    min-height: 0;
+  }
+}
+
+@keyframes agendaHeroTitleFadeMobile {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  36% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
   }
 }
