@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageImageHero from "../../components/PageImageHero.astro";
+import AddToCalendar from "../../components/AddToCalendar.astro";
+import { visibleWordsFromSilenceEvents } from "../../data/events";
 
 const base = import.meta.env.BASE_URL;
 
@@ -11,42 +13,14 @@ const withBase = (path: string) => {
   return `${cleanBase}${cleanPath}`;
 };
 
-const monthNamesNl = [
-  "januari",
-  "februari",
-  "maart",
-  "april",
-  "mei",
-  "juni",
-  "juli",
-  "augustus",
-  "september",
-  "oktober",
-  "november",
-  "december",
-];
-
-const getThirdTuesday = (year: number, month: number) => {
-  const firstDay = new Date(year, month, 1);
-  const firstTuesdayOffset = (2 - firstDay.getDay() + 7) % 7;
-  return new Date(year, month, 1 + firstTuesdayOffset + 14);
+const formatDate = (date: string) => {
+  return new Intl.DateTimeFormat("nl-BE", {
+    day: "numeric",
+    month: "long",
+  }).format(new Date(`${date}T12:00:00`));
 };
 
-const today = new Date();
-
-const upcomingDates = Array.from({ length: 18 }, (_, index) => {
-  const month = today.getMonth() + index;
-  const year = today.getFullYear() + Math.floor(month / 12);
-  const normalizedMonth = month % 12;
-
-  return getThirdTuesday(year, normalizedMonth);
-})
-  .filter((date) => date >= today)
-  .slice(0, 8);
-
-const dates = upcomingDates.map((date) => {
-  return `${date.getDate()} ${monthNamesNl[date.getMonth()]} ${date.getFullYear()}`;
-});
+const upcomingEvents = visibleWordsFromSilenceEvents.slice(0, 4);
 ---
 
 <BaseLayout
@@ -68,10 +42,10 @@ const dates = upcomingDates.map((date) => {
       <article class="hero-card words-hero-card hero-card-large">
         <h2>Wat is het?</h2>
         <p>
-          <em>Woorden uit de Stilte</em> is een rustige avond in Leuven met
-          poëzie, korte teksten, stilte en reflectie rond mystiek, contemplatie
-          en nondualiteit. Geen klassieke poëzieavond, maar een gezamenlijke
-          luisterruimte waarin woorden kunnen wijzen naar stilte.
+          <em>Woorden uit de Stilte</em> is een van de lokale bijeenkomsten van
+          Het Huis van Nondualiteit: een rustige avond in Leuven met poëzie,
+          korte teksten, stilte en reflectie rond mystiek, contemplatie en
+          nondualiteit.
         </p>
       </article>
 
@@ -88,9 +62,8 @@ const dates = upcomingDates.map((date) => {
         <h2>Wat mag je verwachten?</h2>
         <p>
           De avond bestaat uit een eenvoudige afwisseling van tekst, stilte en
-          gesprek. We luisteren, laten de woorden bezinken, en delen waar iets
-          resoneert — zonder discussie te moeten voeren of tot een conclusie te
-          komen.
+          gesprek. Soms is er een korte toelichting, soms een korte uitwisseling,
+          soms vooral stilte.
         </p>
       </article>
 
@@ -107,8 +80,15 @@ const dates = upcomingDates.map((date) => {
 
       <article class="hero-card words-hero-card words-compact-card">
         <h2>Komende data</h2>
-        <ul class="detail-meta-list words-date-list">
-          {dates.map((date) => <li>{date}</li>)}
+        <ul class="detail-meta-list event-date-list">
+          {upcomingEvents.map((event) => (
+            <li class="event-date-item">
+              <span class="event-date-main">
+                {formatDate(event.date)} · {event.startTime}–{event.endTime}
+              </span>
+              <AddToCalendar event={event} lang="nl" />
+            </li>
+          ))}
         </ul>
       </article>
 

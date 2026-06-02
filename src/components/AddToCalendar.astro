@@ -1,0 +1,78 @@
+---
+import type { CalendarEvent, Lang } from "../data/events";
+import {
+  createGoogleCalendarUrl,
+  createIcsDataUri,
+  createIcsFilename,
+} from "../utils/calendarLinks";
+
+interface Props {
+  event: CalendarEvent;
+  lang: Lang;
+}
+
+const { event, lang } = Astro.props;
+
+const googleUrl = createGoogleCalendarUrl(event, lang);
+const icsDataUri = createIcsDataUri(event, lang);
+const icsFilename = createIcsFilename(event, lang);
+
+const labels =
+  lang === "nl"
+    ? {
+        add: "Zet in je agenda",
+        google: "Google Calendar",
+        ics: "Apple / Outlook (.ics)",
+      }
+    : {
+        add: "Add to calendar",
+        google: "Google Calendar",
+        ics: "Apple / Outlook (.ics)",
+      };
+---
+
+<div class="add-to-calendar">
+  <details class="add-to-calendar-details">
+    <summary class="button add-to-calendar-summary">
+      {labels.add}
+    </summary>
+
+    <div class="add-to-calendar-menu">
+      <a href={googleUrl} target="_blank" rel="noopener noreferrer">
+        {labels.google}
+      </a>
+
+      <a href={icsDataUri} download={icsFilename}>
+        {labels.ics}
+      </a>
+    </div>
+  </details>
+</div>
+
+<script is:inline>
+  if (!window.__addToCalendarCloseHandlerInitialized) {
+    window.__addToCalendarCloseHandlerInitialized = true;
+
+    document.addEventListener("click", function (event) {
+      const target = event.target;
+
+      document
+        .querySelectorAll(".add-to-calendar-details[open]")
+        .forEach(function (details) {
+          if (!details.contains(target)) {
+            details.removeAttribute("open");
+          }
+        });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape") return;
+
+      document
+        .querySelectorAll(".add-to-calendar-details[open]")
+        .forEach(function (details) {
+          details.removeAttribute("open");
+        });
+    });
+  }
+</script>

@@ -1,5 +1,7 @@
 ---
 import PageImageHero from "./PageImageHero.astro";
+import AddToCalendar from "./AddToCalendar.astro";
+import { visibleOpenTableEvents } from "../data/events";
 
 interface Props {
   lang: "nl" | "en";
@@ -16,142 +18,80 @@ const withBase = (path: string) => {
   return `${cleanBase}${cleanPath}`;
 };
 
-const monthNames =
-  lang === "nl"
-    ? [
-        "januari",
-        "februari",
-        "maart",
-        "april",
-        "mei",
-        "juni",
-        "juli",
-        "augustus",
-        "september",
-        "oktober",
-        "november",
-        "december",
-      ]
-    : [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ];
-
-const getFirstSunday = (year: number, month: number) => {
-  const firstDay = new Date(year, month, 1);
-  const firstSundayOffset = (0 - firstDay.getDay() + 7) % 7;
-
-  return new Date(year, month, 1 + firstSundayOffset);
+const formatDate = (date: string) => {
+  return new Intl.DateTimeFormat(lang === "nl" ? "nl-BE" : "en-GB", {
+    day: "numeric",
+    month: "long",
+  }).format(new Date(`${date}T12:00:00`));
 };
 
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-
-const upcomingOpenTableDates = Array.from({ length: 18 }, (_, index) => {
-  const month = today.getMonth() + index;
-  const year = today.getFullYear() + Math.floor(month / 12);
-  const normalizedMonth = month % 12;
-
-  return getFirstSunday(year, normalizedMonth);
-})
-  .filter((date) => date >= today)
-  .slice(0, 6);
-
-const openTableDates = upcomingOpenTableDates.map((date) => {
-  if (lang === "nl") {
-    return `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`;
-  }
-
-  return `${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
-});
+const upcomingEvents = visibleOpenTableEvents.slice(0, 4);
 
 const t =
   lang === "nl"
     ? {
         kicker: "Elke eerste zondag · Leuven",
         title: "Open Tafel",
-        lead: "Een eenvoudige ontmoeting rond eten, stilte, wandeling en gesprek.",
+        lead: "Een eenvoudige ontmoeting rond plantaardig eten, stilte, gesprek en samen-zijn.",
         viewRoom: "Bekijk de kamer",
         showInfo: "Toon info",
         imageAlt:
           "Een warme houten eetkamer met een lange tafel, open deuren naar het landschap en een inkomhal links.",
-
         introTitle: "Samen eten, samen vertragen",
         intro:
-          "Open Tafel is een kleinschalige bijeenkomst in Leuven rond een eenvoudige maaltijd. Een warme tafel waar ruimte is voor aanwezigheid, vertraging en ontmoeting.",
-
+          "Open Tafel is een kleinschalige bijeenkomst in Leuven rond een eenvoudige plantaardige maaltijd. We eten samen, laten ruimte voor stilte en gesprek, en lezen eventueel een korte filosofische of contemplatieve tekst.",
+        rhythmTitle: "Hoe verloopt het?",
+        rhythm:
+          "We beginnen met aankomen en eten. Afhankelijk van het moment kan er ruimte zijn voor een wandeling, stilte of een korte tekst. De sfeer is informeel: geen prestatie, geen verplichting, geen vaste doctrine.",
+        forWhomTitle: "Voor wie?",
+        forWhom:
+          "Voor wie graag op een rustige manier mensen ontmoet rond zingeving, stilte, filosofie, spiritualiteit of gewoon een goed gesprek. Je hoeft geen ervaring met meditatie, nondualiteit of filosofie te hebben.",
         practicalTitle: "Praktisch",
         practical: [
           "Elke eerste zondag van de maand",
+          "12:00–16:00",
           "Leuven — adres na inschrijving",
-          "Plantaardige, seizoensgebonden maaltijd",
-          "Kleine groep",
+          "Plantaardige maaltijd",
           "Bijdrage naar draagkracht",
         ],
-
-        rhythmTitle: "Hoe verloopt het?",
-        rhythm:
-          "We komen aan, nemen plaats en eten samen. Nadien lezen we een korte filosofische of contemplatieve tekst en maken we, afhankelijk van het weer, een wandeling in het groen. De sfeer is informeel: geen prestatie, geen verplichting, geen vaste doctrine.",
-
-        forWhomTitle: "Voor wie?",
-        forWhom:
-          "Voor wie verlangt naar rust, ontmoeting, verdieping of gewoon een warme tafel zonder veel moeten. Je hoeft geen ervaring met meditatie, nondualiteit of filosofie te hebben.",
-
         datesTitle: "Komende data",
-
         ctaTitle: "Wil je aansluiten?",
         cta:
-          "Stuur een bericht via de contactpagina en vermeld dat je interesse hebt in Open Tafel, voor welke datum je wil inschrijven en met hoeveel personen je komt.",
-        ctaLink: withBase("/nl/contact/"),
-        ctaLabel: "Inschrijven via contact",
+          "Stuur gerust een bericht via de contactpagina. Vermeld dat je interesse hebt in Open Tafel en met hoeveel personen je zou willen komen.",
+        ctaLink: "/nl/contact/",
+        ctaLabel: "Neem contact op",
       }
     : {
         kicker: "Every first Sunday · Leuven",
         title: "Open Table",
-        lead: "A simple gathering around food, silence, walking, and conversation.",
+        lead: "A simple gathering around plant-based food, silence, conversation and presence.",
         viewRoom: "View the room",
         showInfo: "Show info",
         imageAlt:
           "A warm wooden dining room with a long table, open doors to the landscape and an entrance hall on the left.",
-
         introTitle: "Eating together, slowing down together",
         intro:
-          "Open Table is a small gathering in Leuven around a simple meal. A warm table with room for presence, slowing down, and encounter.",
-
+          "Open Table is a small gathering in Leuven around a simple plant-based meal. We eat together, leave room for silence and conversation, and may read a short philosophical or contemplative text.",
+        rhythmTitle: "How does it unfold?",
+        rhythm:
+          "We begin by arriving and eating together. Depending on the moment, there may be space for a walk, silence or a short text. The atmosphere is informal: no performance, no obligation, no fixed doctrine.",
+        forWhomTitle: "For whom?",
+        forWhom:
+          "For anyone who would like to meet others in a quiet way around meaning, silence, philosophy, spirituality or simply a good conversation. No experience with meditation, nonduality or philosophy is needed.",
         practicalTitle: "Practical",
         practical: [
           "Every first Sunday of the month",
+          "12:00–16:00",
           "Leuven — address after registration",
-          "Plant-based, seasonal meal",
-          "Small group",
-          "Contribution according to means",
+          "Plant-based meal",
+          "Contribution according to capacity",
         ],
-
-        rhythmTitle: "How does it unfold?",
-        rhythm:
-          "We arrive, take a seat, and eat together. Afterwards, we read a short philosophical or contemplative text and, depending on the weather, take a walk in the green. The atmosphere is informal: no performance, no obligation, no fixed doctrine.",
-
-        forWhomTitle: "For whom?",
-        forWhom:
-          "For anyone who longs for quiet, encounter, depth, or simply a warm table without too much having to. No experience with meditation, nonduality, or philosophy is needed.",
-
         datesTitle: "Upcoming dates",
-
         ctaTitle: "Would you like to join?",
         cta:
-          "Send a message through the contact page and mention that you are interested in Open Table, which date you would like to register for, and how many people will come.",
-        ctaLink: withBase("/en/contact/"),
-        ctaLabel: "Register through contact",
+          "Feel free to send a message through the contact page. Mention that you are interested in Open Table and how many people would like to come.",
+        ctaLink: "/en/contact/",
+        ctaLabel: "Get in touch",
       };
 ---
 
@@ -166,41 +106,50 @@ const t =
     imageViewLabel={t.viewRoom}
     imageInfoLabel={t.showInfo}
   >
-<section class="hero-card-grid open-table-hero-grid open-table-all-cards">
-  <article class="hero-card open-table-hero-card hero-card-large">
-    <h2>{t.introTitle}</h2>
-    <p>{t.intro}</p>
-  </article>
+    <section class="hero-card-grid open-table-hero-grid open-table-all-cards">
+      <article class="hero-card open-table-hero-card hero-card-large">
+        <h2>{t.introTitle}</h2>
+        <p>{t.intro}</p>
+      </article>
 
-  <article class="hero-card open-table-hero-card">
-    <h2>{t.rhythmTitle}</h2>
-    <p>{t.rhythm}</p>
-  </article>
+      <article class="hero-card open-table-hero-card">
+        <h2>{t.rhythmTitle}</h2>
+        <p>{t.rhythm}</p>
+      </article>
 
-  <article class="hero-card open-table-hero-card">
-    <h2>{t.forWhomTitle}</h2>
-    <p>{t.forWhom}</p>
-  </article>
+      <article class="hero-card open-table-hero-card">
+        <h2>{t.forWhomTitle}</h2>
+        <p>{t.forWhom}</p>
+      </article>
 
-  <article class="hero-card open-table-hero-card">
-    <h2>{t.practicalTitle}</h2>
-    <ul class="detail-meta-list">
-      {t.practical.map((item) => <li>{item}</li>)}
-    </ul>
-  </article>
+      <article class="hero-card open-table-hero-card">
+        <h2>{t.practicalTitle}</h2>
+        <ul class="detail-meta-list">
+          {t.practical.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
 
-  <article class="hero-card open-table-hero-card open-table-dates-card">
-    <h2>{t.datesTitle}</h2>
-    <ul class="detail-meta-list open-table-date-list">
-      {openTableDates.map((date) => <li>{date}</li>)}
-    </ul>
-  </article>
+      <article class="hero-card open-table-hero-card">
+        <h2>{t.datesTitle}</h2>
+        <ul class="detail-meta-list event-date-list">
+          {upcomingEvents.map((event) => (
+            <li class="event-date-item">
+              <span class="event-date-main">
+                {formatDate(event.date)} · {event.startTime}–{event.endTime}
+              </span>
+              <AddToCalendar event={event} lang={lang} />
+            </li>
+          ))}
+        </ul>
+      </article>
 
-  <article class="hero-card open-table-hero-card hero-card-callout">
-    <h2>{t.ctaTitle}</h2>
-    <p>{t.cta}</p>
-    <a class="button primary" href={t.ctaLink}>{t.ctaLabel}</a>
-  </article>
-</section>
+      <article class="hero-card open-table-hero-card hero-card-callout">
+        <h2>{t.ctaTitle}</h2>
+        <p>{t.cta}</p>
+        <a class="button primary" href={withBase(t.ctaLink)}>
+          {t.ctaLabel}
+        </a>
+      </article>
+    </section>
   </PageImageHero>
 </section>
