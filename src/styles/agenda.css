@@ -279,3 +279,18 @@
     transform: translateY(-8px);
   }
 }
+
+/* Agenda — mobile: pin the scroll image to the bottom */
+
+@media (max-width: 760px) {
+  .page-image-hero:has(.agenda-scroll-wrap) .page-image-hero-picture-cover .page-image-hero-image {
+    object-position: center bottom;
+  }
+}
+
+@media (max-width: 760px) {
+  .page-image-hero:has(.agenda-scroll-wrap) .page-image-hero-picture-cover .page-image-hero-image,
+  .page-image-hero:has(.agenda-scroll-wrap) .page-image-hero-picture-contain .page-image-hero-image {
+    object-position: center bottom;
+  }
+}
