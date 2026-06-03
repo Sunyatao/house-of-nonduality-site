@@ -7,6 +7,7 @@ interface Props {
   description?: string;
   lang?: "nl" | "en";
   hideHeader?: boolean;
+  image?: string;
 }
 
 const {
@@ -14,6 +15,7 @@ const {
   description = "",
   lang = "nl",
   hideHeader = false,
+  image = "/images/home/hond-home-inn-spring.png",
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
@@ -26,6 +28,60 @@ const withBase = (path: string) => {
 };
 
 const privacyPath = lang === "nl" ? "/nl/privacy/" : "/en/privacy/";
+
+const siteUrl = "https://houseofnonduality.com";
+
+const currentPath = Astro.url.pathname.replace(base, "/");
+
+const canonicalUrl = new URL(currentPath, siteUrl).toString();
+
+const imageUrl = new URL(withBase(image), siteUrl).toString();
+
+const locale = lang === "nl" ? "nl_BE" : "en_GB";
+const alternateLocale = lang === "nl" ? "en_GB" : "nl_BE";
+
+const languagePairs: Record<string, string> = {
+  "/nl/": "/en/",
+  "/en/": "/nl/",
+
+  "/nl/over/": "/en/about/",
+  "/en/about/": "/nl/over/",
+
+  "/nl/bijeenkomsten/": "/en/gatherings/",
+  "/en/gatherings/": "/nl/bijeenkomsten/",
+
+  "/nl/open-tafel/": "/en/open-table/",
+  "/en/open-table/": "/nl/open-tafel/",
+
+  "/nl/woorden-uit-de-stilte/": "/en/words-from-silence/",
+  "/en/words-from-silence/": "/nl/woorden-uit-de-stilte/",
+
+  "/nl/agenda/": "/en/calendar/",
+  "/en/calendar/": "/nl/agenda/",
+
+  "/nl/inschrijven/": "/en/register/",
+  "/en/register/": "/nl/inschrijven/",
+
+  "/nl/sporen-van-inzicht/": "/en/traces-of-insight/",
+  "/en/traces-of-insight/": "/nl/sporen-van-inzicht/",
+
+  "/nl/nieuwsbrief/": "/en/newsletter/",
+  "/en/newsletter/": "/nl/nieuwsbrief/",
+
+  "/nl/contact/": "/en/contact/",
+  "/en/contact/": "/nl/contact/",
+
+  "/nl/privacy/": "/en/privacy/",
+  "/en/privacy/": "/nl/privacy/",
+};
+
+const alternatePath = languagePairs[currentPath];
+
+const nlPath = lang === "nl" ? currentPath : alternatePath;
+const enPath = lang === "en" ? currentPath : alternatePath;
+
+const nlUrl = nlPath ? new URL(nlPath, siteUrl).toString() : undefined;
+const enUrl = enPath ? new URL(enPath, siteUrl).toString() : undefined;
 ---
 
 <!doctype html>
@@ -34,52 +90,72 @@ const privacyPath = lang === "nl" ? "/nl/privacy/" : "/en/privacy/";
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="canonical" href={canonicalUrl} />
+
+    {nlUrl && <link rel="alternate" hreflang="nl-BE" href={nlUrl} />}
+    {enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
+    {nlUrl && <link rel="alternate" hreflang="x-default" href={nlUrl} />}
+
     <link rel="icon" href={`${base}favicon.ico`} />
+
     <title>{title}</title>
-  
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The House of Nonduality" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:locale" content={locale} />
+    <meta property="og:locale:alternate" content={alternateLocale} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap"
-  rel="stylesheet"
-/>
-    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
     <style is:inline>
-  
-  .site-header {
-    padding: 24px 0 10px;
-  }
+      .site-header {
+        padding: 24px 0 10px;
+      }
 
-  .home-house {
-    margin: 12px auto 80px;
-  }
+      .home-house {
+        margin: 12px auto 80px;
+      }
 
-  .page-image-hero {
-    margin: 12px auto 72px;
-  }
+      .page-image-hero {
+        margin: 12px auto 72px;
+      }
 
-  .hero-card,
-  .about-scene .about-panel {
-    opacity: 0;
-  }
+      .hero-card,
+      .about-scene .about-panel {
+        opacity: 0;
+      }
 
-  @media (max-width: 760px) {
-    .site-header {
-      padding-top: 18px;
-      padding-bottom: 6px;
-    }
+      @media (max-width: 760px) {
+        .site-header {
+          padding-top: 18px;
+          padding-bottom: 6px;
+        }
 
-    .home-house {
-      margin-top: 8px;
-      margin-bottom: 56px;
-    }
+        .home-house {
+          margin-top: 8px;
+          margin-bottom: 56px;
+        }
 
-    .page-image-hero {
-      margin: 8px auto 56px;
-    }
-  }
-</style>
-  
+        .page-image-hero {
+          margin: 8px auto 56px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -90,16 +166,16 @@ const privacyPath = lang === "nl" ? "/nl/privacy/" : "/en/privacy/";
         <slot />
       </main>
 
-     <footer class="site-footer">
-  <p>© House of Nonduality</p>
+      <footer class="site-footer">
+        <p>© House of Nonduality</p>
 
-  <nav
-    class="site-footer-nav"
-    aria-label={lang === "nl" ? "Footer navigatie" : "Footer navigation"}
-  >
-    <a href={withBase(privacyPath)}>Privacy</a>
-  </nav>
-</footer>
+        <nav
+          class="site-footer-nav"
+          aria-label={lang === "nl" ? "Footer navigatie" : "Footer navigation"}
+        >
+          <a href={withBase(privacyPath)}>Privacy</a>
+        </nav>
+      </footer>
     </div>
   </body>
 </html>
