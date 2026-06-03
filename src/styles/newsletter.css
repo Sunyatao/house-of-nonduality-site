@@ -70,7 +70,7 @@
 
 .newsletter-privacy-note {
   grid-column: 1 / -1;
-  max-width: 620px;
+  max-width: 750px;
   margin: 2px auto 0;
   color: rgba(29, 49, 73, 0.72);
   font-size: 0.78rem;
