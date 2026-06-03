@@ -127,12 +127,18 @@ const formatEventOption = (event: CalendarEvent) => {
         />
 
         <button class="button primary contact-submit-button" type="submit">
-          Inschrijving versturen
-        </button>
+  Inschrijving versturen
+</button>
 
-        <p class="contact-direct-note">
-          Je inschrijving is pas bevestigd wanneer je een antwoord hebt ontvangen.
-        </p>
+<p class="contact-direct-note">
+  Je inschrijving is pas bevestigd wanneer je een antwoord hebt ontvangen.
+</p>
+
+<p class="form-privacy-note">
+  Door dit formulier te verzenden, ga je ermee akkoord dat je gegevens gebruikt
+  worden om je inschrijving op te volgen. Lees meer in de
+  <a href={withBase("/nl/privacy/")}>privacyverklaring</a>.
+</p>
       </form>
     </section>
   </PageImageHero>

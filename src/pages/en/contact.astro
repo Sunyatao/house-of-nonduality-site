@@ -69,15 +69,21 @@ const withBase = (path: string) => {
         />
 
         <button class="button primary contact-submit-button" type="submit">
-          Send
-        </button>
+  Send
+</button>
 
-        <p class="contact-direct-note">
-          Or write directly to
-          <a href="mailto:contact@houseofnonduality.com">
-            contact@houseofnonduality.com
-          </a>
-        </p>
+<p class="contact-direct-note">
+  Or write directly to
+  <a href="mailto:contact@houseofnonduality.com">
+    contact@houseofnonduality.com
+  </a>
+</p>
+
+<p class="form-privacy-note">
+  By submitting this form, you agree that your information may be used to reply
+  to your message. Read more in the
+  <a href={withBase("/en/privacy/")}>privacy notice</a>.
+</p>
       </form>
     </section>
   </PageImageHero>

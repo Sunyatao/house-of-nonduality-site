@@ -127,12 +127,18 @@ const formatEventOption = (event: CalendarEvent) => {
         />
 
         <button class="button primary contact-submit-button" type="submit">
-          Send registration
-        </button>
+  Send registration
+</button>
 
-        <p class="contact-direct-note">
-          Your registration is only confirmed once you have received a reply.
-        </p>
+<p class="contact-direct-note">
+  Your registration is only confirmed once you have received a reply.
+</p>
+
+<p class="form-privacy-note">
+  By submitting this form, you agree that your information may be used to follow
+  up on your registration. Read more in the
+  <a href={withBase("/en/privacy/")}>privacy notice</a>.
+</p>
       </form>
     </section>
   </PageImageHero>

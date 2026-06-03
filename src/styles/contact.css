@@ -88,7 +88,7 @@
 /* Registration form */
 
 .page-image-hero:has(.registration-paper-form-wrap) {
-  min-height: 1250px;
+  min-height: 1300px;
 }
 
 .page-image-hero-body:has(.registration-paper-form-wrap) {
@@ -212,6 +212,27 @@
   .thank-you-bilingual {
     grid-template-columns: 1fr;
   }
+}
+
+/* Form privacy note */
+
+.form-privacy-note {
+  margin: 2px 0 0;
+  color: rgba(54, 36, 20, 0.58);
+  font-family: var(--font-serif);
+  font-size: 0.74rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.form-privacy-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.form-privacy-note a:hover {
+  color: var(--color-accent);
 }
 
 @media (max-width: 760px) {
