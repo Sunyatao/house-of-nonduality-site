@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageImageHero from "../components/PageImageHero.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const withBase = (path: string) => {
+  const cleanBase = base.endsWith("/") ? base : `${base}/`;
+  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+
+  return `${cleanBase}${cleanPath}`;
+};
+---
+
+<BaseLayout
+  title="Bedankt / Thank you — The House of Nonduality"
+  description="Bedankt voor je bericht of inschrijving. Thank you for your message or registration."
+  lang="nl"
+  hideHeader={true}
+>
+  <PageImageHero
+    kicker="Ontvangen · Received"
+    title="Bedankt"
+    lead="Je bericht of inschrijving is goed aangekomen. Your message or registration has been received."
+    imageSrc="/images/contact/hond-contact-writing-desk.png"
+    imageAlt="Een schrijftafel met een brief, pen, kopje en duif in Het Huis van Nondualiteit."
+    showImageView={true}
+    imageViewLabel="Bekijk de tafel"
+    imageInfoLabel="Toon tekst"
+  >
+    <section class="thank-you-bilingual">
+      <article class="hero-card thank-you-card">
+        <h2>Bedankt</h2>
+
+        <p>
+          Je bericht of inschrijving is goed aangekomen. Als je je hebt
+          ingeschreven voor een bijeenkomst, is je inschrijving pas bevestigd
+          wanneer je een antwoord per mail hebt ontvangen.
+        </p>
+
+        <div class="hero-card-actions">
+          <a class="button primary" href={withBase("/nl/agenda/")}>
+            Terug naar de agenda
+          </a>
+
+          <a class="button" href={withBase("/nl/")}>
+            Naar de homepage
+          </a>
+        </div>
+      </article>
+
+      <article class="hero-card thank-you-card">
+        <h2>Thank you</h2>
+
+        <p>
+          Your message or registration has been received. If you registered for
+          a gathering, your registration is only confirmed once you have received
+          a reply by email.
+        </p>
+
+        <div class="hero-card-actions">
+          <a class="button primary" href={withBase("/en/calendar/")}>
+            Back to the calendar
+          </a>
+
+          <a class="button" href={withBase("/en/")}>
+            Go to the homepage
+          </a>
+        </div>
+      </article>
+    </section>
+  </PageImageHero>
+</BaseLayout>

@@ -2,6 +2,16 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageImageHero from "../../components/PageImageHero.astro";
 import { allEvents, type CalendarEvent } from "../../data/events";
+import FormspreeAjax from "../../components/FormspreeAjax.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const withBase = (path: string) => {
+  const cleanBase = base.endsWith("/") ? base : `${base}/`;
+  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+
+  return `${cleanBase}${cleanPath}`;
+};
 
 const targetYear = 2026;
 
@@ -41,7 +51,13 @@ const formatEventOption = (event: CalendarEvent) => {
         class="contact-paper-form registration-paper-form"
         action="https://formspree.io/f/xzdwoede"
         method="post"
-      >
+        data-formspree-ajax
+        data-success-url={withBase("/bedankt/")}
+        data-required-checkbox-name="gatherings"
+        data-checkbox-error="Duid minstens één bijeenkomst aan."
+        data-loading-label="Inschrijving versturen..."
+        data-error-label="Er ging iets mis. Probeer het opnieuw of schrijf rechtstreeks naar contact@houseofnonduality.com."
+        >
         <label>
           <span>Naam *</span>
           <input type="text" name="name" autocomplete="name" required />
@@ -118,21 +134,5 @@ const formatEventOption = (event: CalendarEvent) => {
       </form>
     </section>
   </PageImageHero>
-<script is:inline>
-  const registrationForm = document.querySelector(".registration-paper-form");
-
-  if (registrationForm) {
-    registrationForm.addEventListener("submit", function (event) {
-      const checkedGatherings = registrationForm.querySelectorAll(
-        'input[name="gatherings"]:checked'
-      );
-
-      if (checkedGatherings.length === 0) {
-        event.preventDefault();
-        alert("Duid minstens één bijeenkomst aan.");
-      }
-    });
-  }
-</script>
-
+<FormspreeAjax />
 </BaseLayout>

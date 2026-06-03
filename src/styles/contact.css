@@ -169,6 +169,57 @@
   line-height: 1.3;
 }
 
+/* Bilingual thank-you page */
+
+.page-image-hero:has(.thank-you-bilingual) {
+  min-height: 820px;
+}
+
+.page-image-hero-body:has(.thank-you-bilingual) {
+  top: 330px;
+  bottom: auto;
+  width: min(860px, 72vw);
+}
+
+.thank-you-bilingual {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.thank-you-card {
+  text-align: center;
+}
+
+.thank-you-card h2,
+.thank-you-card p {
+  text-align: center;
+}
+
+.thank-you-card .hero-card-actions {
+  justify-content: center;
+}
+
+@media (max-width: 760px) {
+  .page-image-hero:has(.thank-you-bilingual) {
+    min-height: 0 !important;
+  }
+
+  .page-image-hero-body:has(.thank-you-bilingual) {
+    width: min(430px, calc(100% - 48px)) !important;
+  }
+
+  .thank-you-bilingual {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .page-image-hero-body:has(.thank-you-card) {
+    width: min(430px, calc(100% - 48px)) !important;
+  }
+}
+
 @media (max-width: 760px) {
   .page-image-hero-body:has(.registration-paper-form-wrap) {
     width: min(390px, calc(100% - 48px)) !important;

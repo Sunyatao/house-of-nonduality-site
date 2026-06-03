@@ -1,0 +1,82 @@
+<script is:inline>
+  (() => {
+    const forms = document.querySelectorAll("form[data-formspree-ajax]");
+
+    forms.forEach((formElement) => {
+      const form = formElement;
+
+      if (!(form instanceof HTMLFormElement)) return;
+
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const requiredCheckboxName = form.dataset.requiredCheckboxName;
+
+        if (requiredCheckboxName) {
+          const checkedBoxes = form.querySelectorAll(
+            `input[name="${requiredCheckboxName}"]:checked`
+          );
+
+          if (checkedBoxes.length === 0) {
+            alert(
+              form.dataset.checkboxError ||
+                "Please select at least one option."
+            );
+            return;
+          }
+        }
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton?.textContent || "";
+        const loadingLabel = form.dataset.loadingLabel || "Sending...";
+        const errorLabel =
+          form.dataset.errorLabel ||
+          "Something went wrong. Please try again.";
+
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = true;
+          submitButton.textContent = loadingLabel;
+        }
+
+        const formData = new FormData(form);
+
+        if (requiredCheckboxName) {
+          const selectedCheckboxes = form.querySelectorAll(
+            `input[name="${requiredCheckboxName}"]:checked`
+          );
+
+          const selectedValues = Array.from(selectedCheckboxes)
+            .filter((checkbox) => checkbox instanceof HTMLInputElement)
+            .map((checkbox) => checkbox.value);
+
+          formData.delete(requiredCheckboxName);
+          formData.append(requiredCheckboxName, selectedValues.join("\n"));
+        }
+
+        try {
+          const response = await fetch(form.action, {
+            method: form.method || "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json",
+            },
+          });
+
+          if (response.ok) {
+            window.location.href = form.dataset.successUrl || "/";
+            return;
+          }
+
+          alert(errorLabel);
+        } catch (error) {
+          alert(errorLabel);
+        } finally {
+          if (submitButton instanceof HTMLButtonElement) {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+          }
+        }
+      });
+    });
+  })();
+</script>
