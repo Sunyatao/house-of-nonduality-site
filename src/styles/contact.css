@@ -267,7 +267,7 @@
 
   /* INSCHRIJVEN: langer formulier, dus meer ruimte nodig */
   .page-image-hero:has(.registration-paper-form-wrap) {
-    min-height: 1450px !important;
+    min-height: 1350px !important;
     padding-bottom: 72px;
   }
 
