@@ -102,6 +102,13 @@
 @media (max-width: 760px) {
   .page-image-hero:has(.not-found-wall-text) {
     min-height: 0 !important;
+    padding: 360px 16px 42px;
+  }
+
+  .page-image-hero:has(.not-found-wall-text)
+    .page-image-hero-picture-cover
+    .page-image-hero-image {
+    object-position: 62% center;
   }
 
   .page-image-hero-body:has(.not-found-wall-text) {
@@ -109,13 +116,19 @@
     top: auto !important;
     bottom: auto !important;
     left: auto;
-    width: min(360px, calc(100% - 44px)) !important;
-    margin: 120px auto 0;
+    width: min(390px, 100%) !important;
+    margin: 0 auto;
     transform: none;
   }
 
   .not-found-wall-text {
-    gap: 22px;
+    gap: 20px;
+    padding: 22px 20px;
+    border: 1px solid rgba(180, 122, 50, 0.2);
+    border-radius: 22px;
+    background: rgba(255, 252, 245, 0.72);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 18px 56px rgba(29, 49, 73, 0.12);
   }
 
   .not-found-wall-text h1 {
