@@ -246,3 +246,35 @@
     width: min(390px, calc(100% - 48px)) !important;
   }
 }
+
+/* Contact + registration — mobile fit refinement */
+
+@media (max-width: 760px) {
+  .page-image-hero:has(.contact-paper-form-wrap),
+  .page-image-hero:has(.registration-paper-form-wrap) {
+    min-height: 1120px !important;
+    padding-bottom: 76px;
+  }
+
+  .page-image-hero-body:has(.contact-paper-form-wrap),
+  .page-image-hero-body:has(.registration-paper-form-wrap) {
+    position: relative;
+    top: auto !important;
+    bottom: auto !important;
+    width: min(390px, calc(100% - 48px)) !important;
+    margin: 0 auto;
+  }
+
+  .contact-paper-form textarea {
+    min-height: 165px;
+  }
+
+  .registration-paper-form textarea {
+    min-height: 110px;
+  }
+
+  .form-privacy-note {
+    font-size: 0.68rem;
+    line-height: 1.3;
+  }
+}
