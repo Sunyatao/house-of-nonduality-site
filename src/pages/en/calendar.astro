@@ -64,7 +64,7 @@ for (const event of calendarEvents) {
   <PageImageHero
     kicker="Upcoming gatherings"
     title="Calendar"
-    lead="An overview of the upcoming editions of Open Table and Words from Silence."
+    lead="An overview of the gatherings of The House of Nonduality."
     imageSrc="/images/calendar/hond_agenda_scroll.png"
     imageAlt="A warm agenda scroll in The House of Nonduality, ready to show the upcoming gatherings."
     showImageView={true}
@@ -74,10 +74,14 @@ for (const event of calendarEvents) {
     <section class="agenda-scroll-wrap">
       <div class="agenda-scroll">
         <header class="agenda-scroll-header">
-          <h2>
-            Calendar <span>{targetYear}</span>
-          </h2>
-        </header>
+  <h2>
+    Calendar <span>{targetYear}</span>
+  </h2>
+
+  <a class="agenda-registration-link" href={withBase("/en/register/")}>
+    Register for one or more gatherings
+  </a>
+</header>
 
         <div class="agenda-months">
           {groupedEvents.map((group) => (

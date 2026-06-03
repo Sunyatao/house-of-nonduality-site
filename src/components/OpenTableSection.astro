@@ -32,17 +32,17 @@ const t =
     ? {
         kicker: "Elke eerste zondag · Leuven",
         title: "Open Tafel",
-        lead: "Een eenvoudige ontmoeting rond plantaardig eten, stilte, gesprek en samen-zijn.",
+        lead: "Een eenvoudige ontmoeting rond eten, gesprek, contemplatie en samenzijn.",
         viewRoom: "Bekijk de kamer",
         showInfo: "Toon info",
         imageAlt:
           "Een warme houten eetkamer met een lange tafel, open deuren naar het landschap en een inkomhal links.",
         introTitle: "Samen eten, samen vertragen",
         intro:
-          "Open Tafel is een kleinschalige bijeenkomst in Leuven rond een eenvoudige plantaardige maaltijd. We eten samen, laten ruimte voor stilte en gesprek, en lezen eventueel een korte filosofische of contemplatieve tekst.",
+          "Open Tafel is een kleinschalige bijeenkomst in Leuven rond een eenvoudige maaltijd. We eten samen, er is ruimte voor zowel gesprek als stilte, en er wordt een korte filosofische of contemplatieve tekst voorgelezen. Tot slot maken we eventueel een kleine wandeling in het groen, als het weer dat toelaat.",
         rhythmTitle: "Hoe verloopt het?",
         rhythm:
-          "We beginnen met aankomen en eten. Afhankelijk van het moment kan er ruimte zijn voor een wandeling, stilte of een korte tekst. De sfeer is informeel: geen prestatie, geen verplichting, geen vaste doctrine.",
+          "We beginnen rustig, met tijd om aan te komen en elkaar te ontmoeten. Daarna eten we samen aan tafel. Later op de middag lezen we een korte tekst en laten we ruimte voor wat daaruit ontstaat: stilte, gesprek of eenvoudige reflectie. Als het weer het toelaat, sluiten we af met een korte wandeling in het groen.",
         forWhomTitle: "Voor wie?",
         forWhom:
           "Voor wie graag op een rustige manier mensen ontmoet rond zingeving, stilte, filosofie, spiritualiteit of gewoon een goed gesprek. Je hoeft geen ervaring met meditatie, nondualiteit of filosofie te hebben.",
@@ -51,30 +51,31 @@ const t =
           "Elke eerste zondag van de maand",
           "12:00–16:00",
           "Leuven — adres na inschrijving",
-          "Plantaardige maaltijd",
           "Bijdrage naar draagkracht",
         ],
         datesTitle: "Komende data",
         ctaTitle: "Wil je aansluiten?",
         cta:
           "Stuur gerust een bericht via de contactpagina. Vermeld dat je interesse hebt in Open Tafel en met hoeveel personen je zou willen komen.",
-        ctaLink: "/nl/contact/",
-        ctaLabel: "Neem contact op",
+        ctaLink: "/nl/inschrijven/",
+        ctaLabel: "Inschrijven",
+        newsletterLink: "/nl/nieuwsbrief/",
+        newsletterLabel: "Nieuwsbrief",
       }
     : {
         kicker: "Every first Sunday · Leuven",
         title: "Open Table",
-        lead: "A simple gathering around plant-based food, silence, conversation and presence.",
+        lead: "A simple gathering around food, conversation, contemplation and presence.",
         viewRoom: "View the room",
         showInfo: "Show info",
         imageAlt:
           "A warm wooden dining room with a long table, open doors to the landscape and an entrance hall on the left.",
         introTitle: "Eating together, slowing down together",
         intro:
-          "Open Table is a small gathering in Leuven around a simple plant-based meal. We eat together, leave room for silence and conversation, and may read a short philosophical or contemplative text.",
+          "Open Table is a small-scale gathering in Leuven around a simple meal. We eat together, there is room for both conversation and silence, and a short philosophical or contemplative text is read aloud. To close, we may take a short walk in the green, if the weather allows.",
         rhythmTitle: "How does it unfold?",
         rhythm:
-          "We begin by arriving and eating together. Depending on the moment, there may be space for a walk, silence or a short text. The atmosphere is informal: no performance, no obligation, no fixed doctrine.",
+          "We begin quietly, with time to arrive and meet one another. Then we share a meal around the table. Later in the afternoon, we read a short text and make space for whatever it opens: silence, conversation or simple reflection. If the weather allows, we close with a short walk in the green.",
         forWhomTitle: "For whom?",
         forWhom:
           "For anyone who would like to meet others in a quiet way around meaning, silence, philosophy, spirituality or simply a good conversation. No experience with meditation, nonduality or philosophy is needed.",
@@ -83,15 +84,16 @@ const t =
           "Every first Sunday of the month",
           "12:00–16:00",
           "Leuven — address after registration",
-          "Plant-based meal",
           "Contribution according to capacity",
         ],
         datesTitle: "Upcoming dates",
         ctaTitle: "Would you like to join?",
         cta:
           "Feel free to send a message through the contact page. Mention that you are interested in Open Table and how many people would like to come.",
-        ctaLink: "/en/contact/",
-        ctaLabel: "Get in touch",
+        ctaLink: "/en/register/",
+        ctaLabel: "Register",
+        newsletterLink: "/en/newsletter/",
+        newsletterLabel: "Newsletter",
       };
 ---
 
@@ -144,12 +146,17 @@ const t =
       </article>
 
       <article class="hero-card open-table-hero-card hero-card-callout">
-        <h2>{t.ctaTitle}</h2>
-        <p>{t.cta}</p>
-        <a class="button primary" href={withBase(t.ctaLink)}>
-          {t.ctaLabel}
-        </a>
-      </article>
+  <h2>{t.ctaTitle}</h2>
+  <p>{t.cta}</p>
+  <div class="hero-card-actions">
+    <a class="button primary" href={withBase(t.ctaLink)}>
+      {t.ctaLabel}
+    </a>
+    <a class="button" href={withBase(t.newsletterLink)}>
+      {t.newsletterLabel}
+    </a>
+  </div>
+</article>
     </section>
   </PageImageHero>
 </section>

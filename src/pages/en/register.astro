@@ -1,0 +1,137 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageImageHero from "../../components/PageImageHero.astro";
+import { allEvents, type CalendarEvent } from "../../data/events";
+
+const targetYear = 2026;
+
+const registrationEvents = allEvents.filter((event) =>
+  event.date.startsWith(`${targetYear}-`),
+);
+
+const formatEventOption = (event: CalendarEvent) => {
+  const date = new Intl.DateTimeFormat("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(`${event.date}T12:00:00`));
+
+  return `${event.title.en} — ${date} · ${event.startTime}–${event.endTime}`;
+};
+---
+
+<BaseLayout
+  title="Register — The House of Nonduality"
+  description="Register for a gathering of The House of Nonduality in Leuven."
+  lang="en"
+>
+  <PageImageHero
+    kicker="Welcome"
+    title="Register"
+    lead="Would you like to join a gathering? Fill in your details below. I will confirm your registration by email afterwards."
+    imageSrc="/images/contact/hond-contact-writing-desk.png"
+    imageAlt="A writing desk with a blank letter, pen, cup and dove in The House of Nonduality."
+    showImageView={true}
+    imageViewLabel="View the table"
+    imageInfoLabel="Show form"
+  >
+    <section class="contact-paper-form-wrap registration-paper-form-wrap">
+      <form
+        class="contact-paper-form registration-paper-form"
+        action="https://formspree.io/f/xzdwoede"
+        method="post"
+      >
+        <label>
+          <span>Name *</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+
+        <label>
+          <span>Email address *</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+
+        <fieldset class="registration-checkbox-group">
+  <legend>Gatherings *</legend>
+
+  <div class="registration-checkbox-list">
+    {registrationEvents.map((event) => (
+      <label class="registration-checkbox-item">
+        <input
+          type="checkbox"
+          name="gatherings"
+          value={formatEventOption(event)}
+        />
+        <span>{formatEventOption(event)}</span>
+      </label>
+    ))}
+  </div>
+
+  <p class="registration-checkbox-note">
+    You can select one or more gatherings.
+  </p>
+</fieldset>
+
+        <label>
+          <span>Number of people *</span>
+          <input
+            type="number"
+            name="number_of_people"
+            min="1"
+            max="10"
+            value="1"
+            required
+          />
+        </label>
+
+        <label>
+          <span>Message or note</span>
+          <textarea
+            name="message"
+            rows="4"
+            placeholder="You can leave a note here if needed."
+          ></textarea>
+        </label>
+
+        <input
+          type="hidden"
+          name="subject"
+          value="New registration through The House of Nonduality"
+        />
+
+        <input
+          type="text"
+          name="_gotcha"
+          tabindex="-1"
+          autocomplete="off"
+          style="position: absolute; left: -5000px;"
+        />
+
+        <button class="button primary contact-submit-button" type="submit">
+          Send registration
+        </button>
+
+        <p class="contact-direct-note">
+          Your registration is only confirmed once you have received a reply.
+        </p>
+      </form>
+    </section>
+  </PageImageHero>
+  <script is:inline>
+  const registrationForm = document.querySelector(".registration-paper-form");
+
+  if (registrationForm) {
+    registrationForm.addEventListener("submit", function (event) {
+      const checkedGatherings = registrationForm.querySelectorAll(
+        'input[name="gatherings"]:checked'
+      );
+
+      if (checkedGatherings.length === 0) {
+        event.preventDefault();
+        alert("Please select at least one gathering.");
+      }
+    });
+  }
+</script>
+</BaseLayout>

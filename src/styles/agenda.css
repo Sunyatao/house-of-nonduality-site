@@ -53,6 +53,29 @@
   letter-spacing: 0.02em;
 }
 
+.agenda-registration-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 9px;
+  padding: 5px 12px;
+  border: 1px solid rgba(126, 83, 42, 0.26);
+  border-radius: 999px;
+  color: rgba(72, 45, 22, 0.86);
+  background: rgba(255, 248, 233, 0.18);
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  line-height: 1.15;
+  text-align: center;
+  text-decoration: none;
+}
+
+.agenda-registration-link:hover {
+  color: var(--color-accent);
+  border-color: rgba(180, 122, 50, 0.4);
+  background: rgba(255, 248, 233, 0.28);
+}
+
 /* Maanden duidelijk gescheiden, maar compact */
 .agenda-months {
   display: grid;
@@ -298,5 +321,13 @@
   .page-image-hero:has(.agenda-scroll-wrap) .page-image-hero-picture-cover .page-image-hero-image {
     object-fit: cover;
     object-position: center center;
+  }
+}
+
+@media (max-width: 760px) {
+  .agenda-registration-link {
+    margin-top: 7px;
+    padding: 4px 10px;
+    font-size: 0.72rem;
   }
 }

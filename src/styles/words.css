@@ -98,7 +98,7 @@
 }
 
 .page-image-hero:has(.words-all-cards) {
-  min-height: 1080px;
+  min-height: 1220px;
 }
 
 .page-image-hero-body:has(.words-all-cards) {
@@ -106,6 +106,62 @@
   bottom: auto;
   width: min(980px, 86%);
 }
+
+/* Words from Silence — compactere praktische lijsten */
+
+.words-all-cards .detail-meta-list {
+  gap: 4px;
+}
+
+.words-all-cards .detail-meta-list li {
+  line-height: 1.32;
+}
+
+.words-all-cards .detail-meta-list li + li {
+  margin-top: 0;
+}
+
+.words-all-cards .event-date-list {
+  gap: 5px;
+}
+
+.words-all-cards .event-date-item {
+  gap: 5px 10px;
+  line-height: 1.3;
+}
+
+/* Compacte lijsten — betere bullet-uitlijning */
+
+.open-table-all-cards .detail-meta-list,
+.open-table-all-cards .event-date-list,
+.words-all-cards .detail-meta-list,
+.words-all-cards .event-date-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.open-table-all-cards .detail-meta-list li,
+.open-table-all-cards .event-date-list li,
+.words-all-cards .detail-meta-list li,
+.words-all-cards .event-date-list li {
+  position: relative;
+  padding-left: 1.05em;
+}
+
+.open-table-all-cards .detail-meta-list li::before,
+.open-table-all-cards .event-date-list li::before,
+.words-all-cards .detail-meta-list li::before,
+.words-all-cards .event-date-list li::before {
+  content: "☉";
+  position: absolute;
+  left: 0;
+  top: 1.0em;
+  transform: translateY(-50%);
+  color: rgba(180, 122, 50, 0.72);
+  font-size: 0.82em;
+  line-height: 1;
+}
+
 
 /* Words from Silence — mobile */
 

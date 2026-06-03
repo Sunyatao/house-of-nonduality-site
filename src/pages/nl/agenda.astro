@@ -64,7 +64,7 @@ for (const event of agendaEvents) {
   <PageImageHero
     kicker="Komende bijeenkomsten"
     title="Agenda"
-    lead="Een overzicht van de komende edities van Open Tafel en Woorden uit de Stilte."
+    lead="Een overzicht van de bijeenkomsten van Het Huis van Nondualiteit."
     imageSrc="/images/calendar/hond_agenda_scroll.png"
     imageAlt="Een warme agenda-rol in het Huis van Nondualiteit, klaar om de komende bijeenkomsten te tonen."
     showImageView={true}
@@ -74,10 +74,14 @@ for (const event of agendaEvents) {
     <section class="agenda-scroll-wrap">
       <div class="agenda-scroll">
         <header class="agenda-scroll-header">
-          <h2>
-            Agenda <span>{targetYear}</span>
-          </h2>
-        </header>
+  <h2>
+    Agenda <span>{targetYear}</span>
+  </h2>
+
+  <a class="agenda-registration-link" href={withBase("/nl/inschrijven/")}>
+    Inschrijven voor één of meerdere bijeenkomsten
+  </a>
+</header>
 
         <div class="agenda-months">
           {groupedEvents.map((group) => (

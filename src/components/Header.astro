@@ -45,6 +45,7 @@ const nav =
             "/nl/open-tafel/",
             "/nl/woorden-uit-de-stilte/",
             "/nl/agenda/",
+            "/nl/inschrijven/",
           ],
           children: [
             {
@@ -61,6 +62,11 @@ const nav =
               href: "/nl/agenda/",
               label: "Agenda",
               matches: ["/nl/agenda/"],
+            },
+            {
+              href: "/nl/inschrijven/",
+              label: "Inschrijven",
+              matches: ["/nl/inschrijven/"],
             },
           ],
         },
@@ -87,6 +93,7 @@ const nav =
             "/en/open-table/",
             "/en/words-from-silence/",
             "/en/calendar/",
+            "/en/register/",
           ],
           children: [
             {
@@ -103,6 +110,11 @@ const nav =
               href: "/en/calendar/",
               label: "Calendar",
               matches: ["/en/calendar/"],
+            },
+            {
+              href: "/en/register/",
+              label: "Register",
+              matches: ["/en/register/"],
             },
           ],
         },
@@ -138,6 +150,8 @@ const languagePairs: Record<string, string> = {
   "/en/newsletter/": "/nl/nieuwsbrief/",
   "/nl/contact/": "/en/contact/",
   "/en/contact/": "/nl/contact/",
+  "/nl/inschrijven/": "/en/register/",
+  "/en/register/": "/nl/inschrijven/",
 };
 
 const switchToOtherLanguage =
