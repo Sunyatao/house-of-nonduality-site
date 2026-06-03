@@ -8,11 +8,13 @@
 @import "./gatherings.css";
 @import "./open-table.css";
 @import "./words.css";
+@import "./traces.css";
 @import "./newsletter.css";
 @import "./contact.css";
 @import "./privacy.css";
+@import "./not-found.css";
 @import "./mobile.css";
-@import "./traces.css";
+
 
 /* Footer */
 

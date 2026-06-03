@@ -1,0 +1,136 @@
+/* 404 page */
+
+.page-image-hero:has(.not-found-wall-text) {
+  min-height: 760px;
+}
+
+/* Verberg de standaard PageImageHero-titel,
+   zodat de tekst rechtstreeks op de muur komt. */
+.page-image-hero:has(.not-found-wall-text) .page-image-hero-content {
+  display: none;
+}
+
+.page-image-hero:has(.not-found-wall-text)::after {
+  background:
+    radial-gradient(
+      ellipse at 34% 32%,
+      rgba(255, 252, 245, 0.2),
+      rgba(255, 252, 245, 0.06) 38%,
+      transparent 62%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(21, 55, 92, 0.03),
+      rgba(21, 55, 92, 0.01) 50%,
+      rgba(21, 55, 92, 0.07)
+    );
+}
+
+/* Plaats tekst compact op de muur links naast de deur */
+.page-image-hero-body:has(.not-found-wall-text) {
+  top: 150px;
+  bottom: auto;
+  left: 25.5%;
+  width: min(350px, 24vw);
+  transform: none;
+}
+
+.not-found-wall-text {
+  display: grid;
+  gap: 18px;
+  color: rgba(56, 37, 21, 0.9);
+  font-family: var(--font-serif);
+}
+
+.not-found-kicker {
+  margin: 0 0 8px;
+  color: rgba(150, 96, 45, 0.74);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.68rem;
+}
+
+.not-found-wall-text h1 {
+  margin: 0;
+  color: rgba(58, 38, 21, 0.96);
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 2.8vw, 2.95rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-shadow:
+    0 1px 12px rgba(255, 252, 245, 0.55),
+    0 12px 42px rgba(85, 49, 22, 0.08);
+}
+
+.not-found-wall-text h2 {
+  margin: 0;
+  color: rgba(58, 38, 21, 0.88);
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 1.7vw, 1.65rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.not-found-wall-text p {
+  max-width: 310px;
+  margin: 8px 0 0;
+  color: rgba(58, 38, 21, 0.74);
+  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+  line-height: 1.36;
+  text-shadow: 0 1px 10px rgba(255, 252, 245, 0.42);
+}
+
+.not-found-language-block-secondary {
+  padding-top: 15px;
+  border-top: 1px solid rgba(108, 74, 41, 0.14);
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.not-found-actions .button {
+  padding: 7px 12px;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 760px) {
+  .page-image-hero:has(.not-found-wall-text) {
+    min-height: 0 !important;
+  }
+
+  .page-image-hero-body:has(.not-found-wall-text) {
+    position: relative;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto;
+    width: min(360px, calc(100% - 44px)) !important;
+    margin: 120px auto 0;
+    transform: none;
+  }
+
+  .not-found-wall-text {
+    gap: 22px;
+  }
+
+  .not-found-wall-text h1 {
+    font-size: clamp(1.95rem, 9vw, 2.8rem);
+  }
+
+  .not-found-wall-text h2 {
+    font-size: clamp(1.35rem, 6vw, 1.9rem);
+  }
+
+  .not-found-wall-text p {
+    max-width: 100%;
+  }
+
+  .not-found-actions {
+    gap: 8px;
+  }
+}
