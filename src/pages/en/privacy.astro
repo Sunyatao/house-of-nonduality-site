@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const withBase = (path: string) => {
+  const cleanBase = base.endsWith("/") ? base : `${base}/`;
+  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+
+  return `${cleanBase}${cleanPath}`;
+};
+---
+
+<BaseLayout
+  title="Privacy — The House of Nonduality"
+  description="How The House of Nonduality handles personal data shared through the website."
+  lang="en"
+>
+  <section class="privacy-page">
+    <div class="privacy-card">
+      <p class="kicker">Data & privacy</p>
+
+      <h1>Privacy</h1>
+
+      <p class="lead">
+        When you contact The House of Nonduality or register for a gathering
+        through this website, you share a small amount of personal information.
+        Below you can read how that information is handled.
+      </p>
+
+      <section>
+        <h2>What information is collected?</h2>
+        <p>
+          Through the forms on this website, the following information may be
+          received: your name, email address, message, selected gathering or
+          gatherings, number of people and any notes you choose to include.
+        </p>
+      </section>
+
+      <section>
+        <h2>What is this information used for?</h2>
+        <p>
+          This information is only used to reply to your message, follow up on
+          your registration, send practical information about a gathering or
+          contact you when needed.
+        </p>
+      </section>
+
+      <section>
+        <h2>Forms</h2>
+        <p>
+          The forms on this website are technically processed through Formspree.
+          This means that the information you submit through a form is also
+          processed by Formspree in order to deliver the message.
+        </p>
+      </section>
+
+      <section>
+        <h2>Newsletter</h2>
+        <p>
+          When you subscribe to the newsletter, your email address is used to
+          send you news and updates from The House of Nonduality. You can
+          unsubscribe at any time through the link at the bottom of the
+          newsletter.
+        </p>
+      </section>
+
+      <section>
+        <h2>Is information shared?</h2>
+        <p>
+          Your information is not sold or shared with third parties for
+          commercial purposes. It is only used for the functioning of The House
+          of Nonduality and communication around gatherings.
+        </p>
+      </section>
+
+      <section>
+        <h2>How long is information kept?</h2>
+        <p>
+          Information is not kept longer than necessary for the communication,
+          registration or practical follow-up for which it was shared.
+        </p>
+      </section>
+
+      <section>
+        <h2>Requesting changes or deletion</h2>
+        <p>
+          If you would like to view, correct or delete your information, you can
+          write to
+          <a href="mailto:contact@houseofnonduality.com">
+            contact@houseofnonduality.com
+          </a>.
+        </p>
+      </section>
+
+      <div class="privacy-actions">
+        <a class="button primary" href={withBase("/en/contact/")}>
+          Contact
+        </a>
+
+        <a class="button" href={withBase("/en/")}>
+          Back to home
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,108 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+
+const withBase = (path: string) => {
+  const cleanBase = base.endsWith("/") ? base : `${base}/`;
+  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+
+  return `${cleanBase}${cleanPath}`;
+};
+---
+
+<BaseLayout
+  title="Privacy — Het Huis van Nondualiteit"
+  description="Hoe Het Huis van Nondualiteit omgaat met persoonsgegevens die via de website worden gedeeld."
+  lang="nl"
+>
+  <section class="privacy-page">
+    <div class="privacy-card">
+      <p class="kicker">Gegevens & privacy</p>
+
+      <h1>Privacy</h1>
+
+      <p class="lead">
+        Wanneer je via deze website contact opneemt of je inschrijft voor een
+        bijeenkomst, deel je enkele persoonsgegevens. Hieronder lees je kort hoe
+        daarmee wordt omgegaan.
+      </p>
+
+      <section>
+        <h2>Welke gegevens worden verzameld?</h2>
+        <p>
+          Via de formulieren op deze website kunnen de volgende gegevens worden
+          ontvangen: je naam, e-mailadres, bericht, gekozen bijeenkomst of
+          bijeenkomsten, aantal personen en eventuele opmerkingen die je zelf
+          invult.
+        </p>
+      </section>
+
+      <section>
+        <h2>Waarvoor worden deze gegevens gebruikt?</h2>
+        <p>
+          Deze gegevens worden alleen gebruikt om je bericht te beantwoorden, je
+          inschrijving op te volgen, praktische informatie over een bijeenkomst
+          te sturen of contact met je op te nemen wanneer dat nodig is.
+        </p>
+      </section>
+
+      <section>
+        <h2>Formulieren</h2>
+        <p>
+          De formulieren op deze website worden technisch verwerkt via Formspree.
+          Dat betekent dat de gegevens die je via een formulier verstuurt ook
+          door Formspree worden verwerkt om het bericht te kunnen afleveren.
+        </p>
+      </section>
+
+      <section>
+        <h2>Nieuwsbrief</h2>
+        <p>
+          Wanneer je je inschrijft voor de nieuwsbrief, wordt je e-mailadres
+          gebruikt om je nieuws en updates van Het Huis van Nondualiteit te
+          sturen. Je kan je op elk moment weer uitschrijven via de link onderaan
+          de nieuwsbrief.
+        </p>
+      </section>
+
+      <section>
+        <h2>Worden gegevens gedeeld?</h2>
+        <p>
+          Je gegevens worden niet verkocht of gedeeld met derden voor commerciële
+          doeleinden. Ze worden alleen gebruikt voor de werking van Het Huis van
+          Nondualiteit en de communicatie rond bijeenkomsten.
+        </p>
+      </section>
+
+      <section>
+        <h2>Bewaartermijn</h2>
+        <p>
+          Gegevens worden niet langer bewaard dan nodig is voor de communicatie,
+          inschrijving of praktische opvolging waarvoor ze werden gedeeld.
+        </p>
+      </section>
+
+      <section>
+        <h2>Je gegevens laten aanpassen of verwijderen</h2>
+        <p>
+          Wil je je gegevens inkijken, corrigeren of laten verwijderen? Stuur dan
+          een bericht naar
+          <a href="mailto:contact@houseofnonduality.com">
+            contact@houseofnonduality.com
+          </a>.
+        </p>
+      </section>
+
+      <div class="privacy-actions">
+        <a class="button primary" href={withBase("/nl/contact/")}>
+          Contact
+        </a>
+
+        <a class="button" href={withBase("/nl/")}>
+          Terug naar home
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
