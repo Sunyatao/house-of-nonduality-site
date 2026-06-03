@@ -247,17 +247,32 @@
   }
 }
 
-/* Contact + registration — mobile fit refinement */
+/* Contact + registration — mobile fit refinement, separated */
 
 @media (max-width: 760px) {
-  .page-image-hero:has(.contact-paper-form-wrap),
-  .page-image-hero:has(.registration-paper-form-wrap) {
-    min-height: 1200px !important;
-    padding-bottom: 76px;
+  /* CONTACT: gewone contactpagina, niet de inschrijfpagina */
+  .page-image-hero:has(.contact-paper-form-wrap):not(:has(.registration-paper-form-wrap)) {
+    min-height: 980px !important;
+    padding-bottom: 48px;
   }
 
-  .page-image-hero-body:has(.contact-paper-form-wrap),
-  .page-image-hero-body:has(.registration-paper-form-wrap) {
+  .page-image-hero:has(.contact-paper-form-wrap):not(:has(.registration-paper-form-wrap))
+    .page-image-hero-body:has(.contact-paper-form-wrap) {
+    position: relative;
+    top: auto !important;
+    bottom: auto !important;
+    width: min(390px, calc(100% - 48px)) !important;
+    margin: 0 auto;
+  }
+
+  /* INSCHRIJVEN: langer formulier, dus meer ruimte nodig */
+  .page-image-hero:has(.registration-paper-form-wrap) {
+    min-height: 1450px !important;
+    padding-bottom: 72px;
+  }
+
+  .page-image-hero:has(.registration-paper-form-wrap)
+    .page-image-hero-body:has(.registration-paper-form-wrap) {
     position: relative;
     top: auto !important;
     bottom: auto !important;
@@ -266,11 +281,11 @@
   }
 
   .contact-paper-form textarea {
-    min-height: 165px;
+    min-height: 150px;
   }
 
   .registration-paper-form textarea {
-    min-height: 110px;
+    min-height: 105px;
   }
 
   .form-privacy-note {
