@@ -252,7 +252,7 @@
 @media (max-width: 760px) {
   .page-image-hero:has(.contact-paper-form-wrap),
   .page-image-hero:has(.registration-paper-form-wrap) {
-    min-height: 1120px !important;
+    min-height: 1200px !important;
     padding-bottom: 76px;
   }
 
