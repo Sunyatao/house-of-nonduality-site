@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="nl" data-season="spring"> <head><meta charset="UTF-8"><meta name="description" content="Deze kamer bestaat niet. This room does not exist."><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="canonical" href="https://houseofnonduality.com/404/"><link rel="alternate" hreflang="nl-BE" href="https://houseofnonduality.com/404/"><link rel="alternate" hreflang="x-default" href="https://houseofnonduality.com/404/"><link rel="icon" href="/favicon.ico"><title>404 — The House of Nonduality</title><meta property="og:type" content="website"><meta property="og:site_name" content="The House of Nonduality"><meta property="og:title" content="404 — The House of Nonduality"><meta property="og:description" content="Deze kamer bestaat niet. This room does not exist."><meta property="og:url" content="https://houseofnonduality.com/404/"><meta property="og:image" content="https://houseofnonduality.com/images/404/hond-room-not-found.png"><meta property="og:locale" content="nl_BE"><meta property="og:locale:alternate" content="en_GB"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="404 — The House of Nonduality"><meta name="twitter:description" content="Deze kamer bestaat niet. This room does not exist."><meta name="twitter:image" content="https://houseofnonduality.com/images/404/hond-room-not-found.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet"><style>
+      .site-header {
+        padding: 24px 0 10px;
+      }
+
+      .home-house {
+        margin: 12px auto 80px;
+      }
+
+      .page-image-hero {
+        margin: 12px auto 72px;
+      }
+
+      .hero-card,
+      .about-scene .about-panel {
+        opacity: 0;
+      }
+
+      @media (max-width: 760px) {
+        .site-header {
+          padding-top: 18px;
+          padding-bottom: 6px;
+        }
+
+        .home-house {
+          margin-top: 8px;
+          margin-bottom: 56px;
+        }
+
+        .page-image-hero {
+          margin: 8px auto 56px;
+        }
+      }
+    </style><link rel="stylesheet" href="/_astro/BaseLayout.CYxrr6F0.css"></head> <body> <div class="site-shell">  <main>  <section class="page-image-hero has-fading-title"> <div class="page-image-hero-media"> <picture class="page-image-hero-picture page-image-hero-picture-cover"> <source srcset="/images/404/hond-room-not-found.avif" type="image/avif"> <source srcset="/images/404/hond-room-not-found.webp" type="image/webp"> <img class="page-image-hero-image" src="/images/404/hond-room-not-found.png" alt="Een warme kamer in Het Huis van Nondualiteit met een open deur die uitkomt op een zachte, onbestemde leegte." width="1600" height="1000" loading="eager" decoding="async" fetchpriority="high"> </picture> <picture class="page-image-hero-picture page-image-hero-picture-contain" aria-hidden="true"> <source srcset="/images/404/hond-room-not-found.avif" type="image/avif"> <source srcset="/images/404/hond-room-not-found.webp" type="image/webp"> <img class="page-image-hero-image" src="/images/404/hond-room-not-found.png" alt="" width="1600" height="1000" loading="lazy" decoding="async" fetchpriority="low"> </picture> </div>  <div class="page-image-hero-content"> <p class="page-image-hero-kicker">404</p> <h1>Deze kamer bestaat niet</h1> <p class="page-image-hero-lead">Misschien is de deur verplaatst, of was dit nooit een kamer van het huis.</p> </div> <div class="page-image-hero-body">  <section class="not-found-wall-text" aria-labelledby="not-found-title"> <div class="not-found-language-block"> <p class="not-found-kicker">404</p> <h1 id="not-found-title">Deze kamer bestaat niet</h1> <p>
+Misschien is de deur verplaatst, of was dit nooit een kamer van het huis.
+</p> <div class="not-found-actions"> <a class="button primary" href="/nl/">
+Naar de homepage
+</a> <a class="button" href="/nl/agenda/">
+Naar de agenda
+</a> </div> </div> <div class="not-found-language-block not-found-language-block-secondary"> <h2>This room does not exist</h2> <p>
+Perhaps the door has moved, or perhaps this was never a room of the house.
+</p> <div class="not-found-actions"> <a class="button primary" href="/en/">
+Go home
+</a> <a class="button" href="/en/calendar/">
+View calendar
+</a> </div> </div> </section>  </div> </section> <script>
+  document.addEventListener("click", function (event) {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const button = target.closest("[data-image-view-toggle]");
+    if (!button) return;
+
+    const hero = button.closest(".page-image-hero");
+    if (!hero) return;
+
+    const isViewingImage = hero.classList.toggle("is-viewing-image");
+
+    hero.classList.remove("is-image-view-ready");
+
+    if (isViewingImage) {
+      window.setTimeout(function () {
+    if (hero.classList.contains("is-viewing-image")) {
+      hero.classList.add("is-image-view-ready");
+        }
+          }, 1200);
+    }
+    button.setAttribute("aria-pressed", isViewingImage ? "true" : "false");
+
+    const viewLabel = button.getAttribute("data-view-label") || "View image";
+    const infoLabel = button.getAttribute("data-info-label") || "Show info";
+
+    button.textContent = isViewingImage ? infoLabel : viewLabel;
+  });
+</script>  </main> <footer class="site-footer"> <p>© House of Nonduality</p> <nav class="site-footer-nav" aria-label="Footer navigatie"> <a href="/nl/privacy/">Privacy</a> </nav> </footer> </div> </body></html>

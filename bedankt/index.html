@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="nl" data-season="spring"> <head><meta charset="UTF-8"><meta name="description" content="Bedankt voor je bericht of inschrijving. Thank you for your message or registration."><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="canonical" href="https://houseofnonduality.com/bedankt/"><link rel="alternate" hreflang="nl-BE" href="https://houseofnonduality.com/bedankt/"><link rel="alternate" hreflang="x-default" href="https://houseofnonduality.com/bedankt/"><link rel="icon" href="/favicon.ico"><title>Bedankt / Thank you — The House of Nonduality</title><meta property="og:type" content="website"><meta property="og:site_name" content="The House of Nonduality"><meta property="og:title" content="Bedankt / Thank you — The House of Nonduality"><meta property="og:description" content="Bedankt voor je bericht of inschrijving. Thank you for your message or registration."><meta property="og:url" content="https://houseofnonduality.com/bedankt/"><meta property="og:image" content="https://houseofnonduality.com/images/contact/hond-contact-writing-desk.png"><meta property="og:locale" content="nl_BE"><meta property="og:locale:alternate" content="en_GB"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Bedankt / Thank you — The House of Nonduality"><meta name="twitter:description" content="Bedankt voor je bericht of inschrijving. Thank you for your message or registration."><meta name="twitter:image" content="https://houseofnonduality.com/images/contact/hond-contact-writing-desk.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet"><style>
+      .site-header {
+        padding: 24px 0 10px;
+      }
+
+      .home-house {
+        margin: 12px auto 80px;
+      }
+
+      .page-image-hero {
+        margin: 12px auto 72px;
+      }
+
+      .hero-card,
+      .about-scene .about-panel {
+        opacity: 0;
+      }
+
+      @media (max-width: 760px) {
+        .site-header {
+          padding-top: 18px;
+          padding-bottom: 6px;
+        }
+
+        .home-house {
+          margin-top: 8px;
+          margin-bottom: 56px;
+        }
+
+        .page-image-hero {
+          margin: 8px auto 56px;
+        }
+      }
+    </style><link rel="stylesheet" href="/_astro/BaseLayout.CYxrr6F0.css"></head> <body> <div class="site-shell">  <main>  <section class="page-image-hero has-fading-title"> <div class="page-image-hero-media"> <picture class="page-image-hero-picture page-image-hero-picture-cover"> <source srcset="/images/contact/hond-contact-writing-desk.avif" type="image/avif"> <source srcset="/images/contact/hond-contact-writing-desk.webp" type="image/webp"> <img class="page-image-hero-image" src="/images/contact/hond-contact-writing-desk.png" alt="Een schrijftafel met een brief, pen, kopje en duif in Het Huis van Nondualiteit." width="1600" height="1000" loading="eager" decoding="async" fetchpriority="high"> </picture> <picture class="page-image-hero-picture page-image-hero-picture-contain" aria-hidden="true"> <source srcset="/images/contact/hond-contact-writing-desk.avif" type="image/avif"> <source srcset="/images/contact/hond-contact-writing-desk.webp" type="image/webp"> <img class="page-image-hero-image" src="/images/contact/hond-contact-writing-desk.png" alt="" width="1600" height="1000" loading="lazy" decoding="async" fetchpriority="low"> </picture> </div> <button class="image-view-button" type="button" data-image-view-toggle data-view-label="Bekijk de tafel" data-info-label="Toon tekst" aria-pressed="false"> Bekijk de tafel </button> <div class="page-image-hero-content"> <p class="page-image-hero-kicker">Ontvangen · Received</p> <h1>Bedankt</h1> <p class="page-image-hero-lead">Je bericht of inschrijving is goed aangekomen. Your message or registration has been received.</p> </div> <div class="page-image-hero-body">  <section class="thank-you-bilingual"> <article class="hero-card thank-you-card"> <h2>Bedankt</h2> <p>
+Je bericht of inschrijving is goed aangekomen. Als je je hebt
+          ingeschreven voor een bijeenkomst, is je inschrijving pas bevestigd
+          wanneer je een antwoord per mail hebt ontvangen.
+</p> <div class="hero-card-actions"> <a class="button primary" href="/nl/agenda/">
+Terug naar de agenda
+</a> <a class="button" href="/nl/">
+Naar de homepage
+</a> </div> </article> <article class="hero-card thank-you-card"> <h2>Thank you</h2> <p>
+Your message or registration has been received. If you registered for
+          a gathering, your registration is only confirmed once you have received
+          a reply by email.
+</p> <div class="hero-card-actions"> <a class="button primary" href="/en/calendar/">
+Back to the calendar
+</a> <a class="button" href="/en/">
+Go to the homepage
+</a> </div> </article> </section>  </div> </section> <script>
+  document.addEventListener("click", function (event) {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const button = target.closest("[data-image-view-toggle]");
+    if (!button) return;
+
+    const hero = button.closest(".page-image-hero");
+    if (!hero) return;
+
+    const isViewingImage = hero.classList.toggle("is-viewing-image");
+
+    hero.classList.remove("is-image-view-ready");
+
+    if (isViewingImage) {
+      window.setTimeout(function () {
+    if (hero.classList.contains("is-viewing-image")) {
+      hero.classList.add("is-image-view-ready");
+        }
+          }, 1200);
+    }
+    button.setAttribute("aria-pressed", isViewingImage ? "true" : "false");
+
+    const viewLabel = button.getAttribute("data-view-label") || "View image";
+    const infoLabel = button.getAttribute("data-info-label") || "Show info";
+
+    button.textContent = isViewingImage ? infoLabel : viewLabel;
+  });
+</script>  </main> <footer class="site-footer"> <p>© House of Nonduality</p> <nav class="site-footer-nav" aria-label="Footer navigatie"> <a href="/nl/privacy/">Privacy</a> </nav> </footer> </div> </body></html>
