@@ -163,8 +163,7 @@ const enUrl = enPath ? new URL(enPath, siteUrl).toString() : undefined;
         }
       }
     </style>
-  </head>
-
+  </head>  
   <body>
     <div class="site-shell">
       {!hideHeader && <Header lang={lang} />}
@@ -184,5 +183,39 @@ const enUrl = enPath ? new URL(enPath, siteUrl).toString() : undefined;
         </nav>
       </footer>
     </div>
-  </body>
+
+<script>
+  const roomHeroes: HTMLElement[] = Array.from(
+    document.querySelectorAll<HTMLElement>(".page-image-hero"),
+  ).filter((hero) => hero.querySelector(".hero-card"));
+
+  const revealRoomText = (hero: HTMLElement) => {
+    hero.classList.add("room-text-visible");
+  };
+
+  roomHeroes.forEach((hero) => {
+    hero.addEventListener(
+      "click",
+      () => revealRoomText(hero),
+      { once: true },
+    );
+  });
+
+  const revealOnScroll = () => {
+    roomHeroes.forEach((hero) => {
+      if (hero.classList.contains("room-text-visible")) return;
+
+      const rect = hero.getBoundingClientRect();
+
+      // Reveal pas wanneer de bezoeker echt duidelijk voorbij het begin van de kamer scrollt.
+      const scrolledPastMuchOfHero = rect.top < -(window.innerHeight * 0.90);
+
+      if (scrolledPastMuchOfHero) {
+        revealRoomText(hero);
+      }
+    });
+  };
+
+  window.addEventListener("scroll", revealOnScroll, { passive: true });
+</script>
 </html>

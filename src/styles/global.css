@@ -15,6 +15,41 @@
 @import "./not-found.css";
 @import "./mobile.css";
 
+/* Reveal text blocks over page images only after deliberate interaction */
+
+@keyframes roomTextSlowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-image-hero .hero-card {
+  opacity: 0;
+  transform: translateY(24px);
+  pointer-events: none;
+  animation: none;
+}
+
+.page-image-hero.room-text-visible .hero-card {
+  pointer-events: auto;
+  animation: roomTextSlowFadeIn 2800ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-image-hero .hero-card,
+  .page-image-hero.room-text-visible .hero-card {
+    opacity: 1 !important;
+    transform: none;
+    animation: none;
+    pointer-events: auto;
+  }
+}
 
 /* Footer */
 
