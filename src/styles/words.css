@@ -7,7 +7,7 @@
     "intro intro"
     "texts expectation"
     "practical dates"
-    "callout callout";
+    "archive callout";
   gap: 16px;
   width: min(940px, 100%);
 }
@@ -34,6 +34,10 @@
 }
 
 .words-all-cards .hero-card:nth-child(6) {
+  grid-area: archive;
+}
+
+.words-all-cards .hero-card:nth-child(7) {
   grid-area: callout;
 }
 
@@ -83,6 +87,30 @@
 
 .words-all-cards .words-compact-card .detail-meta-list li {
   line-height: 1.35;
+}
+
+.words-all-cards .words-archive-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 22px;
+  border-color: rgba(180, 122, 50, 0.24);
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.72), transparent 38%),
+    linear-gradient(135deg, rgba(248, 238, 218, 0.92), rgba(231, 214, 184, 0.72));
+}
+
+.words-all-cards .words-archive-card h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.12rem, 1.35vw, 1.42rem);
+}
+
+.words-all-cards .words-archive-card p {
+  max-width: 34rem;
+  margin: 0;
+  line-height: 1.42;
 }
 
 .words-date-list {
@@ -174,6 +202,7 @@
       "expectation"
       "practical"
       "dates"
+      "archive"
       "callout";
     gap: 14px;
   }
