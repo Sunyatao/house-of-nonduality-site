@@ -21,6 +21,7 @@ const formatDate = (date: string) => {
 };
 
 const upcomingEvents = visibleWordsFromSilenceEvents.slice(0, 4);
+const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/overzicht-woorden-uit-de-stilte";
 ---
 
 <BaseLayout
@@ -35,92 +36,193 @@ const upcomingEvents = visibleWordsFromSilenceEvents.slice(0, 4);
     lead="A quiet evening with poetry, short texts, silence and reflection around mysticism, contemplation and nonduality."
     imageSrc="/images/words/hond-words-from-silence-spring.png"
     imageAlt="A warm quiet reading room in The House of Nonduality, with an open book, an armchair, candlelight and soft afternoon sun."
-    showImageView={true}
-    imageViewLabel="View the room"
-    imageInfoLabel="Show info"
   >
-    <section class="hero-card-grid words-hero-grid words-all-cards">
-      <article class="hero-card words-hero-card hero-card-large">
-        <h2>What is it?</h2>
-        <p>
-          <em>Words from Silence</em> is one of the local gatherings of The House
-          of Nonduality: a quiet evening in Leuven with poetry, short texts,
-          silence and reflection around mysticism, contemplation and nonduality.
-        </p>
-      </article>
+    <div class="words-room-layer" aria-label="Interactive Words from Silence room">
+      <a
+        class="words-room-hotspot words-room-hotspot-book"
+        href={archiveUrl}
+        aria-label="Open the Words from Silence archive"
+      >
+        <span class="words-room-hotspot-dot" aria-hidden="true"></span>
+        <span class="words-room-hotspot-label">Archive</span>
+      </a>
 
-      <article class="hero-card words-hero-card">
-        <h2>What do we read?</h2>
-        <p>
-          We read texts from different mystical, poetic and contemplative
-          traditions: poems, short fragments and quotations that invite slowing
-          down, attention and inner silence.
-        </p>
-      </article>
+      <button
+        class="words-room-hotspot words-room-hotspot-chair"
+        type="button"
+        data-words-room-toggle
+        aria-controls="words-room-info-en"
+        aria-expanded="false"
+      >
+        <span class="words-room-hotspot-dot" aria-hidden="true"></span>
+        <span class="words-room-hotspot-label">Practical info</span>
+      </button>
 
-      <article class="hero-card words-hero-card">
-        <h2>What can you expect?</h2>
-        <p>
-          The evening consists of a simple alternation of text, silence and
-          conversation. Sometimes there is a short introduction, sometimes a
-          brief exchange, sometimes mostly silence.
-        </p>
-      </article>
+      <a
+        class="words-room-hotspot words-room-hotspot-traces"
+        href={withBase("/en/traces-of-insight/")}
+        aria-label="Open Traces of Insight"
+      >
+        <span class="words-room-hotspot-dot" aria-hidden="true"></span>
+        <span class="words-room-hotspot-label">Traces of Insight</span>
+      </a>
 
-      <article class="hero-card words-hero-card words-compact-card">
-        <h2>Practical</h2>
-        <ul class="detail-meta-list">
-          <li>Every third Tuesday of the month</li>
-          <li>19:30–21:00</li>
-          <li>Leuven — address after registration</li>
-          <li>Dutch and English, depending on the texts and who is present</li>
-          <li>Contribution according to capacity</li>
-        </ul>
-      </article>
+      <a
+        class="words-room-hotspot words-room-hotspot-entrance"
+        href={withBase("/en/")}
+        aria-label="Return to the entrance hall"
+      >
+        <span class="words-room-hotspot-dot" aria-hidden="true"></span>
+        <span class="words-room-hotspot-label">Entrance hall</span>
+      </a>
 
-      <article class="hero-card words-hero-card words-compact-card">
-        <h2>Upcoming dates</h2>
-        <ul class="detail-meta-list event-date-list">
-          {upcomingEvents.map((event) => (
-            <li class="event-date-item">
-              <span class="event-date-main">
-                {formatDate(event.date)} · {event.startTime}–{event.endTime}
-              </span>
-              <AddToCalendar event={event} lang="en" />
-            </li>
-          ))}
-        </ul>
-      </article>
-
-      <article class="hero-card words-hero-card words-archive-card">
-        <h2>Archive</h2>
-        <p>
-          Explore the archive of previous evenings, fragments, images and source notes.
-        </p>
-        <div class="hero-card-actions">
-          <a
-            class="button"
-            href="https://insight.houseofnonduality.com/woorden-uit-de-stilte/overzicht-woorden-uit-de-stilte"
+      <section
+        id="words-room-info-en"
+        class="words-room-panel"
+        aria-label="Words from Silence practical information"
+        hidden
+      >
+        <div class="words-room-panel-inner">
+          <button
+            class="words-room-panel-close"
+            type="button"
+            data-words-room-close
+            aria-controls="words-room-info-en"
           >
-            Open the archive
-          </a>
-        </div>
-      </article>
+            Close
+          </button>
 
-      <article class="hero-card words-hero-card hero-card-callout">
-        <h2>Would you like to join?</h2>
-        <p>
-          Fill in the registration form and select the date or dates you would like to attend.
-        </p>
-        <div class="hero-card-actions">
-          <a class="button primary" href={withBase("/en/register/")}>
-              Register
-          </a>
-          <a class="button" href={withBase("/en/newsletter/")}>
-            Newsletter
-          </a>
+          <section class="hero-card-grid words-hero-grid words-all-cards">
+            <article class="hero-card words-hero-card hero-card-large">
+              <h2>What is it?</h2>
+              <p>
+                <em>Words from Silence</em> is one of the local gatherings of The House
+                of Nonduality: a quiet evening in Leuven with poetry, short texts,
+                silence and reflection around mysticism, contemplation and nonduality.
+              </p>
+            </article>
+
+            <article class="hero-card words-hero-card">
+              <h2>What do we read?</h2>
+              <p>
+                We read texts from different mystical, poetic and contemplative
+                traditions: poems, short fragments and quotations that invite slowing
+                down, attention and inner silence.
+              </p>
+            </article>
+
+            <article class="hero-card words-hero-card">
+              <h2>What can you expect?</h2>
+              <p>
+                The evening consists of a simple alternation of text, silence and
+                conversation. Sometimes there is a short introduction, sometimes a
+                brief exchange, sometimes mostly silence.
+              </p>
+            </article>
+
+            <article class="hero-card words-hero-card words-compact-card">
+              <h2>Practical</h2>
+              <ul class="detail-meta-list">
+                <li>Every third Tuesday of the month</li>
+                <li>19:30–21:00</li>
+                <li>Leuven — address after registration</li>
+                <li>Dutch and English, depending on the texts and who is present</li>
+                <li>Contribution according to capacity</li>
+              </ul>
+            </article>
+
+            <article class="hero-card words-hero-card words-compact-card">
+              <h2>Upcoming dates</h2>
+              <ul class="detail-meta-list event-date-list">
+                {upcomingEvents.map((event) => (
+                  <li class="event-date-item">
+                    <span class="event-date-main">
+                      {formatDate(event.date)} · {event.startTime}–{event.endTime}
+                    </span>
+                    <AddToCalendar event={event} lang="en" />
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <article class="hero-card words-hero-card words-archive-card">
+              <h2>Archive</h2>
+              <p>
+                Explore the archive of previous evenings, fragments, images and source notes.
+              </p>
+              <div class="hero-card-actions">
+                <a class="button" href={archiveUrl}>
+                  Open the archive
+                </a>
+              </div>
+            </article>
+
+            <article class="hero-card words-hero-card hero-card-callout">
+              <h2>Would you like to join?</h2>
+              <p>
+                Fill in the registration form and select the date or dates you would like to attend.
+              </p>
+              <div class="hero-card-actions">
+                <a class="button primary" href={withBase("/en/register/")}>
+                  Register
+                </a>
+                <a class="button" href={withBase("/en/newsletter/")}>
+                  Newsletter
+                </a>
+              </div>
+            </article>
+          </section>
         </div>
-      </article>
-    </section>
+      </section>
+    </div>
   </PageImageHero>
 </BaseLayout>
+
+<script>
+  const setWordsRoomPanel = (panel: HTMLElement, open: boolean) => {
+    panel.hidden = !open;
+    panel.classList.toggle("is-open", open);
+
+    const hero = panel.closest(".page-image-hero");
+    hero?.classList.toggle("words-room-panel-open", open);
+
+    const toggle = hero?.querySelector<HTMLElement>(`[data-words-room-toggle][aria-controls="${panel.id}"]`);
+    toggle?.setAttribute("aria-expanded", open ? "true" : "false");
+
+    if (open) {
+      panel.querySelector<HTMLElement>("[data-words-room-close]")?.focus({ preventScroll: true });
+    }
+  };
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const toggle = target.closest<HTMLElement>("[data-words-room-toggle]");
+    if (toggle) {
+      const panelId = toggle.getAttribute("aria-controls");
+      const panel = panelId ? document.getElementById(panelId) : null;
+      if (panel) {
+        setWordsRoomPanel(panel, panel.hasAttribute("hidden"));
+      }
+      return;
+    }
+
+    const close = target.closest<HTMLElement>("[data-words-room-close]");
+    if (close) {
+      const panelId = close.getAttribute("aria-controls");
+      const panel = panelId ? document.getElementById(panelId) : close.closest<HTMLElement>(".words-room-panel");
+      if (panel) {
+        setWordsRoomPanel(panel, false);
+      }
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+
+    document.querySelectorAll<HTMLElement>(".words-room-panel.is-open").forEach((panel) => {
+      setWordsRoomPanel(panel, false);
+    });
+  });
+</script>
