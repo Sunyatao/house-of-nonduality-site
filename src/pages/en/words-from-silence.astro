@@ -41,10 +41,10 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
       <a
         class="words-room-hotspot words-room-hotspot-book"
         href={archiveUrl}
-        aria-label="Open the Words from Silence archive"
+        aria-label="Open the gathered evenings"
       >
         <span class="words-room-hotspot-dot" aria-hidden="true"></span>
-        <span class="words-room-hotspot-label">Archive</span>
+        <span class="words-room-hotspot-label">Gathered evenings</span>
       </a>
 
       <button
@@ -146,13 +146,13 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
             </article>
 
             <article class="hero-card words-hero-card words-archive-card">
-              <h2>Archive</h2>
+              <h2>Gathered evenings</h2>
               <p>
-                Explore the archive of previous evenings, fragments, images and source notes.
+                Explore the gathered evenings, fragments, images and source notes.
               </p>
               <div class="hero-card-actions">
                 <a class="button" href={archiveUrl}>
-                  Open the archive
+                  Open the gathered evenings
                 </a>
               </div>
             </article>
@@ -176,6 +176,21 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
       </section>
     </div>
   </PageImageHero>
+  <nav class="words-room-mobile-menu" aria-label="Words from Silence navigation">
+  <a href={archiveUrl}>Gathered evenings</a>
+
+  <button
+    type="button"
+    data-words-room-toggle
+    aria-controls="words-room-info-en"
+    aria-expanded="false"
+  >
+    Practical info
+  </button>
+
+  <a href={withBase("/en/traces-of-insight/")}>Traces of Insight</a>
+  <a href={withBase("/en/")}>Entrance hall</a>
+</nav>
 </BaseLayout>
 
 <script>

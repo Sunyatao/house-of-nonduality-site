@@ -41,10 +41,10 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
       <a
         class="words-room-hotspot words-room-hotspot-book"
         href={archiveUrl}
-        aria-label="Open het archief van Woorden uit de Stilte"
+        aria-label="Open de verzamelde avonden van Woorden uit de Stilte"
       >
         <span class="words-room-hotspot-dot" aria-hidden="true"></span>
-        <span class="words-room-hotspot-label">Archief</span>
+        <span class="words-room-hotspot-label">Verzamelde avonden</span>
       </a>
 
       <button
@@ -147,13 +147,13 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
             </article>
 
             <article class="hero-card words-hero-card words-archive-card">
-              <h2>Archief</h2>
+              <h2>Verzamelde avonden</h2>
               <p>
-                Verken het archief van vorige avonden, fragmenten, beelden en bronnotities.
+                Verken de verzamelde avonden, fragmenten, beelden en bronnotities.
               </p>
               <div class="hero-card-actions">
                 <a class="button" href={archiveUrl}>
-                  Open het archief
+                  Open de verzamelde avonden
                 </a>
               </div>
             </article>
@@ -177,6 +177,21 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
       </section>
     </div>
   </PageImageHero>
+  <nav class="words-room-mobile-menu" aria-label="Woorden uit de Stilte navigatie">
+  <a href={archiveUrl}>Verzamelde avonden</a>
+
+  <button
+    type="button"
+    data-words-room-toggle
+    aria-controls="words-room-info-nl"
+    aria-expanded="false"
+  >
+    Praktisch
+  </button>
+
+  <a href={withBase("/nl/sporen-van-inzicht/")}>Sporen van Inzicht</a>
+  <a href={withBase("/nl/")}>Inkomhal</a>
+</nav>
 </BaseLayout>
 
 <script>
