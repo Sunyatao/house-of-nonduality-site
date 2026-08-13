@@ -1,7 +1,5 @@
 ---
 import PageImageHero from "./PageImageHero.astro";
-import AddToCalendar from "./AddToCalendar.astro";
-import { visibleOpenTableEvents } from "../data/events";
 
 interface Props {
   lang: "nl" | "en";
@@ -18,19 +16,10 @@ const withBase = (path: string) => {
   return `${cleanBase}${cleanPath}`;
 };
 
-const formatDate = (date: string) => {
-  return new Intl.DateTimeFormat(lang === "nl" ? "nl-BE" : "en-GB", {
-    day: "numeric",
-    month: "long",
-  }).format(new Date(`${date}T12:00:00`));
-};
-
-const upcomingEvents = visibleOpenTableEvents.slice(0, 4);
-
 const t =
   lang === "nl"
     ? {
-        kicker: "Elke eerste zondag · Leuven",
+        kicker: "Een mogelijke vorm",
         title: "Open Tafel",
         lead: "Een eenvoudige ontmoeting rond eten, gesprek, contemplatie en samenzijn.",
         viewRoom: "Bekijk de kamer",
@@ -48,22 +37,20 @@ const t =
           "Voor wie graag op een rustige manier mensen ontmoet rond zingeving, stilte, filosofie, spiritualiteit of gewoon een goed gesprek. Je hoeft geen ervaring met meditatie, nondualiteit of filosofie te hebben.",
         practicalTitle: "Praktisch",
         practical: [
-          "Elke eerste zondag van de maand",
-          "12:00–16:00",
-          "Leuven — adres na inschrijving",
-          "Bijdrage naar draagkracht",
+          "Niet volgens een vast ritme",
+          "Datum, locatie en vorm worden per bijeenkomst aangekondigd",
         ],
-        datesTitle: "Komende data",
-        ctaTitle: "Wil je aansluiten?",
-        cta:
-          "Vul het inschrijfformulier in en duid aan voor welke datum of data je wil inschrijven.",
-        ctaLink: "/nl/inschrijven/",
-        ctaLabel: "Inschrijven",
-        newsletterLink: "/nl/nieuwsbrief/",
-        newsletterLabel: "Nieuwsbrief",
+        datesTitle: "Volgende bijeenkomst",
+        noDates: "Er staat momenteel geen Open Tafel gepland.",
+        ctaTitle: "Wil je weten wanneer er een nieuwe bijeenkomst ontstaat?",
+        cta: "Nieuwe bijeenkomsten worden aangekondigd via de nieuwsbrief.",
+        ctaLink: "/nl/nieuwsbrief/",
+        ctaLabel: "Blijf op de hoogte",
+        secondaryLink: "/nl/contact/",
+        secondaryLabel: "Contact",
       }
     : {
-        kicker: "Every first Sunday · Leuven",
+        kicker: "A possible form",
         title: "Open Table",
         lead: "A simple gathering around food, conversation, contemplation and presence.",
         viewRoom: "View the room",
@@ -81,19 +68,17 @@ const t =
           "For anyone who would like to meet others in a quiet way around meaning, silence, philosophy, spirituality or simply a good conversation. No experience with meditation, nonduality or philosophy is needed.",
         practicalTitle: "Practical",
         practical: [
-          "Every first Sunday of the month",
-          "12:00–16:00",
-          "Leuven — address after registration",
-          "Contribution according to capacity",
+          "No fixed rhythm",
+          "The date, location and form will be announced for each gathering",
         ],
-        datesTitle: "Upcoming dates",
-        ctaTitle: "Would you like to join?",
-        cta:
-          "Fill in the registration form and select the date or dates you would like to attend.",
-        ctaLink: "/en/register/",
-        ctaLabel: "Register",
-        newsletterLink: "/en/newsletter/",
-        newsletterLabel: "Newsletter",
+        datesTitle: "Next gathering",
+        noDates: "There is currently no Open Table scheduled.",
+        ctaTitle: "Would you like to know when a new gathering takes shape?",
+        cta: "New gatherings will be announced through the newsletter.",
+        ctaLink: "/en/newsletter/",
+        ctaLabel: "Stay informed",
+        secondaryLink: "/en/contact/",
+        secondaryLabel: "Contact",
       };
 ---
 
@@ -133,16 +118,7 @@ const t =
 
       <article class="hero-card open-table-hero-card">
         <h2>{t.datesTitle}</h2>
-        <ul class="detail-meta-list event-date-list">
-          {upcomingEvents.map((event) => (
-            <li class="event-date-item">
-              <span class="event-date-main">
-                {formatDate(event.date)} · {event.startTime}–{event.endTime}
-              </span>
-              <AddToCalendar event={event} lang={lang} />
-            </li>
-          ))}
-        </ul>
+        <p>{t.noDates}</p>
       </article>
 
       <article class="hero-card open-table-hero-card hero-card-callout">
@@ -152,8 +128,8 @@ const t =
     <a class="button primary" href={withBase(t.ctaLink)}>
       {t.ctaLabel}
     </a>
-    <a class="button" href={withBase(t.newsletterLink)}>
-      {t.newsletterLabel}
+    <a class="button" href={withBase(t.secondaryLink)}>
+      {t.secondaryLabel}
     </a>
   </div>
 </article>

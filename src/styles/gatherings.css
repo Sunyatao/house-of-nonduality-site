@@ -1,65 +1,166 @@
 /* Gatherings overview page */
 
 .gatherings-card-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-areas:
-    "intro intro intro"
-    "open agenda words";
+    "intro intro"
+    "talks walks"
+    "days poetry"
+    "newsletter history";
   gap: 16px;
   width: min(980px, 100%);
+}
+
+.gatherings-card-grid.has-upcoming-events {
+  grid-template-areas:
+    "intro intro"
+    "agenda agenda"
+    "talks walks"
+    "days poetry"
+    "newsletter history";
 }
 
 .gatherings-intro-card {
   grid-area: intro;
 }
 
-.gatherings-card-grid .hero-card-open-table {
-  grid-area: open;
-}
-
-.gatherings-card-grid .hero-card-agenda {
+.gatherings-agenda-card {
   grid-area: agenda;
 }
 
-.gatherings-card-grid .hero-card-words {
-  grid-area: words;
+.gatherings-talks-card {
+  grid-area: talks;
 }
 
-.gatherings-intro-card p + p {
-  margin-top: 12px;
+.gatherings-walks-card {
+  grid-area: walks;
 }
 
-.gatherings-card-grid .hero-card h2 {
-  padding-inline: 0;
+.gatherings-days-card {
+  grid-area: days;
 }
 
-/* Keep the directional arrows meaningful on the gatherings page */
-
-.gatherings-card-grid .hero-card-open-table h2 {
-  padding-left: 34px;
+.gatherings-poetry-card {
+  grid-area: poetry;
 }
 
-.gatherings-card-grid .hero-card-words h2 {
-  padding-right: 34px;
+.gatherings-newsletter-card {
+  grid-area: newsletter;
+}
+
+.gatherings-history-card {
+  grid-area: history;
 }
 
 .page-image-hero:has(.gatherings-card-grid) {
-  min-height: 900px;
+  min-height: 1210px;
+}
+
+.page-image-hero:has(.gatherings-card-grid.has-upcoming-events) {
+  min-height: 1420px;
 }
 
 .page-image-hero-body:has(.gatherings-card-grid) {
-  top: 285px;
+  top: 275px;
   bottom: auto;
   width: min(980px, 86%);
 }
 
+.gatherings-card-grid .hero-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 185px;
+  padding: 24px 26px;
+  text-align: center;
+}
+
+.gatherings-card-grid .hero-card h2 {
+  padding-inline: 0;
+  text-align: center;
+  font-size: clamp(1.35rem, 1.65vw, 1.65rem);
+  line-height: 1.08;
+}
+
+.gatherings-card-grid .hero-card p {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 1.04rem;
+  line-height: 1.48;
+}
+
+.gatherings-card-grid .gatherings-intro-card {
+  min-height: 160px;
+}
+
+.gatherings-card-grid .gatherings-intro-card h2 {
+  font-size: clamp(1.55rem, 2.1vw, 2rem);
+}
+
+.gatherings-card-grid .gatherings-intro-card p {
+  max-width: 800px;
+  font-size: 1.14rem;
+}
+
+.gathering-form-kicker {
+  margin: 0 0 8px !important;
+  color: var(--color-accent) !important;
+  font-family: var(--font-serif);
+  font-size: 0.72rem !important;
+  letter-spacing: 0.13em;
+  line-height: 1.2 !important;
+  text-transform: uppercase;
+}
+
+.gatherings-card-grid .card-link {
+  align-self: center;
+}
+
+.gatherings-newsletter-card,
+.gatherings-agenda-card {
+  border-color: rgba(180, 122, 50, 0.22);
+}
+
+.gatherings-history-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.gatherings-history-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 13px;
+  border: 1px solid rgba(180, 122, 50, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 252, 245, 0.48);
+  color: var(--color-accent);
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+}
+
+.gatherings-history-links a:hover {
+  border-color: rgba(180, 122, 50, 0.42);
+  background: rgba(255, 252, 245, 0.74);
+  transform: translateY(-1px);
+}
+
 @media (max-width: 900px) {
-  .gatherings-card-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-areas:
-      "intro intro"
-      "open words"
-      "agenda agenda";
+  .page-image-hero:has(.gatherings-card-grid) {
+    min-height: 1280px;
+  }
+
+  .page-image-hero:has(.gatherings-card-grid.has-upcoming-events) {
+    min-height: 1480px;
+  }
+
+  .page-image-hero-body:has(.gatherings-card-grid) {
+    width: min(980px, 91%);
   }
 }
 
@@ -68,74 +169,44 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "intro"
-      "open"
+      "talks"
+      "walks"
+      "days"
+      "poetry"
+      "newsletter"
+      "history";
+  }
+
+  .gatherings-card-grid.has-upcoming-events {
+    grid-template-areas:
+      "intro"
       "agenda"
-      "words";
+      "talks"
+      "walks"
+      "days"
+      "poetry"
+      "newsletter"
+      "history";
+  }
+
+  .page-image-hero:has(.gatherings-card-grid) {
+    min-height: 0 !important;
   }
 
   .page-image-hero-body:has(.gatherings-card-grid) {
     width: 100% !important;
   }
-}
 
-/* Gatherings cards — unified centered layout */
+  .gatherings-card-grid .hero-card {
+    min-height: 0;
+    padding: 24px 21px;
+  }
 
-.gatherings-card-grid .hero-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
+  .gatherings-card-grid .hero-card p {
+    font-size: 1rem;
+  }
 
-.gatherings-card-grid .hero-card h2 {
-  padding-inline: 0 !important;
-  text-align: center;
-  font-size: clamp(1.35rem, 1.65vw, 1.65rem) !important;
-  line-height: 1.08 !important;
-}
-
-.gatherings-card-grid .hero-card p {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  font-size: 1.14rem !important;
-  line-height: 1.34 !important;
-}
-
-.gatherings-card-grid .gatherings-intro-card h2 {
-  font-size: clamp(1.55rem, 2.1vw, 2rem) !important;
-}
-
-.gatherings-card-grid .gatherings-intro-card p {
-  max-width: 760px;
-  font-size: 1.18rem !important;
-}
-
-.gatherings-card-grid .card-link {
-  align-self: center;
-}
-
-/* Keep the directional arrows in the visual corners */
-
-.gatherings-card-grid .hero-card-open-table .hero-card-arrow {
-  left: -70px;
-  right: auto;
-}
-
-.gatherings-card-grid .hero-card-words .hero-card-arrow {
-  right: -105px;
-  left: auto;
-}
-
-/* Prevent the long title from breaking on desktop */
-
-.gatherings-card-grid .hero-card-words h2 {
-  white-space: nowrap;
-}
-
-@media (max-width: 760px) {
-  .gatherings-card-grid .hero-card-words h2 {
-    white-space: normal;
+  .gatherings-card-grid .gatherings-intro-card p {
+    font-size: 1.05rem;
   }
 }

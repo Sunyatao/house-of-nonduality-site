@@ -1,60 +1,117 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageImageHero from "../../components/PageImageHero.astro";
+import { upcomingEvents } from "../../data/events";
 
 const base = import.meta.env.BASE_URL;
+const hasUpcomingEvents = upcomingEvents.length > 0;
 ---
 
 <BaseLayout
   title="Gatherings — The House of Nonduality"
-  description="An overview of the gatherings of The House of Nonduality: simple moments of meal, text, silence, conversation, poetry and contemplation."
+  description="Gatherings of The House of Nonduality arise without a fixed programme: as a talk, a walk, a day together or an evening around poetry and texts."
   lang="en"
   image="/images/home/hond-home-inn-spring.png"
 >
   <PageImageHero
     title="Gatherings"
-    lead="Recurring ways of gathering around contemplation, text, silence, food and encounter in Leuven."
+    lead="The House takes shape anew whenever content, place and moment come together."
     imageSrc="/images/home/hond-home-inn-spring.png"
     imageAlt="A warm house with rooms for encounter, silence, contact, meditation and study."
   >
-    <section class="hero-card-grid gatherings-card-grid">
+    <section
+      class:list={[
+        "hero-card-grid",
+        "gatherings-card-grid",
+        hasUpcomingEvents && "has-upcoming-events",
+      ]}
+    >
       <article class="hero-card gatherings-intro-card">
-        <h2>Ways of gathering</h2>
+        <h2>No fixed programme</h2>
         <p>
-          The House of Nonduality takes shape in simple gatherings: a table, a text, a silence, a conversation. 
-          There, space opens to slow down together, to listen, and to look more attentively at what presents itself.
+          The House does not take shape through a fixed calendar. Sometimes a
+          talk arises around a text or theme; at other times, a longer walk in
+          nature, an evening of poetry or a day with silence, conversation and
+          shared food. A gathering takes place when there is genuine space and a
+          fitting occasion for it.
         </p>
       </article>
 
-      <a class="hero-card hero-card-open-table" href={`${base}en/open-table/`}>
-        <span class="hero-card-arrow hero-card-arrow-left" aria-hidden="true">←</span>
-        <h2>Open Table</h2>
+      {hasUpcomingEvents && (
+        <a class="hero-card gatherings-agenda-card" href={`${base}en/calendar/`}>
+          <h2>What is currently planned</h2>
+          <p>
+            View the gatherings that have now taken concrete form.
+          </p>
+          <span class="card-link">View the calendar</span>
+        </a>
+      )}
+
+      <article class="hero-card gathering-form-card gatherings-talks-card">
+        <p class="gathering-form-kicker">A possible form</p>
+        <h2>Talks and inquiry</h2>
         <p>
-          A simple gathering around food, silence, a walk and
+          An in-depth exploration of a spiritual text, a theme within
+          nonduality or a question calling for closer attention — with room for
+          explanation, silence and conversation.
+        </p>
+      </article>
+
+      <article class="hero-card gathering-form-card gatherings-walks-card">
+        <p class="gathering-form-kicker">A possible form</p>
+        <h2>Walks in nature</h2>
+        <p>
+          Longer walks in quieter, wilder landscapes. A poem, meditation or
+          short talk may serve as an anchor, alongside room to walk freely and
+          simply be together.
+        </p>
+      </article>
+
+      <article class="hero-card gathering-form-card gatherings-days-card">
+        <p class="gathering-form-kicker">A possible form</p>
+        <h2>Days together</h2>
+        <p>
+          Small-scale days with a few shared anchors: arrival, a talk, silence
+          and conversation. Sometimes accompanied by a shared picnic or
+          potluck, without every moment needing to be structured.
+        </p>
+      </article>
+
+      <article class="hero-card gathering-form-card gatherings-poetry-card">
+        <p class="gathering-form-kicker">A possible form</p>
+        <h2>Poetry and texts</h2>
+        <p>
+          An evening around one or several powerful poems or mystical texts,
+          interwoven with silence, interpretation, personal reflection and
           conversation.
         </p>
-        <span class="card-link">Read more</span>
+      </article>
+
+      <a
+        class="hero-card gatherings-newsletter-card"
+        href={`${base}en/newsletter/`}
+      >
+        <h2>When something takes shape</h2>
+        <p>
+          New gatherings do not follow a fixed rhythm. The newsletter lets you
+          know when a talk, walk or other encounter takes shape.
+        </p>
+        <span class="card-link">Subscribe to the newsletter</span>
       </a>
 
-     <a class="hero-card hero-card-agenda" href={`${base}en/calendar/`}>
-        <h2>Calendar</h2>
+      <article class="hero-card gatherings-history-card">
+        <h2>Earlier forms</h2>
         <p>
-          All upcoming gatherings in one overview, with the option to add them
-          directly to your own digital calendar.
+          Open Table and Words from Silence were the first ways in which the
+          House took shape. Their value remains, but they no longer form a fixed
+          programme.
         </p>
-        <span class="card-link">View calendar</span>
-      </a>
 
-      <a class="hero-card hero-card-words" href={`${base}en/words-from-silence/`}>
-        <span class="hero-card-arrow hero-card-arrow-right" aria-hidden="true">→</span>
-        <h2>Words from Silence</h2>
-        <p>
-          An evening with mystical poetry and short texts, alternated with
-          silence and conversation.
-        </p>
-        <span class="card-link">Read more</span>
-      </a>
-      
+        <nav class="gatherings-history-links" aria-label="Earlier forms">
+          <a href={`${base}en/open-table/`}>Open Table</a>
+          <a href={`${base}en/words-from-silence/`}>Words from Silence</a>
+        </nav>
+      </article>
     </section>
   </PageImageHero>
 </BaseLayout>

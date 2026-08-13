@@ -1,8 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageImageHero from "../../components/PageImageHero.astro";
-import AddToCalendar from "../../components/AddToCalendar.astro";
-import { visibleWordsFromSilenceEvents } from "../../data/events";
 
 const base = import.meta.env.BASE_URL;
 
@@ -13,14 +11,6 @@ const withBase = (path: string) => {
   return `${cleanBase}${cleanPath}`;
 };
 
-const formatDate = (date: string) => {
-  return new Intl.DateTimeFormat("nl-BE", {
-    day: "numeric",
-    month: "long",
-  }).format(new Date(`${date}T12:00:00`));
-};
-
-const upcomingEvents = visibleWordsFromSilenceEvents.slice(0, 4);
 const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/overzicht-woorden-uit-de-stilte";
 ---
 
@@ -31,7 +21,7 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
   image="/images/social/words-from-silence-og.jpg"
 >
   <PageImageHero
-    kicker="Elke derde dinsdag · Leuven"
+    kicker="Poëzie · stilte · reflectie"
     title="Woorden uit de Stilte"
     lead="Een rustige avond met poëzie, korte teksten, stilte en reflectie rond mystiek, contemplatie en nondualiteit."
     imageSrc="/images/words/hond-words-from-silence-spring.png"
@@ -96,10 +86,10 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
             <article class="hero-card words-hero-card hero-card-large">
               <h2>Wat is het?</h2>
               <p>
-                <em>Woorden uit de Stilte</em> is een van de lokale bijeenkomsten van
-                Het Huis van Nondualiteit: een rustige avond in Leuven met poëzie,
-                korte teksten, stilte en reflectie rond mystiek, contemplatie en
-                nondualiteit.
+                <em>Woorden uit de Stilte</em> ontstond als een reeks rustige avonden
+                met poëzie, korte teksten, stilte en reflectie rond mystiek,
+                contemplatie en nondualiteit. Deze vorm kan opnieuw terugkeren, maar
+                niet langer volgens een vast maandelijks ritme.
               </p>
             </article>
 
@@ -124,26 +114,15 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
             <article class="hero-card words-hero-card words-compact-card">
               <h2>Praktisch</h2>
               <ul class="detail-meta-list">
-                <li>Elke derde dinsdag van de maand</li>
-                <li>19:30–21:00</li>
-                <li>Leuven — adres na inschrijving</li>
+                <li>Niet volgens een vast ritme</li>
+                <li>Datum, tijd en locatie worden per bijeenkomst aangekondigd</li>
                 <li>Nederlands en Engels, afhankelijk van de teksten en wie aanwezig is</li>
-                <li>Bijdrage naar draagkracht</li>
               </ul>
             </article>
 
             <article class="hero-card words-hero-card words-compact-card">
-              <h2>Komende data</h2>
-              <ul class="detail-meta-list event-date-list">
-                {upcomingEvents.map((event) => (
-                  <li class="event-date-item">
-                    <span class="event-date-main">
-                      {formatDate(event.date)} · {event.startTime}–{event.endTime}
-                    </span>
-                    <AddToCalendar event={event} lang="nl" />
-                  </li>
-                ))}
-              </ul>
+              <h2>Volgende bijeenkomst</h2>
+              <p>Er staat momenteel geen nieuwe avond gepland.</p>
             </article>
 
             <article class="hero-card words-hero-card words-archive-card">
@@ -159,16 +138,16 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
             </article>
 
             <article class="hero-card words-hero-card hero-card-callout">
-              <h2>Wil je deelnemen?</h2>
+              <h2>Wil je weten wanneer deze vorm terugkeert?</h2>
               <p>
-                Vul het inschrijfformulier in en duid aan voor welke datum of data je wil inschrijven.
+                Nieuwe bijeenkomsten worden aangekondigd via de nieuwsbrief.
               </p>
               <div class="hero-card-actions">
-                <a class="button primary" href={withBase("/nl/inschrijven/")}>
-                  Inschrijven
+                <a class="button primary" href={withBase("/nl/nieuwsbrief/")}>
+                  Blijf op de hoogte
                 </a>
-                <a class="button" href={withBase("/nl/nieuwsbrief/")}>
-                  Nieuwsbrief
+                <a class="button" href={withBase("/nl/contact/")}>
+                  Contact
                 </a>
               </div>
             </article>

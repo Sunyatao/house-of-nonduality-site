@@ -1,146 +1,44 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageImageHero from "../../components/PageImageHero.astro";
-import { allEvents, type CalendarEvent } from "../../data/events";
-import FormspreeAjax from "../../components/FormspreeAjax.astro";
 
 const base = import.meta.env.BASE_URL;
-
-const withBase = (path: string) => {
-  const cleanBase = base.endsWith("/") ? base : `${base}/`;
-  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
-
-  return `${cleanBase}${cleanPath}`;
-};
-
-const targetYear = 2026;
-
-const registrationEvents = allEvents.filter((event) =>
-  event.date.startsWith(`${targetYear}-`),
-);
-
-const formatEventOption = (event: CalendarEvent) => {
-  const date = new Intl.DateTimeFormat("nl-BE", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(`${event.date}T12:00:00`));
-
-  return `${event.title.nl} — ${date} · ${event.startTime}–${event.endTime}`;
-};
 ---
 
 <BaseLayout
   title="Inschrijven — Het Huis van Nondualiteit"
-  description="Schrijf je in voor één of meerdere bijeenkomsten van Het Huis van Nondualiteit."
+  description="Er staat momenteel geen inschrijving open voor een bijeenkomst van Het Huis van Nondualiteit."
   lang="nl"
   image="/images/contact/hond-contact-writing-desk.png"
-
 >
   <PageImageHero
-    kicker="Welkom"
+    kicker="Bijeenkomsten"
     title="Inschrijven"
-    lead="Wil je deelnemen aan een bijeenkomst? Vul hieronder je gegevens in. Ik bevestig je inschrijving nadien per mail."
+    lead="Er staat momenteel geen bijeenkomst open voor inschrijving."
     imageSrc="/images/contact/hond-contact-writing-desk.png"
     imageAlt="Een schrijftafel met een lege brief, pen, kopje en duif in het Huis van Nondualiteit."
     showImageView={true}
     imageViewLabel="Bekijk de tafel"
-    imageInfoLabel="Toon formulier"
+    imageInfoLabel="Toon informatie"
   >
-    <section class="contact-paper-form-wrap registration-paper-form-wrap">
-      <form
-        class="contact-paper-form registration-paper-form"
-        action="https://formspree.io/f/xzdwoede"
-        method="post"
-        data-formspree-ajax
-        data-success-url={withBase("/bedankt/")}
-        data-required-checkbox-name="gatherings"
-        data-checkbox-error="Duid minstens één bijeenkomst aan."
-        data-loading-label="Inschrijving versturen..."
-        data-error-label="Er ging iets mis. Probeer het opnieuw of schrijf rechtstreeks naar contact@houseofnonduality.com."
-        >
-        <label>
-          <span>Naam *</span>
-          <input type="text" name="name" autocomplete="name" required />
-        </label>
+    <section class="hero-card-grid">
+      <article class="hero-card hero-card-callout">
+        <h2>Blijf op de hoogte</h2>
+        <p>
+          Nieuwe lezingen, wandelingen en andere vormen van samenkomen worden
+          aangekondigd via de nieuwsbrief. Zodra er een concrete bijeenkomst is,
+          verschijnt hier opnieuw de mogelijkheid om je in te schrijven.
+        </p>
 
-        <label>
-          <span>E-mailadres *</span>
-          <input type="email" name="email" autocomplete="email" required />
-        </label>
-
-        <fieldset class="registration-checkbox-group">
-  <legend>Bijeenkomsten *</legend>
-
-  <div class="registration-checkbox-list">
-    {registrationEvents.map((event) => (
-      <label class="registration-checkbox-item">
-        <input
-          type="checkbox"
-          name="gatherings"
-          value={formatEventOption(event)}
-        />
-        <span>{formatEventOption(event)}</span>
-      </label>
-    ))}
-  </div>
-
-  <p class="registration-checkbox-note">
-    Je kan één of meerdere bijeenkomsten aanvinken.
-  </p>
-</fieldset>
-
-        <label>
-          <span>Aantal personen *</span>
-          <input
-            type="number"
-            name="number_of_people"
-            min="1"
-            max="10"
-            value="1"
-            required
-          />
-        </label>
-
-        <label>
-          <span>Bericht of opmerking</span>
-          <textarea
-            name="message"
-            rows="4"
-            placeholder="Laat hier eventueel iets weten."
-          ></textarea>
-        </label>
-
-        <input
-          type="hidden"
-          name="subject"
-          value="Nieuwe inschrijving via Het Huis van Nondualiteit"
-        />
-
-        <input
-          type="text"
-          name="_gotcha"
-          tabindex="-1"
-          autocomplete="off"
-          style="position: absolute; left: -5000px;"
-        />
-
-        <button class="button primary contact-submit-button" type="submit">
-  Inschrijving versturen
-</button>
-
-<p class="contact-direct-note">
-  Je inschrijving is pas bevestigd wanneer je een antwoord hebt ontvangen.
-</p>
-
-<p class="form-privacy-note">
-  Door dit formulier te verzenden, ga je ermee akkoord dat je gegevens gebruikt
-  worden om je inschrijving op te volgen. Lees meer in de
-  <a href={withBase("/nl/privacy/")}>privacyverklaring</a>.
-</p>
-      </form>
+        <div class="hero-card-actions">
+          <a class="button primary" href={`${base}nl/nieuwsbrief/`}>
+            Nieuwsbrief
+          </a>
+          <a class="button" href={`${base}nl/contact/`}>
+            Contact
+          </a>
+        </div>
+      </article>
     </section>
   </PageImageHero>
-<FormspreeAjax />
 </BaseLayout>

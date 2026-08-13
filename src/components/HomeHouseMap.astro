@@ -18,59 +18,58 @@ const t =
   lang === "nl"
     ? {
         title: "Het Huis van Nondualiteit",
-        lead: "Een plek voor stilte, contemplatie, openheid en ontmoeting.",
-        alt: "Een warme herberg met verschillende kamers voor ontmoeting, stilte, schrijven, studie en contemplatie.",
+        lead:
+          "Het Huis van Nondualiteit is een plek voor stilte, onderzoek en ontmoeting. Het krijgt telkens opnieuw vorm — in een tekst, een lezing, een gesprek, een wandeling of een dag samen — zonder dat die vorm vooraf vastligt.",
+        alt: "Een warme herberg met kamers voor ontmoeting, schrijven, studie en contemplatie.",
         exploreLabel: "Verken het Huis van Nondualiteit",
         mobileLinksLabel: "Ingangen van het Huis",
-        about: "Over",
-        openTable: "Open Tafel",
-        words: "Woorden uit de Stilte",
-        agenda: "Agenda",
-        register: "Inschrijven",
+        about: "Over het Huis",
+        gatherings: "Bijeenkomsten",
+        texts: "Teksten",
         contact: "Contact",
         newsletter: "Nieuwsbrief",
-        traces: "Sporen van Inzicht",
-        meditation: "Meditatie",
-        soon: "binnenkort",
+        newsletterTitle: "Blijf verbonden",
+        newsletterText:
+          "Nieuwe bijeenkomsten, teksten en andere initiatieven volgen geen vast ritme. Via de nieuwsbrief hoor je wanneer er iets nieuws vorm krijgt.",
+        newsletterCta: "Schrijf je in",
         links: {
           about: "/nl/over/",
-          openTable: "/nl/open-tafel/",
-          words: "/nl/woorden-uit-de-stilte/",
-          agenda: "/nl/agenda/",
-          register: "/nl/inschrijven/",
+          gatherings: "/nl/bijeenkomsten/",
+          texts: "/nl/sporen-van-inzicht/",
           contact: "/nl/contact/",
           newsletter: "/nl/nieuwsbrief/",
-          traces: "/nl/sporen-van-inzicht/",
         },
       }
     : {
         title: "The House of Nonduality",
-        lead: "A place for silence, contemplation, openness and encounter.",
-        alt: "A warm inn with different rooms for encounter, silence, writing, study and contemplation.",
+        lead:
+          "The House of Nonduality is a place for silence, inquiry and encounter. It takes shape anew each time — in a text, a talk, a conversation, a walk or a day together — without that form being fixed in advance.",
+        alt: "A warm inn with rooms for encounter, writing, study and contemplation.",
         exploreLabel: "Explore The House of Nonduality",
         mobileLinksLabel: "Entrances of the House",
-        about: "About",
-        openTable: "Open Table",
-        words: "Words from Silence",
-        agenda: "Calendar",
-        register: "Register",
+        about: "About the House",
+        gatherings: "Gatherings",
+        texts: "Texts",
         contact: "Contact",
         newsletter: "Newsletter",
-        traces: "Traces of Insight",
-        meditation: "Meditation",
-        soon: "coming soon",
+        newsletterTitle: "Stay connected",
+        newsletterText:
+          "New gatherings, texts and other initiatives do not follow a fixed rhythm. The newsletter lets you know when something new takes shape.",
+        newsletterCta: "Subscribe",
         links: {
           about: "/en/about/",
-          openTable: "/en/open-table/",
-          words: "/en/words-from-silence/",
-          agenda: "/en/calendar/",
-          register: "/en/register/",
+          gatherings: "/en/gatherings/",
+          texts: "/en/traces-of-insight/",
           contact: "/en/contact/",
           newsletter: "/en/newsletter/",
-          traces: "/en/traces-of-insight/",
         },
       };
 ---
+
+<section class="home-house-intro">
+  <h1>{t.title}</h1>
+  <p>{t.lead}</p>
+</section>
 
 <section class="home-house" aria-label={t.exploreLabel}>
   <picture>
@@ -88,30 +87,11 @@ const t =
     />
   </picture>
 
-  <div class="home-house-welcome" aria-hidden="true">
-    <h1>{t.title}</h1>
-    <p>{t.lead}</p>
-  </div>
-
   <a
-    class="house-hotspot hotspot-open-table"
-    href={withBase(t.links.openTable)}
-    data-tooltip={t.openTable}
-    aria-label={t.openTable}
-  ></a>
-
-  <a
-    class="house-hotspot hotspot-words"
-    href={withBase(t.links.words)}
-    data-tooltip={t.words}
-    aria-label={t.words}
-  ></a>
-
-  <a
-    class="house-hotspot hotspot-agenda"
-    href={withBase(t.links.agenda)}
-    data-tooltip={t.agenda}
-    aria-label={t.agenda}
+    class="house-hotspot hotspot-gatherings"
+    href={withBase(t.links.gatherings)}
+    data-tooltip={t.gatherings}
+    aria-label={t.gatherings}
   ></a>
 
   <a
@@ -136,32 +116,32 @@ const t =
   ></a>
 
   <a
-    class="house-hotspot hotspot-library hotspot-traces"
-    href={withBase(t.links.traces)}
-    data-tooltip={t.traces}
-    aria-label={t.traces}
+    class="house-hotspot hotspot-library hotspot-texts"
+    href={withBase(t.links.texts)}
+    data-tooltip={t.texts}
+    aria-label={t.texts}
   ></a>
-
-  <div
-    class="house-hotspot hotspot-meditation is-disabled"
-    data-tooltip={`${t.meditation} · ${t.soon}`}
-    aria-label={`${t.meditation} · ${t.soon}`}
-    aria-disabled="true"
-  ></div>
 </section>
 
 <div class="house-cursor-tooltip" aria-hidden="true"></div>
 
 <section class="home-house-links" aria-label={t.mobileLinksLabel}>
   <a href={withBase(t.links.about)}>{t.about}</a>
-  <a href={withBase(t.links.openTable)}>{t.openTable}</a>
-  <a href={withBase(t.links.words)}>{t.words}</a>
-  <a href={withBase(t.links.agenda)}>{t.agenda}</a>
-  <a href={withBase(t.links.register)}>{t.register}</a>
-  <a href={withBase(t.links.traces)}>{t.traces}</a>
-  <a href={withBase(t.links.newsletter)}>{t.newsletter}</a>
+  <a href={withBase(t.links.gatherings)}>{t.gatherings}</a>
+  <a href={withBase(t.links.texts)}>{t.texts}</a>
   <a href={withBase(t.links.contact)}>{t.contact}</a>
-  <span>{t.meditation} · {t.soon}</span>
+</section>
+
+<section class="home-house-follow" aria-labelledby={`home-newsletter-${lang}`}>
+  <div>
+    <p class="home-house-follow-kicker">{t.newsletter}</p>
+    <h2 id={`home-newsletter-${lang}`}>{t.newsletterTitle}</h2>
+    <p>{t.newsletterText}</p>
+  </div>
+
+  <a class="button primary" href={withBase(t.links.newsletter)}>
+    {t.newsletterCta}
+  </a>
 </section>
 
 <script>
@@ -196,27 +176,4 @@ const t =
       });
     });
   }
-</script>
-
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", function () {
-    const homeHouse = document.querySelector(".home-house");
-    if (!homeHouse) return;
-
-    const image = homeHouse.querySelector("img");
-
-    if (!image) {
-      homeHouse.classList.add("is-loaded");
-      return;
-    }
-
-    if (image.complete) {
-      homeHouse.classList.add("is-loaded");
-      return;
-    }
-
-    image.addEventListener("load", function () {
-      homeHouse.classList.add("is-loaded");
-    });
-  });
 </script>

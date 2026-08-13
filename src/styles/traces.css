@@ -1,9 +1,10 @@
-/* Traces of Insight page */
+/* Texts / Traces of Insight */
 
 .traces-card-grid {
   grid-template-areas:
     "intro intro"
-    "garden paths"
+    "featured featured"
+    "kinds garden"
     "callout callout";
   gap: 16px;
   width: min(940px, 100%);
@@ -14,44 +15,88 @@
 }
 
 .traces-card-grid .hero-card:nth-child(2) {
-  grid-area: garden;
+  grid-area: featured;
 }
 
 .traces-card-grid .hero-card:nth-child(3) {
-  grid-area: paths;
+  grid-area: kinds;
 }
 
 .traces-card-grid .hero-card:nth-child(4) {
+  grid-area: garden;
+}
+
+.traces-card-grid .hero-card:nth-child(5) {
   grid-area: callout;
 }
 
 .traces-card-grid .hero-card h2 {
   padding-inline: 0;
-  font-size: clamp(1.25rem, 1.6vw, 1.6rem);
-}
-
-.traces-card-grid .hero-card:nth-child(1) h2 {
-  font-size: clamp(1.55rem, 2.1vw, 2rem);
 }
 
 .traces-card-grid .hero-card p {
-  font-size: clamp(0.9rem, 1vw, 0.98rem);
-  line-height: 1.52;
+  font-size: 1.15rem !important;
+  line-height: 1.44 !important;
+}
+
+.traces-featured-card {
+  padding: 28px 30px 30px;
+  border-color: rgba(180, 122, 50, 0.26) !important;
+}
+
+.traces-card-grid .traces-featured-card h2 {
+  margin-bottom: 10px;
+  font-size: clamp(2rem, 3vw, 2.8rem) !important;
+}
+
+.traces-card-label,
+.traces-card-themes {
+  display: block;
+  color: rgba(130, 83, 31, 0.88) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.72rem !important;
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase;
+}
+
+.traces-card-label {
+  margin: 0 0 10px !important;
+}
+
+.traces-card-themes {
+  margin-top: 16px;
+}
+
+.traces-featured-card .card-link {
+  margin-top: 18px;
 }
 
 .traces-card-grid .hero-card-callout {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 28px;
+}
+
+.traces-card-grid .hero-card-callout h2,
+.traces-card-grid .hero-card-callout p {
+  grid-column: 1;
+}
+
+.traces-card-grid .hero-card-callout .button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  white-space: nowrap;
 }
 
 .page-image-hero:has(.traces-card-grid) {
-  min-height: 980px;
+  min-height: 1190px;
 }
 
 .page-image-hero-body:has(.traces-card-grid) {
-  top: 300px;
+  top: 286px;
   bottom: auto;
   width: min(980px, 86%);
 }
@@ -61,10 +106,16 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "intro"
+      "featured"
+      "kinds"
       "garden"
-      "paths"
       "callout";
     gap: 14px;
+  }
+
+  .traces-card-grid .hero-card-callout {
+    display: flex;
+    align-items: flex-start;
   }
 
   .page-image-hero:has(.traces-card-grid) {
@@ -83,8 +134,8 @@
   }
 
   .page-image-hero.is-image-view-ready:has(.traces-card-grid) {
-    padding: 0 !important;
     min-height: min(72vh, 620px) !important;
+    padding: 0 !important;
   }
 
   .page-image-hero.is-image-view-ready:has(.traces-card-grid)

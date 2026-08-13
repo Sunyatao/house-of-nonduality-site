@@ -1,18 +1,28 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageImageHero from "../../components/PageImageHero.astro";
+
+const base = import.meta.env.BASE_URL;
+const gardenUrl = "https://insight.houseofnonduality.com/";
+
+const withBase = (path: string) => {
+  const cleanBase = base.endsWith("/") ? base : `${base}/`;
+  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+
+  return `${cleanBase}${cleanPath}`;
+};
 ---
 
 <BaseLayout
-  title="Sporen van Inzicht — Het Huis van Nondualiteit"
-  description="Sporen van Inzicht verzamelt teksten, stemmen en inzichten rond mystiek, contemplatie, filosofie en nondualiteit."
+  title="Teksten — Het Huis van Nondualiteit"
+  description="Teksten, stemmen en inzichten rond mystiek, contemplatie, filosofie en nondualiteit."
   lang="nl"
   image="/images/social/traces-of-insight-og.jpg"
 >
   <PageImageHero
-    kicker="In opbouw"
-    title="Sporen van Inzicht"
-    lead="Uit boeken, teksten en bronnen groeien hier langzaam sporen van inzicht: notities, citaten en verbanden rond nondualiteit, mystiek, filosofie, contemplatie en de vraag wat werkelijk is."
+    kicker="Sporen van inzicht"
+    title="Teksten"
+    lead="Een groeiende verzameling essays, vertalingen en beschouwingen rond nondualiteit, mystiek, filosofie en de vraag wat werkelijk is."
     imageSrc="/images/traces/hond-traces-of-insight-spring.png"
     imageAlt="Een warme bibliotheek in Het Huis van Nondualiteit, met boeken, een schrijftafel, subtiele groei uit open boeken en uitzicht op de bergen."
     showImageView={true}
@@ -21,39 +31,55 @@ import PageImageHero from "../../components/PageImageHero.astro";
   >
     <section class="hero-card-grid traces-card-grid">
       <article class="hero-card traces-hero-card hero-card-large">
-        <h2>Een levende bibliotheek</h2>
+        <h2>Lezen als onderzoek</h2>
         <p>
-          Deze ruimte begint als een bibliotheek: een verzameling citaten, notities, teksten
-          en bronnen. Maar wat hier groeit, zijn vooral inzichten — levende
-          sporen die zich vertakken, verdiepen en met elkaar verbonden raken.
+          Hier krijgen teksten zelf een plaats. Elke bijdrage kan afzonderlijk
+          gelezen worden, maar maakt tegelijk deel uit van een breder onderzoek
+          naar ervaring, bewustzijn, lijden, identiteit en wat wij werkelijk zijn.
+        </p>
+      </article>
+
+      <a
+        class="hero-card traces-hero-card traces-featured-card"
+        href={gardenUrl}
+        aria-label="Verken de levende tuin Sporen van Inzicht"
+      >
+        <p class="traces-card-label">Levende tuin · voortdurend in groei</p>
+        <h2>Open Sporen van Inzicht</h2>
+        <p>
+          Verken de gepubliceerde notities uit de Obsidian-tuin als een
+          onderling verbonden landschap van fragmenten, bronnen, personen en
+          tijdlijnen.
+        </p>
+        <span class="traces-card-themes">fragmenten · bronnen · verbanden</span>
+        <span class="card-link">Verken de tuin <span aria-hidden="true">↗</span></span>
+      </a>
+
+      <article class="hero-card traces-hero-card">
+        <h2>Wat hier verschijnt</h2>
+        <p>
+          Fragmenten, vertalingen, bronnotities, essays en beschouwingen. Soms
+          vertrekt een spoor vanuit een gedicht of oude bron, soms vanuit een
+          vraag die zich in het dagelijks leven aandient.
         </p>
       </article>
 
       <article class="hero-card traces-hero-card">
-        <h2>Een digitale tuin</h2>
+        <h2>Een tuin, geen archief</h2>
         <p>
-          De pagina zal langzaam uitgroeien tot een digitale tuin van citaten,
-          notities, begrippen, voorbeelden en verwijzingen. Niet als afgewerkt
-          systeem, maar als een organisch netwerk van onderzoek en contemplatie.
-        </p>
-      </article>
-
-      <article class="hero-card traces-hero-card">
-        <h2>Paden door het geheel</h2>
-        <p>
-          Later zullen sommige inzichten samengebracht worden in paden: heldere
-          routes door het materiaal, alsof je vanuit de bibliotheek naar buiten
-          kijkt en verschillende wegen ziet die richting de berg lopen.
+          De notities groeien vanuit Obsidian en worden door Quartz met elkaar
+          verbonden. Alleen wat klaar is om gedeeld te worden, verschijnt in de
+          publieke tuin.
         </p>
       </article>
 
       <article class="hero-card traces-hero-card hero-card-callout">
-        <h2>Voorlopig</h2>
+        <h2>Ontvang nieuwe teksten</h2>
         <p>
-          Deze ruimte is nog in opbouw. Tot ze verder opent, kan je deelnemen
-          aan een bijeenkomst, je inschrijven op de nieuwsbrief of contact
-          opnemen als je een tekst, bron of spoor wil delen.
+          Via de nieuwsbrief ontvang je af en toe een nieuwe tekst, een gedicht
+          of een uitnodiging voor een bijeenkomst.
         </p>
+        <a class="button primary" href={withBase("/nl/nieuwsbrief/")}>Naar de nieuwsbrief</a>
       </article>
     </section>
   </PageImageHero>

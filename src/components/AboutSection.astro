@@ -5,51 +5,58 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const t = lang === "nl"
-  ? {
+const t =
+  lang === "nl"
+    ? {
       title: "Over het Huis",
-      lead: "Een plek voor stilte, contemplatie, openheid en ontmoeting.",
-      introTitle: "Een huis voor stilte en inzicht",
+      lead: "Een levende plek voor stilte, onderzoek en ontmoeting.",
+      introTitle: "Wat blijft",
       intro:
-        "Het Huis van Nondualiteit is een groeiende plek voor stilte, contemplatie, ontmoeting en de vraag wat werkelijk is. In bijeenkomsten, teksten en gesprekken ontstaat ruimte om dieper te kijken naar ervaring, aanwezigheid en bewustzijn. Naast de bijeenkomsten groeit hier ook een verzameling stemmen en inzichten uit verschillende contemplatieve, mystieke en filosofische tradities — niet als laatste woord, maar als uitnodiging tot verder kijken.",
+        "Vormen kunnen veranderen. Wat blijft, is een verlangen naar vertraging, diepgang en echte ontmoeting. Het Huis van Nondualiteit maakt ruimte om samen aandachtig te kijken naar ervaring, bewustzijn, lijden en de vraag wat we werkelijk zijn. Niet als een afgewerkt systeem, maar als een levend onderzoek. Het initiatief groeit vanuit Leuven en wordt gedragen door Pieter Abts.",
       nondualityTitle: "Wat betekent nondualiteit?",
       nonduality:
-        "Nondualiteit verwijst naar het inzicht dat de werkelijkheid minder verdeeld is dan ze op het eerste gezicht lijkt: niet een afgescheiden ‘ik’ hier, tegenover een wereld daarbuiten. In eenvoudige woorden: nondualiteit nodigt uit om te onderzoeken of we werkelijk zo afgescheiden zijn als we denken.",
-      practiceTitle: "Hoe krijgt dat vorm?",
+        "Nondualiteit verwijst naar het inzicht dat de werkelijkheid niet werkelijk uiteenvalt in een afgescheiden ‘ik’ hier en een wereld daarbuiten. Het is geen overtuiging die je moet aannemen, maar een uitnodiging om in de directe ervaring te onderzoeken waar die scheiding precies te vinden is — en wat er overblijft wanneer we haar niet langer als vanzelfsprekend beschouwen.",
+      wuWeiTitle: "Niet forceren",
+      wuWei:
+        "De nieuwe koers van het Huis sluit aan bij het daoïstische begrip wu wei: handelen zonder te forceren. Dat betekent niet passief afwachten of alles aan het toeval overlaten, maar luisteren voordat je handelt en alleen vorm geven wanneer inhoud, plek en moment werkelijk samenvallen.",
+      practiceTitle: "Hoe krijgt het Huis vorm?",
       practice:
-        "Het Huis krijgt vorm via bijeenkomsten, contemplatieve teksten, gedeelde maaltijden, gesprek, poëzie, meditatie en een groeiende verzameling bronnen. Telkens opnieuw gaat het om dezelfde eenvoudige beweging: vertragen, luisteren en aandachtig kijken naar wat aanwezig is.",
+        "Het Huis kan vorm krijgen in een tekst, lezing, gesprek, wandeling, avond rond poëzie of dag samen. Die vorm staat niet vooraf vast en hoeft niet volgens een maandelijks ritme herhaald te worden. Ze dient wat op dat moment onderzocht of gedeeld wil worden.",
       houseTitle: "Waarom een huis?",
       house:
-        "Een huis is een plaats van aankomst. Je hoeft er niets te bewijzen. Je komt binnen, neemt plaats, luistert, eet, leest, schrijft, reflecteert, of volgt een spoor dat je dieper naar binnen brengt. De website volgt diezelfde logica: elke kamer opent een andere ingang tot stilte, contemplatie en de vraag wat werkelijk is.",
+        "Een huis is een plaats van aankomst. Je hoeft er niets te bewijzen. Je kunt binnenkomen, plaatsnemen, luisteren, lezen, spreken, wandelen of stil zijn. De verschillende kamers zijn geen afzonderlijke programma’s, maar ingangen naar dezelfde open ruimte voor aandacht en onderzoek.",
       quote:
         "Niet om ergens anders te geraken, maar om helderder te zien wat hier al is.",
       imageAlt:
         "Het Huis van Nondualiteit als warm huis met verschillende kamers.",
-    }
-  : {
+      }
+    : {
       title: "About the House",
-      lead: "A place for silence, contemplation, openness and encounter.",
-      introTitle: "A house for silence and insight",
+      lead: "A living place for silence, inquiry and encounter.",
+      introTitle: "What remains",
       intro:
-        "The House of Nonduality is a growing place for silence, contemplation, encounter and the question of what is real. Through gatherings, texts and conversations, it creates space to look more deeply into experience, presence and consciousness. Alongside the gatherings, a collection of voices and insights from different contemplative, mystical and philosophical traditions is also taking shape — not as a final word, but as an invitation to look further.",
+        "Forms can change. What remains is a longing for slowness, depth and genuine encounter. The House of Nonduality creates space to look attentively at experience, consciousness, suffering and the question of what we truly are. Not as a finished system, but as a living inquiry. The initiative takes shape in Leuven through the work of Pieter Abts.",
       nondualityTitle: "What does nonduality mean?",
       nonduality:
-        "Nonduality points to the insight that reality is less divided than it may first appear: not a separate “I” over here, facing a world out there. In simple words: nonduality invites us to explore whether we are really as separate as we think.",
-      practiceTitle: "How does this take form?",
+        "Nonduality points to the insight that reality does not truly fall apart into a separate “I” here and a world out there. It is not a belief to adopt, but an invitation to examine in direct experience where that separation can actually be found — and what remains when we no longer take it for granted.",
+      wuWeiTitle: "Without forcing",
+      wuWei:
+        "The new direction of the House resonates with the Daoist notion of wu wei: acting without forcing. This does not mean passively waiting or leaving everything to chance, but listening before acting and giving form only when content, place and moment genuinely come together.",
+      practiceTitle: "How does the House take shape?",
       practice:
-        "The House takes shape through gatherings, contemplative texts, shared meals, conversation, poetry, meditation and a growing collection of sources. At its heart is a simple movement: to slow down, to listen, and to look attentively at what is present.",
+        "The House may take shape in a text, a talk, a conversation, a walk, an evening of poetry or a day together. That form is not fixed in advance and need not be repeated according to a monthly rhythm. It serves what calls to be explored or shared at that moment.",
       houseTitle: "Why a house?",
       house:
-        "A house is a place of arrival. You do not have to prove anything there. You enter, take a seat, listen, eat, read, write, reflect, or follow a thread that leads you deeper within. The website follows that same logic: each room opens a different doorway into silence, contemplation, and the question of what is real.",
+        "A house is a place of arrival. You do not have to prove anything there. You can enter, take a seat, listen, read, speak, walk or be still. Its different rooms are not separate programmes, but doorways into the same open space for attention and inquiry.",
       quote:
         "Not to get somewhere else, but to see more clearly what is already here.",
       imageAlt:
         "The House of Nonduality as a warm house with different rooms.",
-    };
+      };
 
-    const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL;
 
-    const withBase = (path: string) => {
+const withBase = (path: string) => {
   const cleanBase = base.endsWith("/") ? base : `${base}/`;
   const cleanPath = path.startsWith("/") ? path.slice(1) : path;
 
@@ -57,52 +64,56 @@ const t = lang === "nl"
 };
 ---
 
-  <section class="about-scene">
+<section class="about-scene">
   <div class="about-scene-heading">
     <h1>{t.title}</h1>
     <p>{t.lead}</p>
   </div>
 
-<picture>
-  <source srcset={withBase("/images/home/hond-home-inn-spring.avif")} type="image/avif" />
-  <source srcset={withBase("/images/home/hond-home-inn-spring.webp")} type="image/webp" />
-  <img
-    src={withBase("/images/home/hond-home-inn-spring.png")}
-    alt={t.imageAlt}
-    width="1600"
-    height="1000"
-    loading="eager"
-    decoding="async"
-    fetchpriority="high"
-  />
-</picture>
+  <picture>
+    <source srcset={withBase("/images/home/hond-home-inn-spring.avif")} type="image/avif" />
+    <source srcset={withBase("/images/home/hond-home-inn-spring.webp")} type="image/webp" />
+    <img
+      src={withBase("/images/home/hond-home-inn-spring.png")}
+      alt={t.imageAlt}
+      width="1600"
+      height="1000"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  </picture>
 
   <div class="about-scene-overlay">
-      <section class="about-grid">
-        <article class="about-panel about-panel-large">
-          <h2>{t.introTitle}</h2>
-          <p>{t.intro}</p>
-        </article>
+    <section class="about-grid">
+      <article class="about-panel about-panel-large">
+        <h2>{t.introTitle}</h2>
+        <p>{t.intro}</p>
+      </article>
 
-        <article class="about-panel">
-          <h2>{t.nondualityTitle}</h2>
-          <p>{t.nonduality}</p>
-        </article>
+      <article class="about-panel">
+        <h2>{t.nondualityTitle}</h2>
+        <p>{t.nonduality}</p>
+      </article>
 
-        <article class="about-panel">
-          <h2>{t.practiceTitle}</h2>
-          <p>{t.practice}</p>
-        </article>
+      <article class="about-panel">
+        <h2>{t.wuWeiTitle}</h2>
+        <p>{t.wuWei}</p>
+      </article>
 
-        <article class="about-panel about-panel-large">
-          <h2>{t.houseTitle}</h2>
-          <p>{t.house}</p>
-        </article>
-      </section>
-    </div>
-  </section>
+      <article class="about-panel">
+        <h2>{t.practiceTitle}</h2>
+        <p>{t.practice}</p>
+      </article>
 
-  <section class="about-quote">
-    <p>{t.quote}</p>
-  </section>
+      <article class="about-panel">
+        <h2>{t.houseTitle}</h2>
+        <p>{t.house}</p>
+      </article>
+    </section>
+  </div>
+</section>
+
+<section class="about-quote">
+  <p>{t.quote}</p>
 </section>

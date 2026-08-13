@@ -76,6 +76,22 @@
   background: rgba(255, 248, 233, 0.28);
 }
 
+.agenda-empty {
+  max-width: 390px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.agenda-empty p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.agenda-empty .agenda-registration-link {
+  margin-top: 22px;
+}
+
 /* Maanden duidelijk gescheiden, maar compact */
 .agenda-months {
   display: grid;

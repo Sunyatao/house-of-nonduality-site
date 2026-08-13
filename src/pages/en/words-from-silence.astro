@@ -1,8 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageImageHero from "../../components/PageImageHero.astro";
-import AddToCalendar from "../../components/AddToCalendar.astro";
-import { visibleWordsFromSilenceEvents } from "../../data/events";
 
 const base = import.meta.env.BASE_URL;
 
@@ -13,14 +11,6 @@ const withBase = (path: string) => {
   return `${cleanBase}${cleanPath}`;
 };
 
-const formatDate = (date: string) => {
-  return new Intl.DateTimeFormat("en-GB", {
-    day: "numeric",
-    month: "long",
-  }).format(new Date(`${date}T12:00:00`));
-};
-
-const upcomingEvents = visibleWordsFromSilenceEvents.slice(0, 4);
 const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/overzicht-woorden-uit-de-stilte";
 ---
 
@@ -31,7 +21,7 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
   image="/images/social/words-from-silence-og.jpg"
 >
   <PageImageHero
-    kicker="Every third Tuesday · Leuven"
+    kicker="Poetry · silence · reflection"
     title="Words from Silence"
     lead="A quiet evening with poetry, short texts, silence and reflection around mysticism, contemplation and nonduality."
     imageSrc="/images/words/hond-words-from-silence-spring.png"
@@ -96,9 +86,10 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
             <article class="hero-card words-hero-card hero-card-large">
               <h2>What is it?</h2>
               <p>
-                <em>Words from Silence</em> is one of the local gatherings of The House
-                of Nonduality: a quiet evening in Leuven with poetry, short texts,
-                silence and reflection around mysticism, contemplation and nonduality.
+                <em>Words from Silence</em> began as a series of quiet evenings with
+                poetry, short texts, silence and reflection around mysticism,
+                contemplation and nonduality. This form may return, but no longer on
+                a fixed monthly rhythm.
               </p>
             </article>
 
@@ -123,26 +114,15 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
             <article class="hero-card words-hero-card words-compact-card">
               <h2>Practical</h2>
               <ul class="detail-meta-list">
-                <li>Every third Tuesday of the month</li>
-                <li>19:30–21:00</li>
-                <li>Leuven — address after registration</li>
+                <li>No fixed rhythm</li>
+                <li>The date, time and location will be announced for each gathering</li>
                 <li>Dutch and English, depending on the texts and who is present</li>
-                <li>Contribution according to capacity</li>
               </ul>
             </article>
 
             <article class="hero-card words-hero-card words-compact-card">
-              <h2>Upcoming dates</h2>
-              <ul class="detail-meta-list event-date-list">
-                {upcomingEvents.map((event) => (
-                  <li class="event-date-item">
-                    <span class="event-date-main">
-                      {formatDate(event.date)} · {event.startTime}–{event.endTime}
-                    </span>
-                    <AddToCalendar event={event} lang="en" />
-                  </li>
-                ))}
-              </ul>
+              <h2>Next gathering</h2>
+              <p>There is currently no new evening scheduled.</p>
             </article>
 
             <article class="hero-card words-hero-card words-archive-card">
@@ -158,16 +138,16 @@ const archiveUrl = "https://insight.houseofnonduality.com/woorden-uit-de-stilte/
             </article>
 
             <article class="hero-card words-hero-card hero-card-callout">
-              <h2>Would you like to join?</h2>
+              <h2>Would you like to know when this form returns?</h2>
               <p>
-                Fill in the registration form and select the date or dates you would like to attend.
+                New gatherings will be announced through the newsletter.
               </p>
               <div class="hero-card-actions">
-                <a class="button primary" href={withBase("/en/register/")}>
-                  Register
+                <a class="button primary" href={withBase("/en/newsletter/")}>
+                  Stay informed
                 </a>
-                <a class="button" href={withBase("/en/newsletter/")}>
-                  Newsletter
+                <a class="button" href={withBase("/en/contact/")}>
+                  Contact
                 </a>
               </div>
             </article>

@@ -1,61 +1,116 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageImageHero from "../../components/PageImageHero.astro";
+import { upcomingEvents } from "../../data/events";
 
 const base = import.meta.env.BASE_URL;
+const hasUpcomingEvents = upcomingEvents.length > 0;
 ---
 
 <BaseLayout
   title="Bijeenkomsten — Het Huis van Nondualiteit"
-  description="Een overzicht van de bijeenkomsten van Het Huis van Nondualiteit: eenvoudige momenten van maaltijd, tekst, stilte, gesprek, poëzie en contemplatie."
+  description="Bijeenkomsten van Het Huis van Nondualiteit ontstaan zonder vast programma: als lezing, wandeling, dag samen of avond rond poëzie en tekst."
   lang="nl"
   image="/images/home/hond-home-inn-spring.png"
 >
   <PageImageHero
     title="Bijeenkomsten"
-    lead="Terugkerende vormen van samenkomen rond contemplatie, tekst, stilte, maaltijd en ontmoeting in Leuven."
+    lead="Het Huis krijgt telkens opnieuw vorm wanneer inhoud, plek en moment samenvallen."
     imageSrc="/images/home/hond-home-inn-spring.png"
     imageAlt="Een warm huis met kamers voor ontmoeting, stilte, contact, meditatie en studie."
   >
-    <section class="hero-card-grid gatherings-card-grid">
+    <section
+      class:list={[
+        "hero-card-grid",
+        "gatherings-card-grid",
+        hasUpcomingEvents && "has-upcoming-events",
+      ]}
+    >
       <article class="hero-card gatherings-intro-card">
-        <h2>Vormen van samenkomen</h2>
+        <h2>Geen vast programma</h2>
         <p>
-          Het Huis van Nondualiteit krijgt vorm in eenvoudige bijeenkomsten: 
-          een tafel, een tekst, een stilte, een gesprek. 
-          Daar ontstaat ruimte om samen te vertragen, 
-          te luisteren en aandachtiger te kijken naar wat zich aandient.
+          Het Huis krijgt geen vorm via een vaste kalender. Soms ontstaat er een
+          lezing rond een tekst of thema, soms een langere wandeling in de
+          natuur, een avond rond poëzie of een dag met stilte, gesprek en gedeeld
+          eten. Een bijeenkomst vindt plaats wanneer er werkelijk ruimte en een
+          passende aanleiding voor is.
         </p>
       </article>
 
-      <a class="hero-card hero-card-open-table" href={`${base}nl/open-tafel/`}>
-        <span class="hero-card-arrow hero-card-arrow-left" aria-hidden="true">←</span>
-        <h2>Open Tafel</h2>
+      {hasUpcomingEvents && (
+        <a class="hero-card gatherings-agenda-card" href={`${base}nl/agenda/`}>
+          <h2>Wat er nu gepland is</h2>
+          <p>
+            Bekijk de bijeenkomsten die momenteel concreet vorm hebben gekregen.
+          </p>
+          <span class="card-link">Bekijk de agenda</span>
+        </a>
+      )}
+
+      <article class="hero-card gathering-form-card gatherings-talks-card">
+        <p class="gathering-form-kicker">Mogelijke vorm</p>
+        <h2>Lezingen en onderzoek</h2>
         <p>
-          Een eenvoudige ontmoeting rond eten, stilte, wandeling en
-          gesprek.
+          Een grondige verkenning van een spirituele tekst, een thema uit de
+          nondualiteit of een vraag die om verdieping vraagt — met ruimte voor
+          uitleg, stilte en gesprek.
         </p>
-        <span class="card-link">Lees meer</span>
+      </article>
+
+      <article class="hero-card gathering-form-card gatherings-walks-card">
+        <p class="gathering-form-kicker">Mogelijke vorm</p>
+        <h2>Wandelingen in de natuur</h2>
+        <p>
+          Langere wandelingen in stiller, wilder groen. Een gedicht, meditatie of
+          korte voordracht kan een anker zijn, met daarnaast ruimte om vrij te
+          wandelen en samen te zijn.
+        </p>
+      </article>
+
+      <article class="hero-card gathering-form-card gatherings-days-card">
+        <p class="gathering-form-kicker">Mogelijke vorm</p>
+        <h2>Dagen samen</h2>
+        <p>
+          Kleinschalige dagen met enkele gezamenlijke ankerpunten: ontvangst,
+          lezing, stilte en gesprek. Soms aangevuld met een gedeelde picknick of
+          potluck, zonder dat elk moment ingevuld hoeft te worden.
+        </p>
+      </article>
+
+      <article class="hero-card gathering-form-card gatherings-poetry-card">
+        <p class="gathering-form-kicker">Mogelijke vorm</p>
+        <h2>Poëzie en tekst</h2>
+        <p>
+          Een avond rond één of enkele sterke gedichten of mystieke teksten,
+          afgewisseld met stilte, duiding, persoonlijke reflectie en gesprek.
+        </p>
+      </article>
+
+      <a
+        class="hero-card gatherings-newsletter-card"
+        href={`${base}nl/nieuwsbrief/`}
+      >
+        <h2>Wanneer er iets ontstaat</h2>
+        <p>
+          Nieuwe bijeenkomsten volgen geen vast ritme. Via de nieuwsbrief hoor
+          je wanneer een lezing, wandeling of andere ontmoeting vorm krijgt.
+        </p>
+        <span class="card-link">Schrijf je in op de nieuwsbrief</span>
       </a>
 
-      <a class="hero-card hero-card-agenda" href={`${base}nl/agenda/`}>
-        <h2>Agenda</h2>
+      <article class="hero-card gatherings-history-card">
+        <h2>Eerdere vormen</h2>
         <p>
-          Alle komende bijeenkomsten in één overzicht, met de mogelijkheid om
-          ze meteen in je eigen digitale agenda te zetten.
+          Open Tafel en Woorden uit de Stilte waren de eerste manieren waarop
+          het Huis vorm kreeg. Hun waarde blijft aanwezig, maar ze vormen geen
+          vast programma meer.
         </p>
-        <span class="card-link">Bekijk de agenda</span>
-      </a>
 
-      <a class="hero-card hero-card-words" href={`${base}nl/woorden-uit-de-stilte/`}>
-        <span class="hero-card-arrow hero-card-arrow-right" aria-hidden="true">→</span>
-        <h2>Woorden uit de Stilte</h2>
-        <p>
-          Een avond met mystieke poëzie en korte teksten, afgewisseld met stilte
-          en gesprek.
-        </p>
-        <span class="card-link">Lees meer</span>
-      </a>
+        <nav class="gatherings-history-links" aria-label="Eerdere vormen">
+          <a href={`${base}nl/open-tafel/`}>Open Tafel</a>
+          <a href={`${base}nl/woorden-uit-de-stilte/`}>Woorden uit de Stilte</a>
+        </nav>
+      </article>
     </section>
   </PageImageHero>
 </BaseLayout>

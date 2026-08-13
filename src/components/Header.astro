@@ -47,32 +47,10 @@ const nav =
             "/nl/agenda/",
             "/nl/inschrijven/",
           ],
-          children: [
-            {
-              href: "/nl/open-tafel/",
-              label: "Open Tafel",
-              matches: ["/nl/open-tafel/"],
-            },
-            {
-              href: "/nl/woorden-uit-de-stilte/",
-              label: "Woorden uit de Stilte",
-              matches: ["/nl/woorden-uit-de-stilte/"],
-            },
-            {
-              href: "/nl/agenda/",
-              label: "Agenda",
-              matches: ["/nl/agenda/"],
-            },
-            {
-              href: "/nl/inschrijven/",
-              label: "Inschrijven",
-              matches: ["/nl/inschrijven/"],
-            },
-          ],
         },
         {
           href: "/nl/sporen-van-inzicht/",
-          label: "Sporen van Inzicht",
+          label: "Teksten",
           matches: ["/nl/sporen-van-inzicht/"],
         },
         {
@@ -95,32 +73,10 @@ const nav =
             "/en/calendar/",
             "/en/register/",
           ],
-          children: [
-            {
-              href: "/en/open-table/",
-              label: "Open Table",
-              matches: ["/en/open-table/"],
-            },
-            {
-              href: "/en/words-from-silence/",
-              label: "Words from Silence",
-              matches: ["/en/words-from-silence/"],
-            },
-            {
-              href: "/en/calendar/",
-              label: "Calendar",
-              matches: ["/en/calendar/"],
-            },
-            {
-              href: "/en/register/",
-              label: "Register",
-              matches: ["/en/register/"],
-            },
-          ],
         },
         {
           href: "/en/traces-of-insight/",
-          label: "Traces of Insight",
+          label: "Texts",
           matches: ["/en/traces-of-insight/"],
         },
         {
@@ -160,26 +116,6 @@ const switchToOtherLanguage =
   languagePairs[path] ?? (lang === "nl" ? "/en/" : "/nl/");
 ---
 
-<style is:inline>
-  .submenu {
-    position: absolute;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translate(-50%, 8px);
-  }
-
-  @media (max-width: 760px) {
-    .submenu {
-      position: static;
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-      transform: none;
-    }
-  }
-</style>
-
 <header class="site-header">
   <a class="brand" href={withBase(lang === "nl" ? "/nl/" : "/en/")}>
     <span class="brand-mark" aria-hidden="true">
@@ -205,38 +141,7 @@ const switchToOtherLanguage =
 
   <nav class="main-nav" aria-label="Main navigation">
     {nav.map((item) => {
-      const isActive =
-        item.matches.includes(path) ||
-        item.children?.some((child) => child.matches.includes(path));
-
-      if (item.children) {
-        return (
-          <div class="nav-item has-submenu">
-            <a
-              href={withBase(item.href)}
-              class:list={["nav-link", isActive && "is-active"]}
-              aria-haspopup="true"
-            >
-              {item.label}
-            </a>
-
-            <div class="submenu" aria-label={`${item.label} submenu`}>
-              {item.children.map((child) => {
-                const childIsActive = child.matches.includes(path);
-
-                return (
-                  <a
-                    href={withBase(child.href)}
-                    class:list={["submenu-link", childIsActive && "is-active"]}
-                  >
-                    {child.label}
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        );
-      }
+      const isActive = item.matches.includes(path);
 
       return (
         <a

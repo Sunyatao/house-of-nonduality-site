@@ -2,10 +2,9 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageImageHero from "../../components/PageImageHero.astro";
 import AddToCalendar from "../../components/AddToCalendar.astro";
-import { allEvents, type CalendarEvent } from "../../data/events";
+import { upcomingEvents, type CalendarEvent } from "../../data/events";
 
 const base = import.meta.env.BASE_URL;
-const targetYear = 2026;
 
 const withBase = (path: string) => {
   const cleanBase = base.endsWith("/") ? base : `${base}/`;
@@ -14,13 +13,10 @@ const withBase = (path: string) => {
   return `${cleanBase}${cleanPath}`;
 };
 
-const calendarEvents = allEvents.filter((event) =>
-  event.date.startsWith(`${targetYear}-`),
-);
-
 const formatMonth = (date: string) => {
   return new Intl.DateTimeFormat("en-GB", {
     month: "long",
+    year: "numeric",
   }).format(new Date(`${date}T12:00:00`));
 };
 
@@ -40,7 +36,7 @@ type MonthGroup = {
 
 const groupedEvents: MonthGroup[] = [];
 
-for (const event of calendarEvents) {
+for (const event of upcomingEvents) {
   const key = event.date.slice(0, 7);
   const existingGroup = groupedEvents.find((group) => group.key === key);
 
@@ -65,7 +61,7 @@ for (const event of calendarEvents) {
   <PageImageHero
     kicker="Upcoming gatherings"
     title="Calendar"
-    lead="An overview of the gatherings of The House of Nonduality."
+    lead="New gatherings will appear here as they take shape."
     imageSrc="/images/calendar/hond_agenda_scroll.png"
     imageAlt="A warm agenda scroll in The House of Nonduality, ready to show the upcoming gatherings."
     showImageView={true}
@@ -75,41 +71,52 @@ for (const event of calendarEvents) {
     <section class="agenda-scroll-wrap">
       <div class="agenda-scroll">
         <header class="agenda-scroll-header">
-  <h2>
-    Calendar <span>{targetYear}</span>
-  </h2>
+          <h2>
+            {upcomingEvents.length > 0
+              ? "Upcoming gatherings"
+              : "No gatherings are currently scheduled"}
+          </h2>
+        </header>
 
-  <a class="agenda-registration-link" href={withBase("/en/register/")}>
-    Register for one or more gatherings
-  </a>
-</header>
+        {upcomingEvents.length > 0 ? (
+          <div class="agenda-months">
+            {groupedEvents.map((group) => (
+              <section class="agenda-month-block">
+                <h3>{group.label}</h3>
 
-        <div class="agenda-months">
-          {groupedEvents.map((group) => (
-            <section class="agenda-month-block">
-              <h3>{group.label}</h3>
+                <ul class="agenda-month-list">
+                  {group.events.map((event) => (
+                    <li class="agenda-scroll-event">
+                      <a
+                        class="agenda-scroll-event-title"
+                        href={withBase(event.pagePath.en)}
+                      >
+                        {event.title.en}
+                      </a>
 
-              <ul class="agenda-month-list">
-                {group.events.map((event) => (
-                  <li class="agenda-scroll-event">
-                    <a
-                      class="agenda-scroll-event-title"
-                      href={withBase(event.pagePath.en)}
-                    >
-                      {event.title.en}
-                    </a>
+                      <p class="agenda-scroll-event-meta">
+                        {formatEventDate(event.date)} · {event.startTime}–{event.endTime}
+                      </p>
 
-                    <p class="agenda-scroll-event-meta">
-                      {formatEventDate(event.date)} · {event.startTime}–{event.endTime}
-                    </p>
+                      <AddToCalendar event={event} lang="en" />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+        ) : (
+          <div class="agenda-empty">
+            <p>
+              There is currently no fixed programme. New talks, walks and other ways
+              of gathering will be announced through the newsletter.
+            </p>
 
-                    <AddToCalendar event={event} lang="en" />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
+            <a class="agenda-registration-link" href={withBase("/en/newsletter/")}>
+              Subscribe to the newsletter
+            </a>
+          </div>
+        )}
       </div>
     </section>
   </PageImageHero>
